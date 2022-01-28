@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>This is my simple web page</title>
+    <script type="text/javascript">
+        function btnShow_onclick()
+        {
+            alert(txtUserMessage.value);
+        }
+    </script>
+</head>
+<body>
+    <h1 align="center">Simple Html page</h1>
+    <p align="center">
+        <br />
+        <i>Please enter a message</i>
+    </p>
+    <form id="defaultPage">
+        <p align="center">
+            Your Message: <input type="text" id="txtUserMessage" />
+        </p>
+        <p align="center">
+            <input id="btnShow" type="button" value="Show!" onclick="return btnShow_onclick();" />
+            <input id="btnReset" type="reset" value="Reset!" />
+        </p>
+    </form>
+</body>
+</html>

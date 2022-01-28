@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Defaul Web Site" />
+  <setParameter name="FreelanceIdentityConnection-Web.config Connection String" value="Data Source=ms-sql-6.in-solve.ru;Initial Catalog=1gb_x_email20b;User ID=1gb_email-check;Password=89489edfio" />
+  <setParameter name="EmailEntities-Web.config Connection String" value="metadata=res://*/Model.Edm.EmailModel.csdl|res://*/Model.Edm.EmailModel.ssdl|res://*/Model.Edm.EmailModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=ms-sql-6.in-solve.ru;Initial Catalog=1gb_x_email20b;User ID=1gb_email-check;Password=89489edfio;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+</parameters>

@@ -1,0 +1,105 @@
+﻿body {
+    font-family: arial;
+}
+
+h1 {
+    margin: 0;
+}
+
+#powered {
+    font-size: 80%;
+    margin: 0 0 20px 0;
+}
+
+a img {
+    border: 0;
+    vertical-align: baseline;
+}
+
+#user-info {
+    margin-bottom: 5px;
+    line-height: 20px;
+    padding: 2px;
+}
+
+    #user-info img {
+        vertical-align: bottom;
+    }
+
+#username {
+    padding: 0;
+    vertical-align: middle;
+    font-size: 16px;
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+}
+
+#change-username, #change-image {
+    font-size: 80%;
+}
+
+#chatpanel {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #a0a0a0;
+    background-color: #f0f0f0;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+    #chatpanel li, #users-panel ul li {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 3px 0;
+    }
+
+        #chatpanel li img {
+            vertical-align: middle;
+        }
+
+#users-panel {
+    width: 200px;
+    height: 420px;
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+    #users-panel h3 {
+        font-size: 18px;
+        padding: 2px;
+        margin: 0;
+        text-align: center;
+        background-color: #808080;
+        color: white;
+    }
+
+#users {
+    margin-top: 5px;
+    display: block;
+    height: 365px;
+    background-color: #fafafa;
+    border: 1px solid #c0c0c0;
+    padding: 12px;
+}
+
+    #users li {
+        padding-left: 20px;
+    }
+
+        #users li img {
+        }
+
+        #users li div {
+            float: right;
+            width: 150px;
+            overflow-x: hidden;
+        }
+
+li.system {
+    color: #808080;
+}
+
+#text {
+    width: 400px;
+}

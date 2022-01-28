@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Room</title>
+   <meta charset="utf-8" />
+   <style>
+      ul#messages {
+         border: 1px solid black;
+         height: 250px;
+         list-style: none;
+         overflow: scroll;
+         width: 450px;
+      }
+   </style>
+   <script src="Scripts/jquery-2.1.4.js"></script>
+   <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+   <script>
+      $(function () {
+         var connection = $.connection("http://localhost:4081/samplepc");
+
+         connection.received(function (data) {
+            $("#messages").append("<li>" + data + "</li>");
+         });
+
+         connection.start().done(function () {
+            $("#sendBtn").click(function () {
+               connection.send($("#name").val() + ": " + $("#message").val());
+            });
+         });
+      });
+   </script>
+</head>
+<body>
+   <ul id="messages"></ul>
+   <div>
+      <label>Name: </label>
+      <input id="name" value="User A" />
+   </div>
+   <div>
+      <label>Message: </label>
+      <input id="message" />
+   </div>
+   <button id="sendBtn">Send</button>
+</body>
+</html>

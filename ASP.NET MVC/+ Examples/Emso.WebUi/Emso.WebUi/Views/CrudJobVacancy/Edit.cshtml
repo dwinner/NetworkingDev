@@ -1,0 +1,82 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+@{
+    ViewBag.Title = Resources.EditVacancy;
+
+    var removeRespTitle = Resources.RemoveResponsibility;
+    const string respName = "responsibilities";
+    var respLabel = Resources.Responsibility;
+
+    var mainReqLabel = Resources.Requirement;
+    const string reqName = "requirements";
+
+    var workConditionLabel = Resources.Condition;
+    const string wcName = "workConditions";
+
+    const string restReqName = "restRequirements";
+
+    var miscReqLabel = Resources.Note;
+    const string miscReqName = "miscsellaneaos";
+}
+
+@section ExtraScripts
+{
+    @Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)
+    @Scripts.Render(BundleConfig.ScriptConstants.CrudJobVacancy)
+
+    <script id="addJobItemTmpl" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="control-label col-md-2">{{labelText}} №{{elementsCount}}</label>
+            <div class="col-md-6">
+                <input id="{{sameNameElement}}" name="{{sameNameElement}}"
+                       class="form-control" type="text" />
+            </div>
+            <div class="col-md-4">
+                <a href="#" id="{{jobKind}}-{{jobItemIndex}}" class="col-md-4 control-label" title="@removeRespTitle" onclick="removeJobItem(this.id); return false;">
+                    <div class="glyphicon glyphicon-minus btn btn-default"></div>
+                </a>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        $ (function () {
+            addTextInputTmpl ("addResponsibility", "@respName", "@respLabel", "removeResponsibility");
+            addTextInputTmpl ("addRequirement", "@reqName", "@mainReqLabel", "removeRequirement");
+            addTextInputTmpl ("addWc", "@wcName", "@workConditionLabel", "removeWc");
+            addTextInputTmpl ("addRestReq", "@restReqName", "@mainReqLabel", "removeRestReq");
+            addTextInputTmpl ("addMiscReq", "@miscReqName", "@miscReqLabel", "removeMiscReq");            
+        });
+    </script>
+}
+
+@section Feed
+{
+    <p></p>
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal row">
+            @Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
+            @Html.HiddenFor(model => model.Id)
+            @Html.EditorForModel()
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.UpdateTitle" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.BuildBackLink(Url.Action("Index"))
+    </div>
+</div>

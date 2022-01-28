@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="GroupBrush.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="BrushWorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="GroupBrushDb" value="Data Source=(localdb)\ProjectsV12;Initial Catalog=GroupBrush.SqlServer.Db;Integrated Security=True;Pooling=False;Connect Timeout=30" />
+      <Setting name="GroupBrushRedisHostname" value="localhost" />
+      <Setting name="GroupBrushRedisPassword" value="3680251am" />
+      <Setting name="UseRedis" value="false" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

@@ -1,0 +1,87 @@
+﻿@model MenuPlanner.Models.Menus
+
+@{
+   ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+   @Html.AntiForgeryToken()
+   @Html.ValidationSummary(true)
+
+   <fieldset>
+      <legend>Menus</legend>
+
+      @Html.HiddenFor(model => model.Id)
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.MenuCardId, "MenuCards")
+      </div>
+      <div class="editor-field">
+         @Html.DropDownList("MenuCardId", String.Empty)
+         @Html.ValidationMessageFor(model => model.MenuCardId)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Text)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Text)
+         @Html.ValidationMessageFor(model => model.Text)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Price)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Price)
+         @Html.ValidationMessageFor(model => model.Price)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Active)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Active)
+         @Html.ValidationMessageFor(model => model.Active)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Order)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Order)
+         @Html.ValidationMessageFor(model => model.Order)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Type)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Type)
+         @Html.ValidationMessageFor(model => model.Type)
+      </div>
+
+      <div class="editor-label">
+         @Html.LabelFor(model => model.Day)
+      </div>
+      <div class="editor-field">
+         @Html.EditorFor(model => model.Day)
+         @Html.ValidationMessageFor(model => model.Day)
+      </div>
+
+      <p>
+         <input type="submit" value="Save" />
+      </p>
+   </fieldset>
+}
+
+<div>
+   @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+   @Scripts.Render("~/bundles/jqueryval")
+}

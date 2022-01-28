@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SimpleHttpServerSample": {
+      "commandName": "Project",
+      "commandLineArgs": "http://therocks:8082",
+      "launchBrowser": true,
+      "launchUrl": "http://therocks:8082/samples/Hello?sample=text"
+    }
+  }
+}

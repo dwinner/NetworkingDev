@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperMethods", "HelperMethods\HelperMethods.csproj", "{FBA4BD08-3FF9-468C-88DF-24534CB904C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplatedHelpers", "TemplatedHelpers\TemplatedHelpers.csproj", "{B0489813-D32E-480B-BEC6-743F303D23F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjaxHelpers", "AjaxHelpers\AjaxHelpers.csproj", "{E79FC78C-5E94-43B8-8823-FCB3069FC6A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBA4BD08-3FF9-468C-88DF-24534CB904C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA4BD08-3FF9-468C-88DF-24534CB904C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA4BD08-3FF9-468C-88DF-24534CB904C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA4BD08-3FF9-468C-88DF-24534CB904C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0489813-D32E-480B-BEC6-743F303D23F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0489813-D32E-480B-BEC6-743F303D23F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0489813-D32E-480B-BEC6-743F303D23F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0489813-D32E-480B-BEC6-743F303D23F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79FC78C-5E94-43B8-8823-FCB3069FC6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79FC78C-5E94-43B8-8823-FCB3069FC6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79FC78C-5E94-43B8-8823-FCB3069FC6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79FC78C-5E94-43B8-8823-FCB3069FC6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

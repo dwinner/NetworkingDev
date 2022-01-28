@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Persistent connection";
+}
+
+<div class="jumbotron">
+    <h1>SignalR-2</h1>    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Login</h2>
+        <p>
+            Enter login: <input id="txtUserName" type="text"/>
+        </p>
+        <p><input id="btnLogin" type="button" value="Enter" class="btn btn-default"/>
+        </p>
+    </div>
+    <div class="col-md-4" id="chatBody">
+        <h2>Room</h2>
+        <div id="header"></div>
+        <div id="inputForm">
+            <input type="text" id="message"/>
+            <input type="button" id="sendMessage" value="Send" class="btn btn-primary"/>
+        </div>
+        <input id="userName" type="hidden"/>
+    </div>
+    <div class="col-md-4" id="onlineBox">
+        <div id="chatRoom">
+            <ul></ul>
+        </div>
+    </div>
+</div>
+
+@section scripts {   
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/Scripts/SignalRChat/persistentConn.js"></script>
+}

@@ -1,0 +1,13 @@
+﻿@model MvcSampleApp.Models.Menu
+
+@{
+   ViewBag.Title = "Editor";
+}
+
+<h2>Editor</h2>
+
+<br/>
+
+@Html.EditorFor(menu => menu) @* Редактор для модели *@
+<hr/>
+@Html.EditorForModel()  @* Редактор для всей модели *@

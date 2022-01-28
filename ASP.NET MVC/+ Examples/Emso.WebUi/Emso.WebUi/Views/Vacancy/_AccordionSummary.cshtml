@@ -1,0 +1,134 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+@{
+    var collPanelId = string.Format("job{0}", Model.Id);
+    var hrefId = string.Format("jobHref{0}", Model.Id);
+    var hrefElementId = string.Format("#{0}", hrefId);
+    var emptyCollLabel = Resources.DummyColl;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="@collPanelId">
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#jobAccordion" href="@hrefElementId" aria-expanded="true" aria-controls="@hrefId">
+                @Html.DisplayFor(modelItem => Model.Title) (@Html.DisplayFor(modelItem => Model.City))
+            </a>
+            <a class="pull-right" href="@Url.Action("Create", "ContactUs")">@Resources.ContactUsTitle</a>
+        </h4>
+    </div>
+    <div id="@hrefId" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="@collPanelId">
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.SalaryLevel)</td>
+                    <td>@Html.DisplayFor(modelItem => Model.SalaryLevel)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.WorkExperience)</td>
+                    <td>@Html.BuildTranslatedExperience(Model.WorkExperience)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.EmploymentType)</td>
+                    <td>@Html.BuildTranslatedEmploymentType(Model.EmploymentType)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Responsibilities)</td>
+                    <td>
+                        @if (Model.Responsibilities.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var responsibility in Model.Responsibilities)
+                                {
+                                    <li class="list-group-item">@responsibility</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="text-capitalize text-info">@emptyCollLabel</div>
+                        }
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Requirements)</td>
+                    <td>
+                        @if (Model.Requirements.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var requirement in Model.Requirements)
+                                {
+                                    <li class="list-group-item">@requirement</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="text-capitalize text-info">@emptyCollLabel</div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.WorkingConditions)</td>
+                    <td>
+                        @if (Model.WorkingConditions.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var workingCondition in Model.WorkingConditions)
+                                {
+                                    <li class="list-group-item">@workingCondition</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="text-capitalize text-info">@emptyCollLabel</div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.RestRequirements)</td>
+                    <td>
+
+                        @if (Model.RestRequirements.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var restRequirement in Model.RestRequirements)
+                                {
+                                    <li class="list-group-item">@restRequirement</li>
+                                }
+
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="text-capitalize text-info">@emptyCollLabel</div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Misc)</td>
+                    <td>
+                        @if (Model.Misc.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var msc in Model.Misc)
+                                {
+                                    <li class="list-group-item">@msc</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="text-capitalize text-info">@emptyCollLabel</div>
+                        }
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

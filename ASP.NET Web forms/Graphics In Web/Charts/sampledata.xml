@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Data>
+    <Product>
+        <Name>Apple</Name>
+        <Quantity>40</Quantity>
+    </Product>
+    <Product>
+        <Name>Orange</Name>
+        <Quantity>20</Quantity>
+    </Product>
+    <Product>
+        <Name>Banana</Name>
+        <Quantity>30</Quantity>
+    </Product>
+    <Product>
+        <Name>Mango</Name>
+        <Quantity>22</Quantity>
+    </Product>
+    <Product>
+        <Name>Cherry</Name>
+        <Quantity>38</Quantity>
+    </Product>
+</Data>

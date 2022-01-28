@@ -1,0 +1,26 @@
+﻿@using Users.Helpers
+@model IEnumerable<System.Security.Claims.Claim>
+@{ ViewBag.Title = "Claims"; }
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Claims
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Subject</th>
+            <th>Issuer</th>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+        @foreach (var claim in Model.OrderBy(claim => claim.Type))
+        {
+            <tr>
+                <td>@claim.Subject.Name</td>
+                <td>@claim.Issuer</td>
+                <td>@Html.ClaimType(claim.Type)</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </table>
+</div>

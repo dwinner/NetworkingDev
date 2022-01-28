@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+    <script src="signalr/hubs"></script>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #buttons li {
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 40px;
+            text-align: center;
+            margin-left: 2px;
+        }
+
+            #buttons li button {
+                width: 150px;
+                height: 30px;
+                clear: both;
+            }
+    </style>
+</head>
+<body>
+    <h1>Simple echo</h1>
+    <p>Press the buttons below to send a message to the server as:</p>
+    <ul id="buttons">
+        <li>
+            <button id="sendPublic" disabled="disabled">Anonymous user</button>
+        </li>
+        <li>
+            <button id="sendMembers" disabled="disabled">Authenticated user</button>
+        </li>
+        <li>
+            <button id="sendAdmins" disabled="disabled">User with role admin</button>
+        </li>
+        <li>
+            <button id="sendPrivate" disabled="disabled">jmaguilar</button>
+        </li>
+    </ul>
+    <div style="clear: both"></div>
+    <p>
+        Login as: 
+        <a href="#" class="login" data-user="jmaguilar">jmaguilar</a> |
+        <a href="#" class="login" data-user="john">john</a> |
+        <a href="#" class="login" data-user="admin">admin</a> | 
+        <a href="#" class="login" data-user="">(Logout)</a> | <span id="currentUser"></span>
+    </p>
+    <ul id="response">
+    </ul>
+</body>
+<script>
+    $(function () {
+        var eq = location.href.lastIndexOf("=");
+        var user = eq >= 0 ? "Now logged as " + location.href.substring(eq + 1) : "Not logged in";
+        $("#currentUser").text(user);
+
+        $(".login").click(function () {
+            var loginAs = $(this).data("user");
+            $.post("/account/login", { username: loginAs, password: "1234" })
+                .done(function () {
+                    var url = "default.html?" + Math.random();
+                    location.href = url + (loginAs != "" ? "&user=" + loginAs : "");
+                });
+            return true;
+        });
+        $("#sendPublic").click(function () {
+            hub.server.publicMessage("Message sent anonymously from the web app!")
+                            .fail(function (err) {
+                                alert(err);
+                            });
+            return true;
+        });
+        $("#sendMembers").click(function () {
+            hub.server.membersMessage("Message sent by an authenticated user from the web app!")
+                .fail(function (err) {
+                    alert(err);
+                });
+            return true;
+        });
+        $("#sendAdmins").click(function () {
+            hub.server.adminsMessage("Mesage sent by an admin user from the web app!")
+                .fail(function (err) {
+                    alert(err);
+                });
+            return true;
+        });
+        $("#sendPrivate").click(function () {
+            hub.server.privateMessage("Message sent by jmaguilar from the web app!")
+                .fail(function (err) {
+                    alert(err);
+                });
+            return true;
+        });
+        var hub = $.connection.echoHub;
+        hub.client.message = function (msg) {
+            $("#response").append("<li>" + msg + "</li>");
+        };
+        $.connection.hub.start()
+            .done(function () {
+                $("button[disabled]").attr("disabled", false);
+            });
+    });
+</script>
+</html>

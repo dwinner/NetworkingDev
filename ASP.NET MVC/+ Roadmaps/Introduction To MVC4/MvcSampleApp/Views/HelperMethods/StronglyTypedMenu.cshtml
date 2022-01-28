@@ -1,0 +1,23 @@
+﻿@model MvcSampleApp.Models.Menu
+
+@{
+   ViewBag.Title = "StronglyTypedMenu";
+}
+
+@helper DisplayDay(DateTime day)
+{
+   if (day < DateTime.Today)
+   {
+   <span>History day</span>  
+   }
+   @String.Format("{0:d}", day);
+}
+
+<h2>StronglyTypedMenu</h2>
+
+@Html.DisplayNameFor(menu => menu.Text)
+<br/>
+@Html.DisplayFor(menu => menu.Text)
+@Html.DisplayTextFor(menu => menu.Price)
+@Html.TextBoxFor(menu => menu.Text)
+@DisplayDay(Model.Date)

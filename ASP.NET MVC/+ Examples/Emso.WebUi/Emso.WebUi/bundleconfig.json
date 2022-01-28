@@ -1,0 +1,116 @@
+[
+  {
+    "outputFileName": "Content/styles/mainStyles.min.css",
+    "inputFiles": [
+      "Content/styles/mainStyles.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/styles/gooeyMenu.min.css",
+    "inputFiles": [
+      "Content/styles/gooeyMenu.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/gooeyMenu.min.js",
+    "inputFiles": [
+      "Scripts/custom/gooeyMenu.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/styles/sideViewMenu.min.css",
+    "inputFiles": [
+      "Content/styles/sideViewMenu.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/sideViewMenu.min.js",
+    "inputFiles": [
+      "Scripts/custom/sideViewMenu.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/styles/radioImages.min.css",
+    "inputFiles": [
+      "Content/styles/radioImages.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/knockout-3.4.0.min.js",
+    "inputFiles": [
+      "Scripts/knockout-3.4.0.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/jquery-ui-1.11.1.min.js",
+    "inputFiles": [
+      "Scripts/jquery-ui-1.11.1.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/adminNews.min.js",
+    "inputFiles": [
+      "Scripts/custom/adminNews.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/crudJobVacancy.min.js",
+    "inputFiles": [
+      "Scripts/custom/crudJobVacancy.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/crudDialog.min.js",
+    "inputFiles": [
+      "Scripts/custom/crudDialog.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/jquery.magnifier.min.js",
+    "inputFiles": [
+      "Scripts/custom/jquery.magnifier.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/controlSetup.min.js",
+    "inputFiles": [
+      "Scripts/custom/controlSetup.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/virtualpaginate.min.js",
+    "inputFiles": [
+      "Scripts/custom/virtualpaginate.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/jquery.pagination.min.js",
+    "inputFiles": [
+      "Scripts/custom/jquery.pagination.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/styles/jqPagination.min.css",
+    "inputFiles": [
+      "Content/styles/jqPagination.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/rssFeed.min.js",
+    "inputFiles": [
+      "Scripts/custom/rssFeed.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/scrolltopcontrol.min.js",
+    "inputFiles": [
+      "Scripts/custom/scrolltopcontrol.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/custom/animatedcollapse.min.js",
+    "inputFiles": [
+      "Scripts/custom/animatedcollapse.js"
+    ]
+  }
+]

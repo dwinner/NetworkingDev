@@ -1,0 +1,15 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+<h3 class="text-center">@Resources.ConfirmDelete</h3>
+@Html.DisplayForModel()
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.BuildDeleteButton()
+}
+
+@Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)

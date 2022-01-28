@@ -1,0 +1,94 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+@{
+    var mainReqLabel = Resources.Requirement;
+    var responsibilities = Model != null ? (Model.Responsibilities ?? new List<string>()) : new List<string>();
+    var requirements = Model != null ? (Model.Requirements ?? new List<string>()) : new List<string>();
+    var workingConditions = Model != null ? (Model.WorkingConditions ?? new List<string>()) : new List<string>();
+    var restRequirements = Model != null ? (Model.RestRequirements ?? new List<string>()) : new List<string>();
+    var misc = Model != null ? (Model.Misc ?? new List<string>()) : new List<string>();
+}
+
+<!-- Main information -->
+<fieldset>
+    <legend>@Resources.MainInformation</legend>
+    @Html.BuildFormGroupItem(model => model.Title)
+    @Html.BuildFormGroupItem(model => model.City)
+    @Html.BuildFormGroupItem(model => model.SalaryLevel)
+    @Html.BuildFormGroupItem(model => model.WorkExperience)
+    @Html.BuildEnumGroupItem(model => model.EmploymentType)
+    @Html.BuildFormGroupItem(model => model.IsActive)
+</fieldset>
+
+<!-- Main responsibilities -->
+<fieldset>
+    <legend>@Resources.MainResponsibilities</legend>
+    @for (var respIndex = 0; respIndex < @responsibilities.Count; respIndex++)
+    {
+        @Html.BuildDhtmlTextBox(respIndex, Resources.Responsibility, "responsibilities", responsibilities[respIndex], "removeResponsibility", Resources.RemoveResponsibility)
+    }
+    <div class="form-group">
+        <a href="#" id="addResponsibility" class="col-md-2 control-label"
+           title="@Resources.AddResponsibility">
+            <div class="glyphicon glyphicon-plus btn btn-default"></div>
+        </a>
+    </div>
+</fieldset>
+
+<!-- Main Requirements -->
+<fieldset>
+    <legend>@Resources.MainRequirements</legend>
+    @for (var reqIndex = 0; reqIndex < requirements.Count; reqIndex++)
+    {
+        @Html.BuildDhtmlTextBox(reqIndex, mainReqLabel, "requirements", requirements[reqIndex], "removeReq", Resources.RemoveRequirement)
+    }
+    <div class="form-group">
+        <a href="#" id="addRequirement" class="col-md-2 control-label" title="@Resources.AddRequirement">
+            <div class="glyphicon glyphicon-plus btn btn-default"></div>
+        </a>
+    </div>
+</fieldset>
+
+<!-- Working conditions -->
+<fieldset>
+    <legend>@Resources.WorkingConditionsTitle</legend>
+    @for (var wcIndex = 0; wcIndex < workingConditions.Count; wcIndex++)
+    {
+        @Html.BuildDhtmlTextBox(wcIndex, Resources.Condition, "workConditions", workingConditions[wcIndex], "removeWc", Resources.RemoveWorkingCondition)
+    }
+    <div class="form-group">
+        <a href="#" id="addWc" class="col-md-2 control-label" title="@Resources.AddWorkingCondition">
+            <div class="glyphicon glyphicon-plus btn btn-default"></div>
+        </a>
+    </div>
+</fieldset>
+
+<!-- Rest requirements -->
+<fieldset>
+    <legend>@Resources.RestRequirements</legend>
+    @for (var restRqIndex = 0; restRqIndex < restRequirements.Count; restRqIndex++)
+    {
+        @Html.BuildDhtmlTextBox(restRqIndex, mainReqLabel, "restRequirements", restRequirements[restRqIndex], "removeRestRq", Resources.RemoveRestRequirement)
+    }
+    <div class="form-group">
+        <a href="#" id="addRestReq" class="col-md-2 control-label" title="@Resources.AddRestRequirement">
+            <div class="glyphicon glyphicon-plus btn btn-default"></div>
+        </a>
+    </div>
+</fieldset>
+
+<!-- Mics requirements -->
+<fieldset>
+    <legend>@Resources.OtherNotes</legend>
+    @for (var miscRqIndex = 0; miscRqIndex < misc.Count; miscRqIndex++)
+    {
+        @Html.BuildDhtmlTextBox(miscRqIndex, Resources.Note, "miscsellaneaos", misc[miscRqIndex], "removeMiscRq", Resources.RemoveNote)
+    }
+    <div class="form-group">
+        <a href="#" id="addMiscReq" class="col-md-2 control-label" title="@Resources.AddNote">
+            <div class="glyphicon glyphicon-plus btn btn-default"></div>
+        </a>
+    </div>
+</fieldset>

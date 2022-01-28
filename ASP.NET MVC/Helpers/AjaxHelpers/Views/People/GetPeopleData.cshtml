@@ -1,0 +1,10 @@
+﻿@model IEnumerable<AjaxHelpers.Models.Person>
+
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.FirstName</td>
+        <td>@p.LastName</td>
+        <td>@p.Role</td>
+    </tr>
+}

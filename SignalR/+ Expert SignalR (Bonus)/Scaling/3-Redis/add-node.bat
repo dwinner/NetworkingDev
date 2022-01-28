@@ -1,0 +1,1 @@
+powershell ./add-node.ps1

@@ -1,0 +1,76 @@
+﻿@model SportsStore.Domain.Entites.ShippingDetails
+
+@{
+    ViewBag.Title = "SportsStore: Checkout";
+}
+
+<h2>Check out now</h2>
+<p>Please enter your details, and we'll ship your goods right away!</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <h3>Ship To</h3>
+    <div class="form-group">
+        <label>Name:</label>
+        @Html.TextBoxFor(details => details.Name, new {@class = "form-control"})
+    </div>
+
+    <h3>Address</h3>
+
+    foreach (var property in ViewData.ModelMetadata.Properties.Where(property => property.PropertyName != "Name" && property.PropertyName != "GiftWrap"))
+    {
+        <div class="form-group">
+            <label>@(property.DisplayName ?? property.PropertyName)</label>
+            @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
+        </div>
+    }
+
+    @*<div class="form-group">
+        <label>Line 1:</label>
+        @Html.TextBoxFor(details => details.Line1, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Line 2:</label>
+        @Html.TextBoxFor(details => details.Line2, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Line 3:</label>
+        @Html.TextBoxFor(details => details.Line3, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>City:</label>
+        @Html.TextBoxFor(details => details.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>State:</label>
+        @Html.TextBoxFor(details => details.State, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Zip:</label>
+        @Html.TextBoxFor(details => details.Zip, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Country:</label>
+        @Html.TextBoxFor(details => details.Country, new { @class = "form-control" })
+    </div>*@
+
+    <h3>Options</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(details => details.GiftWrap)
+            Gift wrap these items
+        </label>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Complete order"/>
+    </div>
+}

@@ -1,0 +1,46 @@
+﻿div.loggedOut { display: none; }
+
+div.loggedIn { display: none; }
+
+div#mainContent { float: left; }
+
+div#userContent { float: left; }
+
+div#mainMessage h1 { font-size: 72px; }
+
+span.error {
+    color: red;
+    display: none;
+}
+
+div#actionContent > div {
+    border: 1px solid black;
+    float: left;
+}
+
+div#actionContent div.loggedIn div { height: 220px; }
+
+div#actionContent div.loggedOut div { height: 300px; }
+
+div#actionContent div div {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    float: left;
+    width: 200px;
+}
+
+div#actionContent div div span { padding: 4px; }
+
+div#actionContent div div input {
+    display: block;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+div#actionContent div div button {
+    display: block;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+span.sectionTitle { font-size: larger; }

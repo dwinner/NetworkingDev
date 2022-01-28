@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>Все права защищены</value>
+  </data>
+  <data name="AttachCodeExamples" xml:space="preserve">
+    <value>Добавьте Ваши примеры кода в формате zip</value>
+  </data>
+  <data name="AttachCodeExamplesLabel" xml:space="preserve">
+    <value>Добавьте Ваши примеры кода</value>
+  </data>
+  <data name="AttachYourResume" xml:space="preserve">
+    <value>Добавьте Ваше резюме</value>
+  </data>
+  <data name="BackToMainAction" xml:space="preserve">
+    <value>На главную</value>
+  </data>
+  <data name="BriefInformationPlaceholder" xml:space="preserve">
+    <value>Краткая информация</value>
+  </data>
+  <data name="CareerTitle" xml:space="preserve">
+    <value>Карьера</value>
+  </data>
+  <data name="Contact_BirthDate" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="Contact_BirthDateDataType" xml:space="preserve">
+    <value>Дата рождения должна быть корректна</value>
+  </data>
+  <data name="Contact_BirthDateRequired" xml:space="preserve">
+    <value>Требуется дата рождения</value>
+  </data>
+  <data name="Contact_CAndCppKnowledge" xml:space="preserve">
+    <value>Уровень языка C/C++</value>
+  </data>
+  <data name="Contact_CAndCppKnowledgeRatingRequired" xml:space="preserve">
+    <value>Требуется указать уровень языка C/C++</value>
+  </data>
+  <data name="Contact_Email" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Contact_EmailRequired" xml:space="preserve">
+    <value>Требуется электронная почта</value>
+  </data>
+  <data name="Contact_EmailValidation" xml:space="preserve">
+    <value>Адрес электронной почты не является действительным</value>
+  </data>
+  <data name="Contact_FirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Contact_FirstNameDataType" xml:space="preserve">
+    <value>Имя должно быть обычным текстом</value>
+  </data>
+  <data name="Contact_FirstNameRange" xml:space="preserve">
+    <value>Минимальная длина - 3, Максимальная длина - 20</value>
+  </data>
+  <data name="Contact_FirstNameRequired" xml:space="preserve">
+    <value>Требуется ввести имя</value>
+  </data>
+  <data name="Contact_Language" xml:space="preserve">
+    <value>Уровень английского языка</value>
+  </data>
+  <data name="Contact_LanguageRatingRequired" xml:space="preserve">
+    <value>Требуется указать уровень владения языка</value>
+  </data>
+  <data name="Contact_LastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Contact_LastNameDataType" xml:space="preserve">
+    <value>Фамилия должна быть обычным текстом</value>
+  </data>
+  <data name="Contact_LastNameRange" xml:space="preserve">
+    <value>Минимальная длина - 3, максимальная длина - 30</value>
+  </data>
+  <data name="Contact_LastNameRequired" xml:space="preserve">
+    <value>Требуется указать фамилию</value>
+  </data>
+  <data name="Contact_SummaryInfo" xml:space="preserve">
+    <value>Краткая информация</value>
+  </data>
+  <data name="Contact_TelephoneNumber" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="Contact_TelephoneNumberDataType" xml:space="preserve">
+    <value>Номер телефона должен быть корректным</value>
+  </data>
+  <data name="Contact_TelephoneNumberRequired" xml:space="preserve">
+    <value>Требуется указать номер телефона </value>
+  </data>
+  <data name="ContactPerson_CSharpLanguageLevel" xml:space="preserve">
+    <value>Уровень владения C#</value>
+  </data>
+  <data name="ContactPerson_CSharpLevelRequired" xml:space="preserve">
+    <value>Требуется указать уровень языка C#</value>
+  </data>
+  <data name="ContactPerson_OodKnowledgeLevel" xml:space="preserve">
+    <value>Уровень ООД</value>
+  </data>
+  <data name="ContactPerson_OodLevelRequired" xml:space="preserve">
+    <value>Требуется указать уровень ООД</value>
+  </data>
+  <data name="ContactPerson_OopKnowledgeLevel" xml:space="preserve">
+    <value>Уровень ООП</value>
+  </data>
+  <data name="ContactPerson_OopKnowledgeRequired" xml:space="preserve">
+    <value>Требуется указать уровень OOP</value>
+  </data>
+  <data name="ContactPerson_RefactoringKnowledgeLevel" xml:space="preserve">
+    <value>Уровень владения методами рефакторинга</value>
+  </data>
+  <data name="ContactPerson_RefactoringKnowledgeRequired" xml:space="preserve">
+    <value>Требуется указать уровень владения методами рефакторинга</value>
+  </data>
+  <data name="ContactUsController_ErrorSendingEmail" xml:space="preserve">
+    <value>Ошибка при отправке сообщения</value>
+  </data>
+  <data name="ContactUsController_SuccessfullySent" xml:space="preserve">
+    <value>Контактная информация успешно отправлена</value>
+  </data>
+  <data name="ContactUsTitle" xml:space="preserve">
+    <value>Сообщите о Вас</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>Почтовый адрес</value>
+  </data>
+  <data name="EnglishSwitch" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="ErrorSendingEmail" xml:space="preserve">
+    <value>Ошибка при отправке почтового сообщения</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ExceededUploadedLimit" xml:space="preserve">
+    <value>Превышено ограничение на количество загруженных файлов - {0}</value>
+  </data>
+  <data name="FileExists" xml:space="preserve">
+    <value>File '{0}' already exists</value>
+  </data>
+  <data name="FileNotExists" xml:space="preserve">
+    <value>Файл '{0}' не существует</value>
+  </data>
+  <data name="FileSuccessfullyDeleted" xml:space="preserve">
+    <value>Файл '{0}' успешно удален</value>
+  </data>
+  <data name="FileUploaded" xml:space="preserve">
+    <value>Файл успешно загружен</value>
+  </data>
+  <data name="FirsNamePlaceholder" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="LanguageRating_Advanced" xml:space="preserve">
+    <value>Достаточно уверенно владею</value>
+  </data>
+  <data name="LanguageRating_Beginner" xml:space="preserve">
+    <value>Могу читать</value>
+  </data>
+  <data name="LanguageRating_Intermediate" xml:space="preserve">
+    <value>Хорошо говорю и понимаю</value>
+  </data>
+  <data name="LanguageRating_PreIntermediate" xml:space="preserve">
+    <value>Немного говорю и понимаю</value>
+  </data>
+  <data name="LanguageRating_Proficiency" xml:space="preserve">
+    <value>Свободно владею</value>
+  </data>
+  <data name="LanguageRating_UpperIntermediate" xml:space="preserve">
+    <value>Хорошо говорю и понимаю сложную речь</value>
+  </data>
+  <data name="LastNamePlaceholder" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="MainTitle" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="MaximumUploadSize" xml:space="preserve">
+    <value>Максимальный размер передаваемых данных - {0} Mb</value>
+  </data>
+  <data name="OodDescription" xml:space="preserve">
+    <value>Объектно-ориентированный дизайн, принципы SOLID, GRASP</value>
+  </data>
+  <data name="OopDescription" xml:space="preserve">
+    <value>Объектно-ориентированное программирование, шаблоны проектирования</value>
+  </data>
+  <data name="OurContactsTitle" xml:space="preserve">
+    <value>Наши контакты</value>
+  </data>
+  <data name="Rating_Beginner" xml:space="preserve">
+    <value>Новичок</value>
+  </data>
+  <data name="Rating_Dummy" xml:space="preserve">
+    <value>Полный ноль</value>
+  </data>
+  <data name="Rating_Expert" xml:space="preserve">
+    <value>Эксперт</value>
+  </data>
+  <data name="Rating_High" xml:space="preserve">
+    <value>Профессионал</value>
+  </data>
+  <data name="Rating_Medium" xml:space="preserve">
+    <value>Среднячок</value>
+  </data>
+  <data name="RefactoringDescription" xml:space="preserve">
+    <value>Приемы рефакторинга</value>
+  </data>
+  <data name="ResumeTooltip" xml:space="preserve">
+    <value>Добавьте Ваше резюме и навыки в формате pdf (до пяти файлов)</value>
+  </data>
+  <data name="RssViewDetails" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="RussianSwitch" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="SendButtonText" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="TelephonePlaceholder" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="UploadingNotSupported" xml:space="preserve">
+    <value>Загрузка файлов не поддерживается</value>
+  </data>
+  <data name="WrongMimeType" xml:space="preserve">
+    <value>Неправильный тип файла: {0}</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Поиск...</value>
+  </data>
+  <data name="AsEmployersTitle" xml:space="preserve">
+    <value>Мы, как работодатели</value>
+  </data>
+  <data name="VacanciesTitle" xml:space="preserve">
+    <value>Вакансии</value>
+  </data>
+  <data name="PanelDesignerOverviewTitle" xml:space="preserve">
+    <value>Panel designer. Обзор</value>
+  </data>
+  <data name="PanelPcOverviewTitle" xml:space="preserve">
+    <value>Panel PC. Обзор</value>
+  </data>
+  <data name="AutomotiveSoftwareOverviewTitle" xml:space="preserve">
+    <value>Automotive Software. Обзор</value>
+  </data>
+  <data name="EmbeddedSoftwareOverviewTitle" xml:space="preserve">
+    <value>Embedded software. Обзор</value>
+  </data>
+  <data name="PanelDesignerLink" xml:space="preserve">
+    <value>Панель дизайнер</value>
+  </data>
+  <data name="PanelDesignerDescription" xml:space="preserve">
+    <value>Панель дизайнер - набор элементов управления, основанный на WPF</value>
+  </data>
+  <data name="PanelPcLink" xml:space="preserve">
+    <value>Panel PC</value>
+  </data>
+  <data name="PanelPcDescription" xml:space="preserve">
+    <value>Panel PC - Даже и не знаю, что это за фрукт</value>
+  </data>
+  <data name="AutomotiveSoftwareLink" xml:space="preserve">
+    <value>Automotive Software</value>
+  </data>
+  <data name="AutomotiveSoftwareDescription" xml:space="preserve">
+    <value>Automotive Software - Даже и не знаю, что это за фрукт такой</value>
+  </data>
+  <data name="EmbeddedSoftwareLink" xml:space="preserve">
+    <value>Embedded software</value>
+  </data>
+  <data name="EmbeddedSoftwareDescription" xml:space="preserve">
+    <value>Embedded software - Мне не известно, что это</value>
+  </data>
+  <data name="EmailLegend" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="TelephoneLegend" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="AddressLegend" xml:space="preserve">
+    <value>Наш адрес</value>
+  </data>
+  <data name="FullAddress" xml:space="preserve">
+    <value>Тула, улица Тимирязева 99, Офис 515</value>
+  </data>
+  <data name="OurPlacesLegend" xml:space="preserve">
+    <value>Наши места</value>
+  </data>
+  <data name="TrendsAndSolutionsTitle" xml:space="preserve">
+    <value>Тенденции и решения</value>
+  </data>
+  <data name="AboutUsTitle" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="JobVacancyTitle" xml:space="preserve">
+    <value>Вакансии</value>
+  </data>
+  <data name="CreateNewVacancy" xml:space="preserve">
+    <value>Создать новую вакансию</value>
+  </data>
+  <data name="PositionTitle" xml:space="preserve">
+    <value>Название позиции</value>
+  </data>
+  <data name="LocationCity" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="MinSalary" xml:space="preserve">
+    <value>Минимальная зарплата</value>
+  </data>
+  <data name="MaxSalary" xml:space="preserve">
+    <value>Максимальная зарплата</value>
+  </data>
+  <data name="EmploymentType_Full" xml:space="preserve">
+    <value>Полная занятость</value>
+  </data>
+  <data name="EmploymentType_Part" xml:space="preserve">
+    <value>Частичная занятость</value>
+  </data>
+  <data name="EmploymentType_Flexible" xml:space="preserve">
+    <value>Гибкий график</value>
+  </data>
+  <data name="EmploymentType_Remote" xml:space="preserve">
+    <value>Удаленная работа</value>
+  </data>
+  <data name="WorkExperience" xml:space="preserve">
+    <value>Опыт работы</value>
+  </data>
+  <data name="EmploymentType" xml:space="preserve">
+    <value>Тип занятости</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Актуально</value>
+  </data>
+  <data name="Responsibilities" xml:space="preserve">
+    <value>Обязанности</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Требования</value>
+  </data>
+  <data name="OptionalRequirements" xml:space="preserve">
+    <value>Необязательные требования</value>
+  </data>
+  <data name="WorkingConditions" xml:space="preserve">
+    <value>Условия работы</value>
+  </data>
+  <data name="EditLinkTitle" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="DetailsLinkTitle" xml:space="preserve">
+    <value>Детали</value>
+  </data>
+  <data name="DeleteLinkTitle" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Вернуться к списку</value>
+  </data>
+  <data name="AddNewVacancy" xml:space="preserve">
+    <value>Добавить новую вакансию</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="LessThanYear" xml:space="preserve">
+    <value>Менее года</value>
+  </data>
+  <data name="MoreThanOneLessThanThree" xml:space="preserve">
+    <value>1-3 года</value>
+  </data>
+  <data name="MoreThanThreeLessThanSix" xml:space="preserve">
+    <value>3-6 лет</value>
+  </data>
+  <data name="MoreThanSix" xml:space="preserve">
+    <value>Более 6-ти лет</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Требуется название должности</value>
+  </data>
+  <data name="TitleMustBeText" xml:space="preserve">
+    <value>Название должности должно быть текстом</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>Требуется город</value>
+  </data>
+  <data name="CityMustBeText" xml:space="preserve">
+    <value>Город должен быть текстом</value>
+  </data>
+  <data name="MinimumSalaryRequired" xml:space="preserve">
+    <value>Требуется указать минимальную зарплату</value>
+  </data>
+  <data name="MinimumSalaryMustBeDigit" xml:space="preserve">
+    <value>Минимальная зарплата должна быть в цифрах</value>
+  </data>
+  <data name="MaximumSalaryRequired" xml:space="preserve">
+    <value>Требуется максимальная зарплата</value>
+  </data>
+  <data name="MaximumSalaryMustBeDigit" xml:space="preserve">
+    <value>Максимальная зарплата должна быть в числах</value>
+  </data>
+  <data name="MainInformation" xml:space="preserve">
+    <value>Главная информация</value>
+  </data>
+  <data name="MainResponsibilities" xml:space="preserve">
+    <value>Основные обязанности</value>
+  </data>
+  <data name="AddResponsibility" xml:space="preserve">
+    <value>Добавить обязанность</value>
+  </data>
+  <data name="Responsibility" xml:space="preserve">
+    <value>Обязанность</value>
+  </data>
+  <data name="Requirement" xml:space="preserve">
+    <value>Требование</value>
+  </data>
+  <data name="MainRequirements" xml:space="preserve">
+    <value>Основные требования</value>
+  </data>
+  <data name="AddRequirement" xml:space="preserve">
+    <value>Добавить требование</value>
+  </data>
+  <data name="WorkingConditionsTitle" xml:space="preserve">
+    <value>Условия работы</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Условие</value>
+  </data>
+  <data name="AddWorkingCondition" xml:space="preserve">
+    <value>Добавить условие работы</value>
+  </data>
+  <data name="RestRequirements" xml:space="preserve">
+    <value>Необязательные требования</value>
+  </data>
+  <data name="AddRestRequirement" xml:space="preserve">
+    <value>Добавить остальное требование</value>
+  </data>
+  <data name="OtherNotes" xml:space="preserve">
+    <value>Другие замечания</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="AddNote" xml:space="preserve">
+    <value>Добавить другое</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту запись?</value>
+  </data>
+  <data name="RemoveResponsibility" xml:space="preserve">
+    <value>Удалить рабочую информацию</value>
+  </data>
+  <data name="RemoveRequirement" xml:space="preserve">
+    <value>Удалить требование</value>
+  </data>
+  <data name="RemoveWorkingCondition" xml:space="preserve">
+    <value>Удалить условие работы</value>
+  </data>
+  <data name="RemoveRestRequirement" xml:space="preserve">
+    <value>Удалить другое условие</value>
+  </data>
+  <data name="RemoveNote" xml:space="preserve">
+    <value>Добавить примечание</value>
+  </data>
+  <data name="UpdateTitle" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="SalaryLevel" xml:space="preserve">
+    <value>Уровень зарплаты</value>
+  </data>
+  <data name="SalaryLevelRequired" xml:space="preserve">
+    <value>Требуется указать уровень зарплаты</value>
+  </data>
+  <data name="DummyColl" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="FailedToUpdate" xml:space="preserve">
+    <value>Произошла ошибка при обновлении новости</value>
+  </data>
+  <data name="FailedToDeleteNews" xml:space="preserve">
+    <value>Произошла ошибка при удалении новости</value>
+  </data>
+  <data name="LoginForm_Name" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="LoginForm_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="LogInButtonText" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="AddNews" xml:space="preserve">
+    <value>Добавить новость</value>
+  </data>
+  <data name="UploadNewsPicture" xml:space="preserve">
+    <value>Загрузить изображение для новости</value>
+  </data>
+  <data name="DeleteNewsTitle" xml:space="preserve">
+    <value>Удалить новость</value>
+  </data>
+  <data name="NewsDetailsTitle" xml:space="preserve">
+    <value>Новостные детали</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту запись?</value>
+  </data>
+  <data name="EditNewsTitle" xml:space="preserve">
+    <value>Редактировать новость</value>
+  </data>
+  <data name="SaveNewsText" xml:space="preserve">
+    <value>Сохранить новость</value>
+  </data>
+  <data name="NewsIndexTitle" xml:space="preserve">
+    <value>News -&gt; Управление</value>
+  </data>
+  <data name="CreateNewFeedLinkText" xml:space="preserve">
+    <value>Создать "свежую" новость</value>
+  </data>
+  <data name="NewsImageHeader" xml:space="preserve">
+    <value>Изображение для новости</value>
+  </data>
+  <data name="NoImageDummy" xml:space="preserve">
+    <value>Нет изображения</value>
+  </data>
+  <data name="NewsPictureTitle" xml:space="preserve">
+    <value>Изображение для новости</value>
+  </data>
+  <data name="RssFeed_NewsTitle" xml:space="preserve">
+    <value>Заголовок новости</value>
+  </data>
+  <data name="RssFeed_TitleRequired" xml:space="preserve">
+    <value>Требуется заголовок новости</value>
+  </data>
+  <data name="RssFeed_NewsDetails" xml:space="preserve">
+    <value>Новостные детали</value>
+  </data>
+  <data name="RssFeed_NewsRequired" xml:space="preserve">
+    <value>Требуются новостные детали</value>
+  </data>
+  <data name="RssFeed_RelatedLink" xml:space="preserve">
+    <value>Ссылка на новость</value>
+  </data>
+  <data name="RssFeed_NewsDate" xml:space="preserve">
+    <value>Дата новости</value>
+  </data>
+  <data name="NotAnImage" xml:space="preserve">
+    <value>{0} не является изображением</value>
+  </data>
+  <data name="RssFeed_TitleRange" xml:space="preserve">
+    <value>Заголовок должен быть от 5 до 64 символов</value>
+  </data>
+  <data name="NewsSuccessfullyUpdated" xml:space="preserve">
+    <value>'{0}' успешно обновлено</value>
+  </data>
+  <data name="NewsSuccessfullyCreated" xml:space="preserve">
+    <value>Новость '{0}' создана успешно</value>
+  </data>
+  <data name="NewsSuccessfullyDeleted" xml:space="preserve">
+    <value>Новость '{0}' успешно удалена</value>
+  </data>
+  <data name="EditVacancy" xml:space="preserve">
+    <value>Редактировать вакансию</value>
+  </data>
+</root>

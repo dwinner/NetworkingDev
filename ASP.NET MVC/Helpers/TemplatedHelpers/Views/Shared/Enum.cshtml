@@ -1,0 +1,12 @@
+﻿@using System.Web.WebPages.Html
+@model Enum
+@Html.DropDownListFor(en => en, Enum.GetValues(Model.GetType()).Cast<Enum>().Select(m =>
+{
+    var enumValue = Enum.GetName(Model.GetType(), m);
+    return new SelectListItem
+    {
+        Selected = (Model.ToString() == enumValue),
+        Text = enumValue,
+        Value = enumValue
+    };
+}))

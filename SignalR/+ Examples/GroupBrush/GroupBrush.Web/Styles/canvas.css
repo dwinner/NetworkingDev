@@ -1,0 +1,140 @@
+﻿div#mainContent {
+    border: solid 2px black;
+    float: left;
+    height: 600px;
+    width: 600px;
+}
+
+div#sideContent {
+    float: left;
+    height: 600px;
+    width: 300px;
+}
+
+div#canvasContainer {
+    border-bottom: 1px solid black;
+}
+
+div#toolboxContainer {
+    height: 100px;
+    margin-top: 20px;
+    width: 600px;
+}
+
+    div#toolboxContainer div.brushes {
+        float: left;
+        width: 110px;
+    }
+
+    div#toolboxContainer div.colors {
+        float: left;
+        width: 430px;
+    }
+
+        div#toolboxContainer div.colors div#Red {
+            background-color: #ff0000;
+        }
+
+        div#toolboxContainer div.colors div#Orange {
+            background-color: #ffa500;
+        }
+
+        div#toolboxContainer div.colors div#Yellow {
+            background-color: #ffff00;
+        }
+
+        div#toolboxContainer div.colors div#Green {
+            background-color: #00ff00;
+        }
+
+        div#toolboxContainer div.colors div#Blue {
+            background-color: #0000ff;
+        }
+
+        div#toolboxContainer div.colors div#Purple {
+            background-color: #800080;
+        }
+
+        div#toolboxContainer div.colors div#Brown {
+            background-color: #a52a2a;
+        }
+
+        div#toolboxContainer div.colors div#Black {
+            background-color: #000000;
+        }
+
+    div#toolboxContainer div.actions {
+        float: left;
+        width: 50px;
+    }
+
+    div#toolboxContainer div.tool {
+        border: 1px solid black;
+        float: left;
+        height: 50px;
+        text-align: center;
+        width: 50px;
+    }
+
+    div#toolboxContainer div.selected {
+        border: 5px solid #aaaaaa;
+        height: 42px;
+        width: 42px;
+    }
+
+div#onlineUsersContainer {
+    border: 1px solid black;
+    height: 200px;
+    margin: 0 10px 10px 10px;
+}
+
+div#chatContainer {
+    border: 1px solid black;
+    height: 290px;
+    margin: 10px;
+    position: relative;
+}
+
+div#chatInputContainer {
+    bottom: 0;
+    position: absolute;
+}
+
+div#sideContent ul li {
+    list-style: none;
+}
+
+div#sideContent span {
+    margin-left: 4px;
+}
+
+div#sideContent input {
+    margin-left: 4px;
+    width: 210px;
+}
+
+div#canvasContent {
+    display: none;
+}
+
+div#syncingCanvasContent {
+    display: none;
+}
+
+div#reloadCanvasContent {
+    display: none;
+}
+
+body {
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+canvas#scratchCanvas {
+    -moz-user-select: none;
+    /* ReSharper disable CssBrowserCompatibility */
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* ReSharper restore CssBrowserCompatibility */
+}

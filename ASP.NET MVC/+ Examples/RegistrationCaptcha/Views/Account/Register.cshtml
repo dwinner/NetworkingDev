@@ -1,0 +1,45 @@
+﻿@model RegistrationCaptcha.Models.RegistrationViewModel
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>@ViewBag.Title</legend>
+
+        <div class="label">@Html.LabelFor(model => model.Name)</div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="label">@Html.LabelFor(model => model.Password)</div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="label">@Html.LabelFor(model => model.ConfirmPassword)</div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.ConfirmPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+
+        <div class="label">@Html.LabelFor(model => model.Captcha)</div>
+        <img src="@Url.Action("Captcha", "Account")" alt="Captcha" />
+        <div class="form-group">
+            @Html.EditorFor(model => model.Captcha, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Captcha)
+        </div>
+
+        <p><input type="submit" class="btn btn-primary" value="Register" /></p>
+
+    </fieldset>
+}

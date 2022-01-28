@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01cd4f677f1d44b9b0c0657308aca367" Name="Diagram1">
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancy" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancyMainResponsibility" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancyMisc" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancyRequirement" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancyRestRequirement" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.JobVacancyWorkingCondition" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.NewsFeed" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmsoHrModel.SpontaneousResume" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="EmsoHrModel.FK_JobVacancyMainResponsibilities_JobId_JobVacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="EmsoHrModel.FK_JobVacancyMisc_JobId_JobVacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="EmsoHrModel.FK_JobVacancyRequirements_JobId_JobVacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="EmsoHrModel.FK_JobVacancyRestRequirements_JobId_JobVacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="EmsoHrModel.FK_JobVacancyWorkingConditions_JobId_JobVacancy" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService.Simple", "WebService.Simple\WebService.Simple.csproj", "{59372D30-76E1-4C44-9E5C-A15CFF28C4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService.Simple.Consuming", "WebService.Simple.Consuming\WebService.Simple.Consuming.csproj", "{7C8C53A5-AF9B-4FA9-A80E-AE9C2CD0CA99}"
+	ProjectSection(ProjectDependencies) = postProject
+		{59372D30-76E1-4C44-9E5C-A15CFF28C4CD} = {59372D30-76E1-4C44-9E5C-A15CFF28C4CD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailGenerator.WebSvc", "MailGenerator.WebSvc\MailGenerator.WebSvc.csproj", "{25DC8DF3-8BCB-4772-AF16-31528115FAEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTokenService", "AuthTokenService\AuthTokenService.csproj", "{A474A912-3AE5-4AE1-9B5E-60834604FE82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthToken.Client", "AuthToken.Client\AuthToken.Client.csproj", "{978CE569-C73F-4659-879F-D7535E4BA1A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A474A912-3AE5-4AE1-9B5E-60834604FE82} = {A474A912-3AE5-4AE1-9B5E-60834604FE82}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59372D30-76E1-4C44-9E5C-A15CFF28C4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59372D30-76E1-4C44-9E5C-A15CFF28C4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59372D30-76E1-4C44-9E5C-A15CFF28C4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59372D30-76E1-4C44-9E5C-A15CFF28C4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C8C53A5-AF9B-4FA9-A80E-AE9C2CD0CA99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C8C53A5-AF9B-4FA9-A80E-AE9C2CD0CA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C8C53A5-AF9B-4FA9-A80E-AE9C2CD0CA99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C8C53A5-AF9B-4FA9-A80E-AE9C2CD0CA99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25DC8DF3-8BCB-4772-AF16-31528115FAEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DC8DF3-8BCB-4772-AF16-31528115FAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DC8DF3-8BCB-4772-AF16-31528115FAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25DC8DF3-8BCB-4772-AF16-31528115FAEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A474A912-3AE5-4AE1-9B5E-60834604FE82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A474A912-3AE5-4AE1-9B5E-60834604FE82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A474A912-3AE5-4AE1-9B5E-60834604FE82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A474A912-3AE5-4AE1-9B5E-60834604FE82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{978CE569-C73F-4659-879F-D7535E4BA1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{978CE569-C73F-4659-879F-D7535E4BA1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{978CE569-C73F-4659-879F-D7535E4BA1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{978CE569-C73F-4659-879F-D7535E4BA1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.NavigationViewModel<Emso.WebUi.ViewModels.RssFeedViewModel>
+
+@{
+   ViewBag.Title = Resources.NewsIndexTitle;
+}
+
+<div class="container">
+    <p>
+        @Html.BuildCreateLink(Url.Action("Create"), Resources.CreateNewFeedLinkText)        
+    </p>
+    <ul class="media-list">
+        @foreach (var item in Model.PageElements)
+        {
+            Html.RenderPartial("_NewsSummary", item);
+        }
+    </ul>
+    <div class="text-center">
+        @Html.BuildBootstrapPagination(Model.Navigator, pageNumber => Url.Action("Index", new { page = pageNumber }))
+    </div>
+</div>
+
+@Scripts.Render(BundleConfig.ScriptConstants.JqMagnifier)
+@Scripts.Render(BundleConfig.ScriptConstants.CrudDialog)

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Emso.WebUi.ViewModels.JobVacancyViewModel>
+
+@{
+    Layout = null;
+}
+
+<div class="panel-group" id="jobAccordion" role="tablist" aria-multiselectable="true">
+    @foreach (var jobVacancyVm in Model)
+    {
+        Html.RenderPartial("_AccordionSummary", jobVacancyVm);
+    }
+</div>

@@ -1,0 +1,66 @@
+﻿@{
+   Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <meta name="viewport" content="width=device-width" />
+   <title>@ViewBag.Title</title>
+   <script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
+   <script src="@Url.Content("~/Scripts/jQuery.tmpl.min.js")" type="text/javascript"></script>
+   <script type="text/javascript">
+      $(function () {
+         $.getJSON("http://localhost:15390/api/menus", function (data) {
+            $.each(data, function (index, value) {
+               $("#menusTemplate").tmpl(value).appendTo("#menus");
+            }
+            );
+            $("#addMenu").show();
+         });
+
+         $("#addMenu").submit(function () {
+            $.post(
+               "http://localhost:15390/api/menus",
+               $("#addMenu").serialize(),
+               function (value) {
+                  $("#menusTemplate").tmpl(value).appendTo("#menus");
+               },
+               "json"
+            );
+         });
+      });
+   </script>
+   <script id="menusTemplate" type="text/html">
+      <li>
+         <h3>${ Text }</h3>
+         <span>${ Id }</span>
+         <span>Price: ${ Price }</span>
+         <span>Menu card: ${ MenuCard.Name }</span>
+      </li>
+   </script>
+</head>
+<body>
+   <div>
+      <ul id="menus">
+      </ul>
+      <form method="POST" id="addMenu" style="display: none;">
+         <fieldset>
+            <legend>Add New Menu</legend>
+            <ol>
+               <li>
+                  <label for="Text">Text</label>
+                  <input type="text" name="Text" />
+               </li>
+               <li>
+                  <label for="Price">Price</label>
+                  <input type="text" name="Price" />
+               </li>
+            </ol>
+         </fieldset>
+         <input type="submit" value="Add" />
+      </form>
+   </div>
+</body>
+</html>

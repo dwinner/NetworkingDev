@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+    <title>Geo location</title>
+</head>
+<body>
+<h2>Ваше местоположение</h2>
+<div id="mapCanvas" style="width: 400px; height: 400px;">
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        var myLatlng = new google.maps.LatLng(@ViewBag.Coords);
+        var myOptions = {
+            zoom: 8,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
+        var point = new google.maps.LatLng(@ViewBag.Coords);
+        var marker = new google.maps.Marker({
+            position: point,
+            map: map
+        });
+    };
+</script>
+</body>
+</html>

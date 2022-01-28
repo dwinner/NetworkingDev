@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище EmsoHrModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JobVacancy">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LocationCity" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="SalaryLevel" Type="money" Nullable="false" />
+          <Property Name="WorkExperience" Type="char" MaxLength="24" Nullable="false" />
+          <Property Name="EmploymentType" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobVacancyMainResponsibilities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="ResponsibilityItem" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobVacancyMisc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="MiscItem" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="JobVacancyRequirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="RequirementItem" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobVacancyRestRequirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="MiscRequirement" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobVacancyWorkingConditions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="ConditionItem" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsFeed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Details" Type="ntext" Nullable="false" />
+          <Property Name="NewsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RelatedLink" Type="varchar" MaxLength="1024" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageMimeType" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="SpontaneousResume">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="File" Type="varbinary(max)" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileSize" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileType" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_JobVacancyMainResponsibilities_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyMainResponsibilities" Type="Self.JobVacancyMainResponsibilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyMainResponsibilities">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyMisc_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyMisc" Type="Self.JobVacancyMisc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyMisc">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyRequirements_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyRequirements" Type="Self.JobVacancyRequirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyRequirements">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyRestRequirements_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyRestRequirements" Type="Self.JobVacancyRestRequirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyRestRequirements">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyWorkingConditions_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyWorkingConditions" Type="Self.JobVacancyWorkingConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyWorkingConditions">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище EmsoHrModelContainer">
+          <EntitySet Name="JobVacancy" EntityType="Self.JobVacancy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobVacancyMainResponsibilities" EntityType="Self.JobVacancyMainResponsibilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobVacancyMisc" EntityType="Self.JobVacancyMisc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobVacancyRequirements" EntityType="Self.JobVacancyRequirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobVacancyRestRequirements" EntityType="Self.JobVacancyRestRequirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobVacancyWorkingConditions" EntityType="Self.JobVacancyWorkingConditions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsFeed" EntityType="Self.NewsFeed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpontaneousResume" EntityType="Self.SpontaneousResume" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JobVacancyMainResponsibilities_JobId_JobVacancy" Association="Self.FK_JobVacancyMainResponsibilities_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancy" />
+            <End Role="JobVacancyMainResponsibilities" EntitySet="JobVacancyMainResponsibilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyMisc_JobId_JobVacancy" Association="Self.FK_JobVacancyMisc_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancy" />
+            <End Role="JobVacancyMisc" EntitySet="JobVacancyMisc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyRequirements_JobId_JobVacancy" Association="Self.FK_JobVacancyRequirements_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancy" />
+            <End Role="JobVacancyRequirements" EntitySet="JobVacancyRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyRestRequirements_JobId_JobVacancy" Association="Self.FK_JobVacancyRestRequirements_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancy" />
+            <End Role="JobVacancyRestRequirements" EntitySet="JobVacancyRestRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyWorkingConditions_JobId_JobVacancy" Association="Self.FK_JobVacancyWorkingConditions_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancy" />
+            <End Role="JobVacancyWorkingConditions" EntitySet="JobVacancyWorkingConditions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmsoHrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JobVacancy">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocationCity" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SalaryLevel" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="WorkExperience" Type="String" MaxLength="24" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmploymentType" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="JobVacancyMainResponsibilities" Relationship="Self.FK_JobVacancyMainResponsibilities_JobId_JobVacancy" FromRole="JobVacancy" ToRole="JobVacancyMainResponsibilities" />
+          <NavigationProperty Name="JobVacancyMiscs" Relationship="Self.FK_JobVacancyMisc_JobId_JobVacancy" FromRole="JobVacancy" ToRole="JobVacancyMisc" />
+          <NavigationProperty Name="JobVacancyRequirements" Relationship="Self.FK_JobVacancyRequirements_JobId_JobVacancy" FromRole="JobVacancy" ToRole="JobVacancyRequirements" />
+          <NavigationProperty Name="JobVacancyRestRequirements" Relationship="Self.FK_JobVacancyRestRequirements_JobId_JobVacancy" FromRole="JobVacancy" ToRole="JobVacancyRestRequirements" />
+          <NavigationProperty Name="JobVacancyWorkingConditions" Relationship="Self.FK_JobVacancyWorkingConditions_JobId_JobVacancy" FromRole="JobVacancy" ToRole="JobVacancyWorkingConditions" />
+        </EntityType>
+        <EntityType Name="JobVacancyMainResponsibility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="ResponsibilityItem" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="JobVacancy" Relationship="Self.FK_JobVacancyMainResponsibilities_JobId_JobVacancy" FromRole="JobVacancyMainResponsibilities" ToRole="JobVacancy" />
+        </EntityType>
+        <EntityType Name="JobVacancyMisc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="MiscItem" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JobVacancy" Relationship="Self.FK_JobVacancyMisc_JobId_JobVacancy" FromRole="JobVacancyMisc" ToRole="JobVacancy" />
+        </EntityType>
+        <EntityType Name="JobVacancyRequirement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="RequirementItem" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="JobVacancy" Relationship="Self.FK_JobVacancyRequirements_JobId_JobVacancy" FromRole="JobVacancyRequirements" ToRole="JobVacancy" />
+        </EntityType>
+        <EntityType Name="JobVacancyRestRequirement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="MiscRequirement" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="JobVacancy" Relationship="Self.FK_JobVacancyRestRequirements_JobId_JobVacancy" FromRole="JobVacancyRestRequirements" ToRole="JobVacancy" />
+        </EntityType>
+        <EntityType Name="JobVacancyWorkingCondition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="ConditionItem" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="JobVacancy" Relationship="Self.FK_JobVacancyWorkingConditions_JobId_JobVacancy" FromRole="JobVacancyWorkingConditions" ToRole="JobVacancy" />
+        </EntityType>
+        <EntityType Name="NewsFeed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NewsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RelatedLink" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SpontaneousResume">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileSize" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_JobVacancyMainResponsibilities_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyMainResponsibilities" Type="Self.JobVacancyMainResponsibility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyMainResponsibilities">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyMisc_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyMisc" Type="Self.JobVacancyMisc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyMisc">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyRequirements_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyRequirements" Type="Self.JobVacancyRequirement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyRequirements">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyRestRequirements_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyRestRequirements" Type="Self.JobVacancyRestRequirement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyRestRequirements">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobVacancyWorkingConditions_JobId_JobVacancy">
+          <End Role="JobVacancy" Type="Self.JobVacancy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobVacancyWorkingConditions" Type="Self.JobVacancyWorkingCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobVacancy">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="JobVacancyWorkingConditions">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmsoHrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JobVacancies" EntityType="Self.JobVacancy" />
+          <EntitySet Name="JobVacancyMainResponsibilities" EntityType="Self.JobVacancyMainResponsibility" />
+          <EntitySet Name="JobVacancyMiscs" EntityType="Self.JobVacancyMisc" />
+          <EntitySet Name="JobVacancyRequirements" EntityType="Self.JobVacancyRequirement" />
+          <EntitySet Name="JobVacancyRestRequirements" EntityType="Self.JobVacancyRestRequirement" />
+          <EntitySet Name="JobVacancyWorkingConditions" EntityType="Self.JobVacancyWorkingCondition" />
+          <EntitySet Name="NewsFeeds" EntityType="Self.NewsFeed" />
+          <EntitySet Name="SpontaneousResumes" EntityType="Self.SpontaneousResume" />
+          <AssociationSet Name="FK_JobVacancyMainResponsibilities_JobId_JobVacancy" Association="Self.FK_JobVacancyMainResponsibilities_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancies" />
+            <End Role="JobVacancyMainResponsibilities" EntitySet="JobVacancyMainResponsibilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyMisc_JobId_JobVacancy" Association="Self.FK_JobVacancyMisc_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancies" />
+            <End Role="JobVacancyMisc" EntitySet="JobVacancyMiscs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyRequirements_JobId_JobVacancy" Association="Self.FK_JobVacancyRequirements_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancies" />
+            <End Role="JobVacancyRequirements" EntitySet="JobVacancyRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyRestRequirements_JobId_JobVacancy" Association="Self.FK_JobVacancyRestRequirements_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancies" />
+            <End Role="JobVacancyRestRequirements" EntitySet="JobVacancyRestRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobVacancyWorkingConditions_JobId_JobVacancy" Association="Self.FK_JobVacancyWorkingConditions_JobId_JobVacancy">
+            <End Role="JobVacancy" EntitySet="JobVacancies" />
+            <End Role="JobVacancyWorkingConditions" EntitySet="JobVacancyWorkingConditions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EmsoHrModelContainer" CdmEntityContainer="EmsoHrEntities">
+          <EntitySetMapping Name="JobVacancies">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancy">
+              <MappingFragment StoreEntitySet="JobVacancy">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="LocationCity" ColumnName="LocationCity" />
+                <ScalarProperty Name="SalaryLevel" ColumnName="SalaryLevel" />
+                <ScalarProperty Name="WorkExperience" ColumnName="WorkExperience" />
+                <ScalarProperty Name="EmploymentType" ColumnName="EmploymentType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobVacancyMainResponsibilities">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancyMainResponsibility">
+              <MappingFragment StoreEntitySet="JobVacancyMainResponsibilities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="ResponsibilityItem" ColumnName="ResponsibilityItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobVacancyMiscs">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancyMisc">
+              <MappingFragment StoreEntitySet="JobVacancyMisc">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="MiscItem" ColumnName="MiscItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobVacancyRequirements">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancyRequirement">
+              <MappingFragment StoreEntitySet="JobVacancyRequirements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="RequirementItem" ColumnName="RequirementItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobVacancyRestRequirements">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancyRestRequirement">
+              <MappingFragment StoreEntitySet="JobVacancyRestRequirements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="MiscRequirement" ColumnName="MiscRequirement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobVacancyWorkingConditions">
+            <EntityTypeMapping TypeName="EmsoHrModel.JobVacancyWorkingCondition">
+              <MappingFragment StoreEntitySet="JobVacancyWorkingConditions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="ConditionItem" ColumnName="ConditionItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsFeeds">
+            <EntityTypeMapping TypeName="EmsoHrModel.NewsFeed">
+              <MappingFragment StoreEntitySet="NewsFeed">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="RelatedLink" ColumnName="RelatedLink" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpontaneousResumes">
+            <EntityTypeMapping TypeName="EmsoHrModel.SpontaneousResume">
+              <MappingFragment StoreEntitySet="SpontaneousResume">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="File" ColumnName="File" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

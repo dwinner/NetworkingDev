@@ -1,0 +1,49 @@
+﻿@using Emso.WebUi.Properties
+@model HandleErrorInfo
+
+@{
+   ViewBag.Title = Resources.ErrorTitle;
+}
+
+<div class="container">
+    <h3>
+        Error
+    </h3>
+    @if (@Model != null)
+    {
+        <div class="alert alert-danger">
+            An unexpected error occured: @Model.Exception.Message
+        </div>
+    }
+    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <div>
+            <p>
+                <b>Exception: </b> @Model.Exception.Message
+                <b>Controller: </b> @Model.ControllerName
+                <b>Action: </b> @Model.ActionName
+            </p>
+            <div style="overflow: scroll;">
+                <pre>
+                   @Model.Exception.StackTrace
+                </pre>
+            </div>
+        </div>
+        if (Model.Exception.InnerException != null)
+        {
+            <p>
+                <b>Inner exception cause: </b> @Model.Exception.InnerException.Message
+            </p>
+            <div style="overflow: scroll;">
+                <pre>
+                    @Model.Exception.InnerException.StackTrace
+                </pre>
+            </div>
+        }
+    }
+</div>
+
+@section Feed
+{
+    <p></p>
+}

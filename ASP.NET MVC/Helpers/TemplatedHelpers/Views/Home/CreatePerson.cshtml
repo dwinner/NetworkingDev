@@ -1,0 +1,22 @@
+﻿@model TemplatedHelpers.Models.Person
+
+@{
+    ViewBag.Title = "Create person";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+<h2>@ViewBag.Title: @Html.LabelForModel()</h2>
+
+@using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="row">
+        <div class="column">
+            @Html.EditorForModel()
+            <input type="submit" value="Submit" />
+        </div>
+        <div class="column">
+            @Html.EditorFor(person => person.HomeAddress)
+        </div>
+    </div>    
+}

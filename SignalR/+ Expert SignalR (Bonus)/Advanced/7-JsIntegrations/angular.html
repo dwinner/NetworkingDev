@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Broadcaster</title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="signalr/js"></script>
+    <script src="Scripts/angularjs.broadcaster.js"></script>
+</head>
+<body ng-app="angularDemo" ng-controller="BroadcasterController" ng-init="start()">
+    <h1>AngularJS Broadcaster</h1>
+    <a href="knockout.html" style="float: right;">Goto Knockout</a>
+    <div>
+        <input type="text" ng-model="text" ng-disabled="!ready" />
+        <button ng-click="send()" ng-disabled="!ready">Send</button>
+    </div>
+    <p ng-hide="ready">Connecting...</p>
+    <ul ng-show="ready">
+        <li ng-repeat="msg in messages">{{msg}}</li>
+    </ul>
+</body>
+</html>

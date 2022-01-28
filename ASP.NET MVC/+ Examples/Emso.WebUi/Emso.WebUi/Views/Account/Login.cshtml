@@ -1,0 +1,21 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.Models.LoginModel
+
+@{    
+    ViewBag.Title = Resources.LoginTitle;
+}
+
+<div class="container">
+    @Html.ValidationSummary()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
+        @Html.BuildLoginForm()        
+    }
+</div>
+ @section Feed
+ {
+     <p></p>
+ }

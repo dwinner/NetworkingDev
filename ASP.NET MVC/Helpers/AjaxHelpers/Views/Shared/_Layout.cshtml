@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    <style type="text/css">
+
+        .personClass {
+            font-family: Verdana;
+            font-size: 0.8em;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        div.dataElem { margin: 5px; }
+
+        h2 > label { width: inherit; }
+
+        .editor-label, .editor-field {
+            float: left;
+            margin-top: 10px;
+        }
+
+        .editor-field input { height: 20px; }
+
+        .editor-label { clear: left; }
+
+        .editor-field { margin-left: 10px; }
+
+        input[type=submit] {
+            clear: both;
+            float: left;
+            margin-top: 10px;
+        }
+
+        .column {
+            float: left;
+            margin: 10px;
+        }
+
+        .row {
+            font-family: Consolas;
+        }
+
+        table, td, th {
+            border: thin solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            background-color: lemonchiffon;
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        div.load {
+            color: red;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        div.ajaxLink {
+            margin-top: 10px;
+            margin-right: 5px;
+            float: left;
+        }
+    </style>
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+@RenderBody()
+</body>
+</html>

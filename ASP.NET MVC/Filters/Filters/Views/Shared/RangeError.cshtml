@@ -1,0 +1,17 @@
+﻿@*@model int*@
+@model HandleErrorInfo
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RangeError</title>
+</head>
+<body>
+<h2>Sorry</h2>
+    <span>The value @(((ArgumentOutOfRangeException)Model.Exception).ActualValue) was out of the expected range.</span>
+    @*<span>The value @Model was out of the expected range.</span>*@
+    <div>@Html.ActionLink("Change value and try again", "Index", "Home")</div>
+</body>
+</html>

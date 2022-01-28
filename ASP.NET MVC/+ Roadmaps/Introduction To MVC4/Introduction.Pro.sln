@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSampleApp", "MvcSampleApp\MvcSampleApp.csproj", "{BBA81363-6952-4701-AD02-70F35E1213A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuPlanner", "MenuPlanner\MenuPlanner.csproj", "{8DD776D0-B45D-4DDB-99CF-0A8701924045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSample", "WebApiSample\WebApiSample.csproj", "{9FCBD92A-B688-4ECA-87C3-8E3A11DD818F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBA81363-6952-4701-AD02-70F35E1213A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA81363-6952-4701-AD02-70F35E1213A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA81363-6952-4701-AD02-70F35E1213A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA81363-6952-4701-AD02-70F35E1213A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD776D0-B45D-4DDB-99CF-0A8701924045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD776D0-B45D-4DDB-99CF-0A8701924045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD776D0-B45D-4DDB-99CF-0A8701924045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD776D0-B45D-4DDB-99CF-0A8701924045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FCBD92A-B688-4ECA-87C3-8E3A11DD818F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCBD92A-B688-4ECA-87C3-8E3A11DD818F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FCBD92A-B688-4ECA-87C3-8E3A11DD818F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FCBD92A-B688-4ECA-87C3-8E3A11DD818F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

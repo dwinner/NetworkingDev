@@ -1,0 +1,2 @@
+For IPv4: mcast_ip=224.5.6.7 udp_port=4567
+For IPv6: mcast_ip=ff08::1 udp_port=65535

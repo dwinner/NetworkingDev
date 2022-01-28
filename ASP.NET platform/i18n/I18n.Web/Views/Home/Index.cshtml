@@ -1,0 +1,132 @@
+﻿@using System.Threading
+@model I18n.Web.Models.Person
+
+@{
+    ViewBag.Title = Resources.AddPerson;
+    var culture = Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@helper Selected(string c, string cultute)
+{
+    if (c == cultute)
+    {
+    @:checked="checked"
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("SetCookieCulture", "Home"))
+{
+    <fieldset>
+        <legend>@Resources.ChooseYourLanguage (via cookie)</legend>
+        <div class="form-group">
+            <div class="form-control">
+                <label for="en">
+                    <input name="culture" id="en" value="en" type="radio" @Selected("en", culture) /> English
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control">
+                <label for="ru">
+                    <input name="culture" id="ru" value="ru" type="radio" @Selected("ru", culture) /> Русский
+                </label>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@using (Html.BeginForm("SetRouteCulture", "Home"))
+{
+    <fieldset>
+        <legend>@Resources.ChooseYourLanguage (via route)</legend>
+        <div class="form-group">
+            <div class="form-control">
+                <label for="en">
+                    <input name="culture" id="en" value="en" type="radio" @Selected("en", culture) /> English
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control">
+                <label for="ru">
+                    <input name="culture" id="ru" value="ru" type="radio" @Selected("ru", culture) /> Русский
+                </label>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Biography, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Biography, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Biography, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=radio]').click(function () {
+                $(this).parents('form').submit();
+            });
+        });
+    </script>
+}

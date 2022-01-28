@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISRssHandler", "IISRssHandler\IISRssHandler.csproj", "{7F3B72D3-1F53-4CAA-8992-30D88AF9D60B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssLib", "RssLib\RssLib.csproj", "{D83282C6-7B56-4454-ADF9-092B9DE957B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssReader", "RssReader\RssReader.csproj", "{705D18C4-75FB-48D4-BCBA-EFFD048A127D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppForRSS", "WebAppForRSS\WebAppForRSS.csproj", "{310F9B58-BA0C-4181-9931-E0F4471E4A84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F3B72D3-1F53-4CAA-8992-30D88AF9D60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3B72D3-1F53-4CAA-8992-30D88AF9D60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3B72D3-1F53-4CAA-8992-30D88AF9D60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3B72D3-1F53-4CAA-8992-30D88AF9D60B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83282C6-7B56-4454-ADF9-092B9DE957B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83282C6-7B56-4454-ADF9-092B9DE957B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83282C6-7B56-4454-ADF9-092B9DE957B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83282C6-7B56-4454-ADF9-092B9DE957B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705D18C4-75FB-48D4-BCBA-EFFD048A127D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705D18C4-75FB-48D4-BCBA-EFFD048A127D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705D18C4-75FB-48D4-BCBA-EFFD048A127D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705D18C4-75FB-48D4-BCBA-EFFD048A127D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310F9B58-BA0C-4181-9931-E0F4471E4A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310F9B58-BA0C-4181-9931-E0F4471E4A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310F9B58-BA0C-4181-9931-E0F4471E4A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310F9B58-BA0C-4181-9931-E0F4471E4A84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

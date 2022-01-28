@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Context list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Выберите страну</h3>
+@Html.DropDownList("State", ViewBag.States as SelectList, new { id = "state" })
+<h3>Выберите город</h3>
+@Html.DropDownList("City", ViewBag.Cities as SelectList, new { id = "city" })
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('#state').change(function () {
+                // Получаем выбранный id
+                var id = $(this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetItems")/' + id,
+                    success: function (data) {
+                        // Заменяем содержимое присланным частичным представлением
+                        $('#city').replaceWith(data);
+                    }
+                });
+            });
+        })
+    </script>
+}

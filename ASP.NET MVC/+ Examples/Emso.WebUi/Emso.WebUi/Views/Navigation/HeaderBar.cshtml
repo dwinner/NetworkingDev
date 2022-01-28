@@ -1,0 +1,72 @@
+﻿@using System.Threading
+@using Emso.WebUi.Properties
+@using Emso.WebUi.Utils
+@{
+    string sideMenuPath = string.Format("{0}menucontents.html", HttpContext.Current.GetRootUrl());
+    string culture = Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@helper Selected(string selectedCulture, string cultute)
+{
+    if (selectedCulture == cultute)
+    {
+        @:checked="checked"
+    }
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+     style="background-image: url('../../Content/top-back.png')">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">EmSo</a>
+        </div>
+        <div class="navbar-left">
+            <div class="toggler" id="emso-toggler"></div>
+        </div>
+        <div class="navbar-collapse collapse navbar-form navbar-right" role="form">
+            @using (Html.BeginForm("SetCookieCulture", "Localization"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="cc-selector-2 form-group">
+                    <input name="culture" id="en" value="en"
+                           style="visibility: hidden;" type="radio" @Selected("en", culture)/>
+                    <label class="drinkcard-cc visa" for="en" title="@Resources.EnglishSwitch"></label>
+                    <input name="culture" id="ru" value="ru"
+                           style="visibility: hidden;" type="radio" @Selected("ru", culture)/>
+                    <label class="drinkcard-cc mastercard" for="ru" title="@Resources.RussianSwitch"></label>
+                </div>                
+
+                <div class="form-group">
+                    <!-- Search text box -->
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" placeholder="@Resources.SearchPlaceholder"/>
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function($) {
+        sideviewmenu({
+            menuid: "sideviewmenu",
+            onopenclose: function( /*state*/) {},
+            menusource: "@sideMenuPath"
+        });
+
+        $("#emso-toggler").bind("click", function( /*e*/) {
+            sideviewmenu.toggle();
+        });
+
+        $("#en, #ru").click(function() {
+            $(this).parents("form").submit();
+        });
+    })(jQuery);
+</script>

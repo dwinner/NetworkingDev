@@ -1,0 +1,11 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+@Html.DisplayForModel()
+
+<p>
+    @Html.BuildEditLink(Url.Action("Edit", new { id = Model.Id }))    
+</p>
+
+@Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)

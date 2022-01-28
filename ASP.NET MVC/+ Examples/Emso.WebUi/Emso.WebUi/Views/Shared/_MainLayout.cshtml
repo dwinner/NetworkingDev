@@ -1,0 +1,54 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.Infrastructure
+@using Emso.WebUi.Utils
+<!DOCTYPE html>
+<html lang="@CultureHelper.CurrentNeutralCulture" dir="@(CultureHelper.IsRightToLeft ? "rtl" : "ltr")">
+<!-- TOREFACTOR: Текущие фрагменты Razor не являются частичными представлениями -->
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Embedded, Automotive"/>
+    <meta name="author" content="EmSo"/>
+    <link rel="icon" type="image/png" href="~/favicon.png"/>
+    @Scripts.Render(BundleConfig.ScriptConstants.CommonJsLibraryPath)
+    @RenderSection("ExtraScripts", false)    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Asul:400,700"/>
+    @Styles.Render(BundleConfig.StyleConstants.BootstrapStyles)
+    @Styles.Render(BundleConfig.StyleConstants.JQueryUiCommonThemeStyles)
+    @*@Styles.Render(BundleConfig.StyleConstants.JQueryUiDarknessThemeStyles)*@
+    @Styles.Render(BundleConfig.StyleConstants.EmsoStyles)
+    @RenderSection("ExtraStyles", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>    
+@if (TempData[TempDataContants.NotificationKey] != null)
+{
+    <div class="alert text-center text-capitalize alert-success">
+        @TempData[TempDataContants.NotificationKey]
+    </div>
+}
+
+@if (IsSectionDefined("Header"))
+{
+    @RenderSection("Header")
+}
+else
+{
+    @Html.Action("HeaderBar", "Navigation")
+    @Html.Action("LinkBar", "Navigation")
+}
+
+@RenderBody()
+
+@if (IsSectionDefined("Feed"))
+{
+    @RenderSection("Feed")
+}
+else
+{
+    @Html.Action("RssFeed", "RssFeed")
+}
+
+@Html.Action("FooterBar", "Navigation")
+</body>
+</html>

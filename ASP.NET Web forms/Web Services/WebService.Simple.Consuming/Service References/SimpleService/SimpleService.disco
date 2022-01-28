@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:11657/SimpleService.asmx?wsdl" docRef="http://localhost:11657/SimpleService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:11657/SimpleService.asmx" xmlns:q1="http://bloodhound.com/" binding="q1:SimpleServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:11657/SimpleService.asmx" xmlns:q2="http://bloodhound.com/" binding="q2:SimpleServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

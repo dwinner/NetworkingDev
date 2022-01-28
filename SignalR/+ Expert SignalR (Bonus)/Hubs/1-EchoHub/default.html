@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Echo hub service</title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+    <script src="/realtime/js"></script>
+</head>
+
+<body>
+    <h1>Echo hub</h1>
+    <div>
+        <input type="text" id="text" />
+        <button id="send">Send</button>
+    </div>
+    <script>
+        $(function () {
+            var hub = $.connection.echoHub;
+            $.connection.logging = true;
+            $.connection.url = "/realtime";
+            hub.client.message = function(text) {
+                $("body").append(text + "<br />");
+            };
+            $.connection.hub.start().done(function () {
+                $("#send").click(function () {
+                    var text = $("#text").val();
+                    hub.server.broadcast(text);
+                    $("#text").val("").focus();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

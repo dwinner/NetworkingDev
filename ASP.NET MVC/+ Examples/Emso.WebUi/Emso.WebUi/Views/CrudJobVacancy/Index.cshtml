@@ -1,0 +1,56 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@using Emso.WebUi.ViewModels
+@model IEnumerable<JobVacancyViewModel>
+
+@helper BuildVacancyHeader()
+{
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+}
+
+@{
+    ViewBag.Title = Resources.JobVacancyTitle;
+}
+
+<div class="container">
+    <p class="pull-right">
+        @Html.BuildCreateLink(Url.Action("Create"), Resources.CreateNewVacancy)        
+    </p>
+
+    <table class="table table-hover table-striped table-responsive">
+        @BuildVacancyHeader()
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("_JobVacancySummary", item);
+        }
+    </table>
+
+    @section Feed
+    {
+        <p></p>
+    }
+</div>
+
+@Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)
+@Scripts.Render(BundleConfig.ScriptConstants.CrudDialog)

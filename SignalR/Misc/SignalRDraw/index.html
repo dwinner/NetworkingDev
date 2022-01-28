@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Live canvas</title>
+    <style type="text/css">
+        canvas {
+            background-color: #ffd800;
+            position: relative;
+        }
+    </style>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var drawGame = {
+                isDrawing: false, // Происходит ли отрисовка
+                startX: 0, // Начальные точки следующей линии
+                startY: 0
+            };
+
+            var data = {
+                // Модель линий
+                startX: 0,
+                startY: 0,
+                endX: 0,
+                endY: 0
+            };
+
+            var canvas = $("#drawingPad");
+            var ctx = canvas.getContext("2d");
+
+            var chat = $.connection.drawHub; // Ссылка на прокси-хаб
+            function drawLine(graphicsContext, x1, y1, x2, y2, thickness) {
+                graphicsContext.beginPath();
+                graphicsContext.moveTo(x1, y1);
+                graphicsContext.moveTo(x2, y2);
+                graphicsContext.lineWidth = thickness;
+                graphicsContext.strokeStyle = "#444";
+                graphicsContext.stroke();
+            }
+
+            chat.client.addLine = function (lineData) { // Объявление функции, которую хаб вызывает при получении сообщений
+                drawLine(ctx, lineData.startX, lineData.startY, lineData.endX, lineData.endY, 1);
+            };
+
+            $.connection.hub.start().done(function () { // Открываем соединение
+                canvas.addEventListener("mousedown", function (e) {
+                    var mouseX = e.layerX || 0;
+                    var mouseY = e.layerY || 0;
+                    drawGame.startX = mouseX;
+                    drawGame.startY = mouseY;
+                    drawGame.isDrawing = true;
+                }, false);
+
+                canvas.addEventListener("mousemove", function (e) {
+                    if (drawGame.isDrawing) {
+                        var mouseX = e.layerX || 0;
+                        var mouseY = e.layerY || 0;
+                        if (!(mouseX === drawGame.startX && mouseY === drawGame.startY)) {
+                            drawLine(ctx, drawGame.startX, drawGame.startY, mouseX, mouseY, 1);
+                            data.startX = drawGame.startX;
+                            data.startY = drawGame.startY;
+                            data.endX = mouseX;
+                            data.endY = mouseY;
+                            char.server.send(data);
+
+                            drawGame.startX = mouseX;
+                            drawGame.startY = mouseY;
+                        }
+                    }
+                }, false);
+
+                canvas.addEventListener("mouseup", function () {
+                    drawGame.isDrawing = false;
+                }, false);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <canvas id="drawingPad" width="400" height="300"></canvas>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Bid</title>
+   <meta charset="utf-8" />
+   <script src="Scripts/jquery-1.6.4.js"></script>
+   <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+   <script>
+      $(document).ready(function() {
+         var connection = $.hubConnection();
+         var hubProxy = connection.createHubProxy("AuctionHub");
+
+         hubProxy.on("CloseBid", function() {
+            updateButtons(false);
+         });
+
+         hubProxy.on("CloseBidWin", function (data) {
+            updateButtons(false);
+            updateBid(data, 1);
+         });
+
+         hubProxy.on("UpdateBid", function(data) {
+            updateBid(data, 0);
+            updateButtons(true);
+         });
+
+         function updateBid(bid, updateObject) {
+            if (bid) {
+               $("#nameLbl").text(bid.Name);
+               $("#descrLbl").text(bid.Description);
+               $("#bidLbl").text(bid.BidPrice);
+               $("#timeLbl").text(bid.TimeLeft);
+               if (updateObject > 0) {
+                  $("#winsLst").append("<li>" + bid.Name + " at " + bid.BidPrice + "</li>");
+               }
+            }
+         }
+
+         function updateButtons(state) {
+            $("#currentBidBtn").enabled = state;
+            $("#makeBidBtn").enabled = state;
+         }
+
+         connection.start().done(function() {
+            $("#currentBidBtn").click(function () {
+               hubProxy.invoke('MakeCurrentBid');
+            });
+
+            $("#makeBidBtn").click(function() {
+               hubProxy.invoke('MakeBid', $("#bidTxt").val());
+            });
+         });
+      });
+   </script>
+</head>
+<body>
+   <label id="nameLbl"></label>
+   <label id="bidLbl"></label>
+   <label id="descrLbl"></label> &nbsp;
+   <label id="timeLeftLbl">Time left:</label>
+   <label id="timeLbl"></label><br />
+   <button id="currentBidBtn">Current Bid</button>
+   <button id="makeBidBtn">Make Bid</button>
+   <input type="text" id="bidTxt" />
+   <ul id="winsLst" style="list-style: none;"></ul>
+</body>
+</html>

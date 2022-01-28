@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SocketServer": {
+      "commandName": "SocketServer",
+      "commandLineArgs": "9200"
+    },
+    "production": {
+      "commandName": "Project",
+      "commandLineArgs": "12345"
+    }
+  }
+}

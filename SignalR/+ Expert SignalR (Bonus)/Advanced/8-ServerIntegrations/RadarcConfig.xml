@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadarcSolutionConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AutomaticSCCCheckOut>true</AutomaticSCCCheckOut>
+  <BasePath>D:\Working\Desarrollos\Krasis\SignalR-MSPRESS\VS2012-RTW-Published\SignalRProgramming_codesamples\Chapter09-Advanced\8-ServerIntegrations</BasePath>
+  <ModelPath>D:\Working\Desarrollos\Krasis\SignalR-MSPRESS\VS2012-RTW-Published\SignalRProgramming_codesamples\Chapter09-Advanced\8-ServerIntegrations\DomainModeling\Models</ModelPath>
+  <OverwriteCustomCode>false</OverwriteCustomCode>
+  <GenerateOnBuild>true</GenerateOnBuild>
+  <GenerateToExcludedFolder>false</GenerateToExcludedFolder>
+  <LastGenerationTimestamp>0</LastGenerationTimestamp>
+</RadarcSolutionConfig>

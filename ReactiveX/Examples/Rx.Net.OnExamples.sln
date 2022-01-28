@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithObservables", "WorkingWithObservables\WorkingWithObservables.csproj", "{6903D010-9370-4229-9D4C-B0108CC6133E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingObservables", "CreatingObservables\CreatingObservables.csproj", "{1A904B85-5146-465F-A67A-ED0F1F17F68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchingWikipedia", "SearchingWikipedia\SearchingWikipedia.csproj", "{4E3CD364-C81C-49CE-85BC-79942A21764E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDExample", "DnDExample\DnDExample.csproj", "{7D8341A6-BE9E-4182-A353-1C4B0411BCB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingSearch.Frontend", "BingSearch.Frontend\BingSearch.Frontend.csproj", "{5E8BB593-AFBF-47F5-B41C-1F00E6E3F327}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlickrSearch.RxUI", "FlickrSearch.RxUI\FlickrSearch.RxUI.csproj", "{3F0CD17F-05DA-4759-AFA8-EB93CFC184CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6903D010-9370-4229-9D4C-B0108CC6133E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6903D010-9370-4229-9D4C-B0108CC6133E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6903D010-9370-4229-9D4C-B0108CC6133E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6903D010-9370-4229-9D4C-B0108CC6133E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A904B85-5146-465F-A67A-ED0F1F17F68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A904B85-5146-465F-A67A-ED0F1F17F68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A904B85-5146-465F-A67A-ED0F1F17F68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A904B85-5146-465F-A67A-ED0F1F17F68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3CD364-C81C-49CE-85BC-79942A21764E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3CD364-C81C-49CE-85BC-79942A21764E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3CD364-C81C-49CE-85BC-79942A21764E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3CD364-C81C-49CE-85BC-79942A21764E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8341A6-BE9E-4182-A353-1C4B0411BCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8341A6-BE9E-4182-A353-1C4B0411BCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8341A6-BE9E-4182-A353-1C4B0411BCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8341A6-BE9E-4182-A353-1C4B0411BCB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8BB593-AFBF-47F5-B41C-1F00E6E3F327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8BB593-AFBF-47F5-B41C-1F00E6E3F327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8BB593-AFBF-47F5-B41C-1F00E6E3F327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8BB593-AFBF-47F5-B41C-1F00E6E3F327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0CD17F-05DA-4759-AFA8-EB93CFC184CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0CD17F-05DA-4759-AFA8-EB93CFC184CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0CD17F-05DA-4759-AFA8-EB93CFC184CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0CD17F-05DA-4759-AFA8-EB93CFC184CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

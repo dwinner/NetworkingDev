@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta charset="utf-8"/>
+   <title>Group brush</title>
+   <link href="../Styles/canvas.css" rel="stylesheet"/>
+   <script src="../Scripts/jquery-2.2.0.js"></script>
+   <script src="../Scripts/jquery.signalR-2.2.0.js"></script>
+   <script src="/signalr/hubs"></script>
+   <script src="../Scripts/canvas.js"></script>
+</head>
+<body>
+<div id="canvasContent" class="connectionContent">
+   <div id="mainContent">
+      <div id="canvasContainer">
+         <div style="height: 400px; position: relative; width: 600px;">
+            <canvas width="600" height="400" id="scratchCanvas" style="position: absolute; z-index: 3;"></canvas>
+            <canvas width="600" height="400" id="drawingCanvas" style="position: absolute; z-index: 2;"></canvas>
+            <canvas width="600" height="400" id="cursorCanvas" style="position: absolute; z-index: 1;"></canvas>
+         </div>
+      </div>
+      <div id="toolboxContainer">
+         <div class="brushes">
+            <div class="brush tool selected" data-brushtype="1">Brush</div>
+            <div class="brush tool" data-brushtype="2">Eraser</div>
+            <div class="brush tool" data-brushtype="3">Fill</div>
+            <div class="brush tool" data-brushtype="4">Clear All</div>
+         </div>
+         <div class="colors">
+            <div class="color tool" data-colorvalue="#FF0000" id="Red">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#FFA500" id="Orange">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#FFFF00" id="Yellow">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#00FF00" id="Green">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#0000FF" id="Blue">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#800080" id="Purple">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#A52A2A" id="Brown">&nbsp;</div>
+            <div class="color tool" data-colorvalue="#000000" id="Black">&nbsp;</div>
+         </div>
+         <div class="sizeContainer">
+            <span>Size:</span>
+            <select id="sizes">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="4">4</option>
+               <option value="8">8</option>
+               <option value="16">16</option>
+               <option value="32">32</option>
+               <option value="64">64</option>
+               <option value="128">128</option>
+            </select>
+         </div>
+      </div>
+   </div>
+   <div id="sideContent">
+      <h1 id="CanvasName"></h1>
+      <span id="CanvasDescription"></span>
+      <div id="onlineUsersContainer">
+         <span>Users Online:</span>
+         <ul id="userList"></ul>
+      </div>
+      <div id="chatContainer">
+         <span>Chat messages:</span>
+         <div id="chatMessagesContainer">
+            <ul id="chatMessages"></ul>
+         </div>
+         <div id="chatInputContainer">
+            <input type="text" id="chatInput"/>
+            <button id="btnSendMessage">Send</button>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="loadingCanvasContent" class="connectionContent">
+   <span>Connecting...</span>
+</div>
+<div id="syncingCanvasContent" class="connectionContent">
+   <span>Syncing...</span>
+</div>
+<div id="reloadCanvasContent" class="connectionContent">
+   <span>Connection problems</span>
+   <button id="btnReload">Reload</button>
+</div>
+</body>
+</html>

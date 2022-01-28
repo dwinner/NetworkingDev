@@ -1,0 +1,31 @@
+﻿<Window x:Class="SyndicationReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Path=Title.Text}" Height="300" Width="450">
+    <DockPanel x:Name="FeedContentPanel">
+       <Grid DockPanel.Dock="Top">
+          <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="50"/>
+             <ColumnDefinition Width="*"/>
+             <ColumnDefinition Width="90"/>
+          </Grid.ColumnDefinitions>
+          <Label Grid.Column="0" Margin="5">URL:</Label>
+          <TextBox Grid.Column="1" x:Name="UrlTextBox" MinWidth="150" Margin="5">
+            http://www.drdobbs.com/rss/all
+         </TextBox>
+          <Button Grid.Column="2" Margin="5" MinWidth="80" Click="OnGetFeed">Get Feed</Button>
+       </Grid>
+       <StackPanel Orientation="Vertical" DockPanel.Dock="Top" Background="LightGreen">
+          <Label Content="{Binding Path=Title.Text}" FontSize="16"/>
+          <Label Content="{Binding Path=Description.Text}"/>
+       </StackPanel>
+       <ListBox MinWidth="120" DockPanel.Dock="Left" x:Name="TitleListBox"
+                Style="{StaticResource ListTitleStyle}"
+                IsSynchronizedWithCurrentItem="True"
+                HorizontalContentAlignment="Stretch"/>
+       <DockPanel>
+         <Label DockPanel.Dock="Top" Content="{Binding Description.Text}"/>
+          <Frame Source="{Binding Path=Links[0].Uri}"/>
+       </DockPanel>
+    </DockPanel>
+</Window>

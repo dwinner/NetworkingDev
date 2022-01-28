@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Ping test</title>
+        <meta charset="utf-8" />
+        <script src="Scripts/jquery-1.6.4.min.js"></script>
+        <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+        <style>
+            #panel {
+                margin-left: 10px;
+                width: 300px;
+                height: 300px;
+                overflow: auto;
+                border: 1px solid black;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="hub-client.html">Hub client</a> | <a href="connection-client.html">Persistent Connection client</a>
+        <h2>Persistent connection client</h2>
+        <div id="panel">
+            <button disabled="disabled" id="pingBtn">Ping</button>
+            <ul id="results"></ul>
+        </div>
+        <script>
+            $(function () {
+                var connection = $.connection("http://localhost:11111/ping-connection");
+                connection.received(function(data) {
+                    $("#results").prepend("<li>" + data + "</li>");
+                });
+                connection.start()
+                    .done(function() {
+                        $("#results").append("<li>Connected</li>");
+                        $("#pingBtn")
+                            .removeAttr("disabled")
+                            .click(function () {
+                                connection.send("Ping");
+                            });
+                    });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MvcSampleApp.Models.Event>
+
+@{
+   ViewBag.Title = "Use a Partial View";
+}
+
+<script>
+   $(function () {
+      $('#getEvents').click(function () {
+         $('#events').load('/ViewsDemo/ShowEvents');
+      });
+   });
+</script>
+
+<h2>Use a partial view</h2>
+<div>This is the main view</div>
+<button id="getEvents">Get Events</button>
+<div id="events"></div>

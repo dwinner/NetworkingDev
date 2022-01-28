@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A3D1B885-21AA-4D64-ABFC-618C579350B8}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestableSignalrApp", "TestableSignalrApp\TestableSignalrApp.csproj", "{C49C5D33-CA44-4FEF-82D9-DA5F60B40BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestableSignalrApp.Tests", "TestableSignalrApp.Tests\TestableSignalrApp.Tests.csproj", "{AB4BDE41-D983-4F5D-BD2E-93E5B264FC75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C49C5D33-CA44-4FEF-82D9-DA5F60B40BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49C5D33-CA44-4FEF-82D9-DA5F60B40BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49C5D33-CA44-4FEF-82D9-DA5F60B40BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49C5D33-CA44-4FEF-82D9-DA5F60B40BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4BDE41-D983-4F5D-BD2E-93E5B264FC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4BDE41-D983-4F5D-BD2E-93E5B264FC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4BDE41-D983-4F5D-BD2E-93E5B264FC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4BDE41-D983-4F5D-BD2E-93E5B264FC75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

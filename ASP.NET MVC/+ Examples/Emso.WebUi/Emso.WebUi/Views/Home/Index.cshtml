@@ -1,0 +1,18 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.Properties
+@{
+   ViewBag.Title = Resources.MainTitle;
+}
+
+@section ExtraStyles
+{
+   @Styles.Render(BundleConfig.StyleConstants.SlickSliderStyles)   
+}
+
+@section ExtraScripts
+{
+   @Scripts.Render(BundleConfig.ScriptConstants.SlickSliderJsPath)   
+}
+
+@Html.Action("BgCarousel")
+@Html.Action("SummaryFeatures")

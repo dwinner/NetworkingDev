@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Broadcaster</title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+    <script src="signalr/js"></script>
+    <style type="text/css">
+
+        .auto-style1 {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+    <body>
+        <div style="float: right; border: 1px solid #888; background-color:bisque; padding: 5px; width: 500px">
+            <h3>Please configure your SQL Server's connection string (startup.cs) before running!</h3>
+            <h3>Launching this site in other node with IIS Express</h3>
+            <ol>
+                <li>Open a command prompt <span class="auto-style1"><strong>with elevated privileges</strong></span></li>
+                <li>Jump into this solution&#39;s root folder. Example:
+                    <br />
+                    <code>cd \signalrdemos\scaling\sqlserver</code></li>
+                <li><strong>Execute add-node.bat</strong>. This command will lauch the app in a random port, and open a browser at the default page.</li>
+            </ol>
+
+        </div>
+        <h1>Broadcaster (<script>document.write(location.host)</script>)</h1>
+        <div>
+            <input type="text" id="text" />
+            <button id="send">Send</button>
+        </div>
+        <ul id="result"></ul>
+        <script>
+            $(function () {
+                var broadcaster = $.connection.broadcaster;
+                broadcaster.client.message = function(data) {
+                    $("#result").append("<li>"+data + "</li>");
+                };
+                $.connection.hub.start().done(function() {
+                    $("#send").click(function () {
+                        var text = $("#text").val();
+                        if (text) {
+                            broadcaster.server.broadcast(text);
+                        }
+                        $("#text").val("").focus();
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

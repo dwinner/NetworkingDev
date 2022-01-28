@@ -1,0 +1,12 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+@Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
+@Html.BuildFormGroupItem(model => model.Title)
+@Html.BuildFormGroupItem(model => model.Details)
+@Html.BuildFormGroupItem(model => model.RelatedLink)
+@Html.BuildUploadFileItem(Resources.UploadNewsPicture, "imageFile", "uploadedFile")
+
+@Scripts.Render(BundleConfig.ScriptConstants.AdminNews)

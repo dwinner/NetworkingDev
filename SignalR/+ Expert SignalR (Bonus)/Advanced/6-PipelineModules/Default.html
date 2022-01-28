@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Broadcaster</title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.js"></script>
+    <script src="signalr/js"></script>
+</head>
+<body>
+    <h1>Weekend broadcaster</h1>
+    <div>
+        <input type="text" id="text" />
+        <button id="send">Send</button>
+        <p style="color: #a0a0a0; font-size: 80%">(Only sent on Thursdays, Fridays, Saturdays & Sundays. You can change that in Broadcaster.cs)</p>
+    </div>
+    <ul id="result"></ul>
+    <script>
+        $(function () {
+            var broadcaster = $.connection.broadcaster;
+            broadcaster.client.message = function(data) {
+                $("#result").append("<li>"+data + "</li>");
+            };
+            $.connection.hub.start().done(function() {
+                $("#send").click(function () {
+                    broadcaster.server.weekendMessage($("#text").val());
+                    $("#text").val("").focus();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

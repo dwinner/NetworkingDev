@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="page-header">
+    <h1>Server integration
+    <small>Please, open this page in other browsers or tabs</small>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>ASP.NET MVC Integration</h3>
+        <p>
+            Fill the following form and send it to the server. It executes a MVC action that uses the Hub to notify
+            the clients that the form has been submitted.
+        </p>
+        <form class="form-horizontal" role="form" method="post" action="@Url.Action("Send", "People")">
+            <div class="form-group">
+                <label for="name" class="control-label col-lg-2">Name:</label>
+                <div class="col-lg-10 ">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Your name here" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-lg-offset-2">
+                    <button type="submit" class="btn btn-default btn-primary">Send!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>WebAPI integration</h3>
+        <p>The button below sends an Ajax request to a WebAPI action which broadcasts a message to all the connected users.</p>
+        <p><a class="btn btn-primary" href="#" id="webApi">Call WebAPI</a></p>
+        <div class="label label-success" id="result"></div>
+    </div>
+</div>
+SignalR console:
+<pre class="pre-scrollable" style="height: 350px">
+   <ul id="console"></ul>
+</pre>
+@section scripts
+{
+    <script src="~/Scripts/jquery.signalR-2.0.0.js"></script>
+    <script src="~/signalr/js"></script>
+    <script>
+        $(function () {
+            $("#webApi").click(function () {
+                $.ajax({ url: "/api/test", type: "post" })
+                    .done(function (result) {
+                        $("#result").text("Result: " + result).fadeIn("slow");
+                        setTimeout(function () { $("#result").fadeOut("slow"); }, 2000);
+                    });
+            });
+
+            var broadcaster = $.connection.broadcaster;
+            broadcaster.client.message = function (data) {
+                $("#console").prepend("<li>" + data + "</li>");
+            };
+            $.connection.hub.start();
+
+        });
+    </script>
+}
+

@@ -1,0 +1,40 @@
+﻿@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+@{
+    var newsPictureTitle = Resources.NewsPictureTitle;
+}
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Title)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Title)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Details)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Details)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.NewsDate)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.NewsDate)
+    </dd>
+    <dt>
+        @newsPictureTitle
+    </dt>
+    <dd>
+        <img class="img-responsive img-thumbnail magnify" alt="@Model.Title"
+             src="@Url.Action("GetNewsImage", "AdminNews", new {pictureId = Model.FeedId})"/>
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.RelatedLink)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.RelatedLink)
+    </dd>
+</dl>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PushNotifyApp.Models.Proposal>
+
+@{
+    ViewBag.Title = "Push notifications";
+}
+
+<div>
+    <span id="notification" style="color: red; font-size: 15px;"></span>
+</div>
+
+<h2>Proposals</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(proposal => proposal.Title)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+        </tr>
+    }
+</table>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function() {
+            var notificationHub = $.connection.notificationHub;
+            notificationHub.client.displayMessage = function(message) {
+                $("#notification").html(message);
+            };
+            $.connection.hub.start();
+        });
+    </script>
+}

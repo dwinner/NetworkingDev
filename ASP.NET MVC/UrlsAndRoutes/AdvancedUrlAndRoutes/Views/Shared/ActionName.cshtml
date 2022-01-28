@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActionName</title>
+    <style type="text/css">
+        .myCssClass {
+            color: #793879;
+        }
+    </style>
+</head>
+<body>
+    <div>The controller is: @ViewBag.Controller</div>
+    <div>The action is: @ViewBag.Action</div>
+    <div>
+        @*@Html.ActionLink("This is an outgoing Url", "CustomVariable")*@
+        @Html.ActionLink("This targets another controller", "Index", "Admin")<br />
+        @Html.ActionLink("This targets another controller", "Index", "Customer")
+    </div>
+    <div>
+        @Html.ActionLink("Var Segment link", "CustomVariable", "Home", new { id = "Hello" }, null)
+    </div>
+    <div>
+        @Html.ActionLink("This is an outgoing Url", "Index", "Home", null, new { id = "myAnchorId", @class = "myCssClass" })
+    </div>
+    <div>
+        @Html.ActionLink("Full qualified link", "Index", "Home",
+        "https", "myserver.mydomain.com", "myFragmentName",
+        new { id = "MyId" },
+        new { id = "myAnchorId", @class = "myCssClass" })
+    </div>
+    <div>
+        This is direct url string: @Url.Action("Index", "Home", new { id = "MyId" })
+    </div>
+    <div>
+        @Html.RouteLink("Route link", "MyOtherRoute", "Index", "Customer")
+    </div>
+    <div>
+        <!-- Генерация исходящего Url посредством специального маршрута -->
+        @Html.ActionLink("Click me", "GetLegacyUrl", "Legacy", null, new { legacyUrl = "~/articles/Windows_3.1_Overview.html" })
+    </div>
+    <div>
+        <!--Генерация ссылки для области-->        
+        @*@Html.ActionLink("Click me to go to another area", "Index", new { area = "Admin" })*@
+    </div>
+</body>
+</html>

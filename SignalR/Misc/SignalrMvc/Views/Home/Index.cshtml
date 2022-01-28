@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Chat room";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="main">
+    <div id="loginBlock">
+        Enter login:<br/>
+        <input id="txtUserName" type="text"/>
+        <input id="login" type="button" value="Enter"/>
+    </div>
+    <div id="chatBody">
+        <div id="header"></div>
+        <div id="inputForm">
+            <input type="text" id="message"/>
+            <input type="button" id="sendMessage" value="Send"/>
+        </div>
+        <div id="chatRoom"></div>
+        <div id="chatUsers">
+            <p><b>All users</b>
+            </p>
+        </div>
+    </div>
+    <input id="hdId" type="hidden"/>
+    <input id="userName" type="hidden"/>
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+        @* ReSharper disable Html.PathError *@
+        <script src="~/signalr/hubs"></script>
+        @* ReSharper restore Html.PathError *@
+        <script src="~/Scripts/util.js"></script>
+    }
+</div>

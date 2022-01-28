@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .field-validation-error {
+            color: #f00;
+        }
+
+        .validation-summary-errors {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        .input-validation-error {
+            background-color: #fee;
+            border: 2px solid #f00;
+        }
+
+        input[type=checkbox].input-validation-error {
+            outline: 2px solid #f00;
+        }
+
+        div.hidden {
+            display: none;
+        }
+
+        div.visible {
+            display: block;
+        }
+    </style>
+    @Styles.Render(BundleConfig.BundleConstants.AllCssPath)
+    @Scripts.Render(BundleConfig.BundleConstants.AllScriptPath)
+    @RenderSection("Scripts", false)
+</head>
+<body>
+@RenderSection("Body") @*@RenderBody()*@
+</body>
+</html>

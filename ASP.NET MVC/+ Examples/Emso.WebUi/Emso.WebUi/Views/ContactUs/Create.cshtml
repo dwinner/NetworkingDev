@@ -1,0 +1,87 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.ContactPersonViewModel
+
+@{
+   ViewBag.Title = Resources.ContactUsTitle;   
+}
+
+@if (IsAjax)
+{
+@section Header
+{
+    <p></p>
+}}
+
+@section ExtraStyles
+{
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+    @Styles.Render(BundleConfig.StyleConstants.BarRatingStyles)
+}
+
+@section ExtraScripts
+{
+    @Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)
+    @Scripts.Render(BundleConfig.ScriptConstants.BarRatingJs)
+    @Scripts.Render(BundleConfig.ScriptConstants.ContactUsJs)
+
+    <script id="pdfUploadedTmpl" type="text/x-handlebars-template">
+        {{#uploadedFiles}}
+        <tr class="text-muted">
+            <td>{{uploadedFileName}}</td>
+            <td>{{uploadedFileSize}} bytes</td>
+            <td title="{{uploadedFileName}}">
+                <a href="javascript: deleteFile('{{uploadedFileName}}',1);"
+                   class="btn btn-default fa fa-times-circle"
+                   style="font-size:16px">
+                </a>
+            </td>
+        </tr>
+        {{/uploadedFiles}}
+    </script>
+
+    <script id="zipUploadedTmpl" type="text/x-handlebars-template">
+        {{#uploadedFiles}}
+        <tr class="text-muted">
+            <td>{{uploadedFileName}}</td>
+            <td>{{uploadedFileSize}} bytes</td>
+            <td title="{{uploadedFileName}}">
+                <a href="javascript: deleteFile('{{uploadedFileName}}',2);"
+                   class="btn btn-default fa fa-times-circle"
+                   style="font-size:16px">
+                </a>
+            </td>
+        </tr>
+        {{/uploadedFiles}}
+    </script>
+}
+
+<div class="container">
+    <p>
+        <hr/>
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
+            @Html.EditorForModel()
+
+            <!-- Send button -->
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-1">
+                    <input type="submit" value="@Resources.SendButtonText" class="btn btn-default"/>
+                </div>
+                <div class="col-md-offset-1 col-md-7">
+                    @Html.ActionLink(Resources.BackToMainAction, "Index", "Home")
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Feed
+{
+    <p></p>
+}

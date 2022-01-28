@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bloodhound.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bloodhound.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bloodhound.com/">
+      <s:element name="CanWeFixIt">
+        <s:complexType />
+      </s:element>
+      <s:element name="CanWeFixItResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CanWeFixItResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CanWeFixItSoapIn">
+    <wsdl:part name="parameters" element="tns:CanWeFixIt" />
+  </wsdl:message>
+  <wsdl:message name="CanWeFixItSoapOut">
+    <wsdl:part name="parameters" element="tns:CanWeFixItResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SimpleServiceSoap">
+    <wsdl:operation name="CanWeFixIt">
+      <wsdl:input message="tns:CanWeFixItSoapIn" />
+      <wsdl:output message="tns:CanWeFixItSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SimpleServiceSoap" type="tns:SimpleServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CanWeFixIt">
+      <soap:operation soapAction="http://bloodhound.com/CanWeFixIt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SimpleServiceSoap12" type="tns:SimpleServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CanWeFixIt">
+      <soap12:operation soapAction="http://bloodhound.com/CanWeFixIt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SimpleService">
+    <wsdl:port name="SimpleServiceSoap" binding="tns:SimpleServiceSoap">
+      <soap:address location="http://localhost:11657/SimpleService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SimpleServiceSoap12" binding="tns:SimpleServiceSoap12">
+      <soap12:address location="http://localhost:11657/SimpleService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

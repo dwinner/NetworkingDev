@@ -1,0 +1,28 @@
+﻿@model TemplatedHelpers.Models.Person
+
+@{
+    ViewBag.Title = "Display person";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="dataElem">
+    @Html.Label("PersonId")
+    @Html.Display("PersonId")
+</div>
+
+<div class="dataElem">
+    @Html.Label("FirstName")
+    @Html.Display("FirstName")
+</div>
+
+<div class="dataElem">
+    @Html.LabelFor(person => person.LastName)
+    @Html.DisplayFor(person => person.LastName)
+</div>
+
+<div class="dataElem">
+    @Html.LabelFor(person => person.BirthDate)
+    @Html.DisplayFor(person => person.BirthDate)
+</div>

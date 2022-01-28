@@ -1,0 +1,99 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+<table class="table table-striped">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Title)</td>
+        <td>@Html.DisplayFor(model => model.Title)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.City)</td>
+        <td>@Html.DisplayFor(model => model.City)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.SalaryLevel)</td>
+        <td>@Html.DisplayFor(model => model.SalaryLevel)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.WorkExperience)</td>
+        <td>@Html.BuildTranslatedExperience(Model.WorkExperience)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.EmploymentType)</td>
+        <td>@Html.BuildTranslatedEmploymentType(Model.EmploymentType)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.IsActive)</td>
+        <td>@Html.DisplayFor(model => model.IsActive)</td>
+    </tr>
+    @if (Model.Responsibilities.Count > 0)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Responsibilities)</td>
+            <td>
+                <ul class="list-unstyled">
+                    @foreach (var responsibility in Model.Responsibilities)
+                    {
+                        <li>@responsibility</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Requirements.Count > 0)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Requirements)</td>
+            <td>
+                <ul class="list-unstyled">
+                    @foreach (var requirement in Model.Requirements)
+                    {
+                        <li>@requirement</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.WorkingConditions.Count > 0)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.WorkingConditions)</td>
+            <td>
+                <ul class="list-unstyled">
+                    @foreach (var condition in Model.WorkingConditions)
+                    {
+                        <li>@condition</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.RestRequirements.Count > 0)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.RestRequirements)</td>
+            <td>
+                <ul class="list-unstyled">
+                    @foreach (var restRequirement in Model.RestRequirements)
+                    {
+                        <li>@restRequirement</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Misc.Count > 0)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Misc)</td>
+            <td>
+                <ul class="list-unstyled">
+                    @foreach (var msc in Model.Misc)
+                    {
+                        <li>@msc</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>

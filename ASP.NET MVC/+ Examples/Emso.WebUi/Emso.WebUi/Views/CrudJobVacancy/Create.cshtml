@@ -1,0 +1,67 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.JobVacancyViewModel
+
+@{
+    ViewBag.Title = Resources.AddNewVacancy;
+    var mainReqLabel = Resources.Requirement;
+}
+
+@section ExtraScripts
+{
+    @Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)
+    @Scripts.Render(BundleConfig.ScriptConstants.CrudJobVacancy)
+
+    <script id="addJobItemTmpl" type="text/x-handlebars-template">
+        <div class="form-group">
+            <label class="control-label col-md-2">{{labelText}} №{{elementsCount}}</label>
+            <div class="col-md-6">
+                <input id="{{sameNameElement}}" name="{{sameNameElement}}"
+                       class="form-control" type="text" />
+            </div>
+            <div class="col-md-4">
+                <a href="#" id="{{jobKind}}-{{jobItemIndex}}" class="col-md-4 control-label" title="@Resources.RemoveResponsibility" onclick="removeJobItem(this.id); return false;">
+                    <div class="glyphicon glyphicon-minus btn btn-default"></div>
+                </a>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        $ (function () {
+            addTextInputTmpl ("addResponsibility", "responsibilities", "@Resources.Responsibility", "removeResponsibility");
+            addTextInputTmpl ("addRequirement", "requirements", "@mainReqLabel", "removeRequirement");
+            addTextInputTmpl ("addWc", "workConditions", "@Resources.Condition", "removeWc");
+            addTextInputTmpl ("addRestReq", "restRequirements", "@mainReqLabel", "removeRestReq");
+            addTextInputTmpl ("addMiscReq", "miscsellaneaos", "@Resources.Note", "removeMiscReq");            
+        });
+    </script>
+}
+
+@section Feed
+{
+    <p></p>
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal row">
+            @Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
+            @Html.EditorForModel()
+
+            <div class="form-group">
+                <div class="col-md-offset-7 col-md-5">
+                    <input type="submit" value="@Resources.Add" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.BuildBackLink(Url.Action("Index"))     
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spying requests</title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.0.min.js"></script>
+</head>
+<body>
+    <h1>Requests log</h1>   
+    <ul id="requests"></ul>
+    <script>
+        $(function () {
+            var connection = $.connection("/spy");
+            connection.received(function (data) {
+                $("#requests").append("<li>" + data + "</li>");
+            });
+            connection.start();
+        });
+    </script>
+</body>
+</html>

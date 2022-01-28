@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="Mobile.ViaWebForms.Site_Mobile" %>
+<%@ Register Src="~/ViewSwitcher.ascx" tagPrefix="friendlyUrls" tagName="ViewSwitcher" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+
+        span.message {
+            font-size: xx-large;
+            font-family: sans-serif;
+            color: white;
+            background-color: black;
+        }
+    </style>
+    <link href="Content/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <script src="Scripts/jquery.mobile-1.4.5.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="content">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div data-role="footer">
+            <friendlyUrls:ViewSwitcher runat="server"/>
+        </div>
+    </div>    
+</body>
+</html>

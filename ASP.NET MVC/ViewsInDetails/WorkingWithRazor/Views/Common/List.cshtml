@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h3>This is the /Views/Common/List.cshtml View</h3>
+    <!-- NOTE: Вызов частичного представления -->
+    @Html.Partial("MyPartial")
+    <!-- NOTE: Вызов строго типизированного частичного представления -->
+    @Html.Partial("MyStronglyTypedPartial", new[] { "Apple", "Orange", "Pear" })
+    <!-- NOTE: Визуализация дочернего действия -->
+    @Html.Action("Time", "Home")
+</body>
+</html>

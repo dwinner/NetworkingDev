@@ -1,0 +1,13 @@
+﻿@{
+   ViewBag.Title = "Helper1";    
+}
+
+<h2>Helper 1</h2>
+
+@using (Html.BeginForm())
+{
+   @Html.DisplayName("Check this (or not)")
+   @Html.CheckBox("check1", false)
+   <br />      
+   @Html.TextBox("text1", "input text here", new { required = "required", maxlength = 15, @class = "CSSDemo" })
+}

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .container {
+            padding-top: 10px;
+        }
+
+        .validation-summary-errors {
+            color: #f00;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="container">
+        <div class="nav navbar">
+            @Html.ActionLink("Роли", "Index", "RoleAdmin")
+            @Html.ActionLink("Пользователи", "Index", "Admin")
+            @Html.ActionLink("Профиль", "UserProps", "Home")
+            @Html.ActionLink("Права", "Index", "Claims")
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

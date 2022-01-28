@@ -1,0 +1,16 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+<div class="container">
+    <h3 class="text-center">@Resources.DeleteConfirmation</h3>
+    <div>
+        @Html.DisplayForModel()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.BuildDeleteButton("pull-right")
+            @Html.BuildBackLink(Url.Action("Index"))
+        }
+    </div>
+</div>

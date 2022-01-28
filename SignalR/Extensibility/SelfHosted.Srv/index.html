@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+   <title>self-hosted signalr endpoint</title>
+   <style>
+      ul#messages {
+         border: 1px solid black;
+         height: 250px;
+         width: 450px;
+         overflow: scroll;
+         list-style: none;
+      }
+   </style>
+   <script src="scripts/jquery-1.6.4.js"></script>
+   <script src="scripts/jquery.signalr-2.2.0.js"></script>
+   <script>
+      $(function() {
+         var connection = $.connection("http://localhost:5045/samplepc");
+
+         connection.received(function (data) {
+            $("#messages").append("<li>" + data + "</li>");
+         });
+
+         connection.start().done(function() {
+            $("#sendBtn").click(function() {
+               connection.send($("#name").val() + ": " + $("#message").val());
+            });
+         }).fail(function(ex) {
+            alert(ex);
+         });
+      });
+   </script>
+</head>
+<body>
+<ul id="messages"></ul>
+<div>
+   <label for="name">Name:</label>
+   <input id="name" value="User A"/>
+</div>
+<div>
+   <label for="message">Message:</label>
+   <input id="message"/>
+</div>
+<div><button id="sendBtn">Send</button></div>
+</body>
+</html>

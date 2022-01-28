@@ -1,0 +1,20 @@
+﻿@{
+   Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width" />
+   <title>PassingData</title>
+</head>
+<body>
+   @{
+      const string name = "Angela";
+   }
+   <div>
+      <div>@ViewBag.MyData</div>
+      <div>@name</div>
+      <div>@(name), Stephanie</div>
+   </div>
+</body>
+</html>

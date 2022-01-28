@@ -1,0 +1,63 @@
+﻿@model IList<DynamicListLoading.Models.Phone>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Dynamic loading";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('div#loading').hide();
+            var page = 0;
+            var inCallback = false;
+
+            function loadItems() {
+                if (page <= -1 || inCallback)
+                    return;
+
+                inCallback = true;
+                page++;
+                $('div#loading').show();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/Home/Index/' + page,
+                    success: function (data) {
+                        if (data !== '') {
+                            $('#scrollList').append(data);
+                        } else {
+                            page = -1;
+                        }
+
+                        inCallback = false;
+                        $('div#loading').hide();
+                    }
+                });
+            }
+
+            // Обработка события прокрутки
+            $(window).scroll(function () {
+                if ($(window).scrollTop() === $(document).height() - $(window).height()) {
+                    loadItems();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="scrollList">
+        @Html.Partial("_Items")
+    </div>
+
+    <div id="loading">
+        <img src="@Url.Content("~/Content/loading_spinner.gif")" />
+    </div>
+</body>
+</html>

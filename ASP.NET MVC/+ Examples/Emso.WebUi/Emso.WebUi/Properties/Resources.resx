@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="AttachCodeExamples" xml:space="preserve">
+    <value>Attach your code examples in zip format</value>
+  </data>
+  <data name="AttachCodeExamplesLabel" xml:space="preserve">
+    <value>Attach code examples</value>
+  </data>
+  <data name="AttachYourResume" xml:space="preserve">
+    <value>Attach your resume(s)</value>
+  </data>
+  <data name="BackToMainAction" xml:space="preserve">
+    <value>Back To Main</value>
+  </data>
+  <data name="BriefInformationPlaceholder" xml:space="preserve">
+    <value>Brief information</value>
+  </data>
+  <data name="CareerTitle" xml:space="preserve">
+    <value>Career</value>
+  </data>
+  <data name="Contact_BirthDate" xml:space="preserve">
+    <value>Birth date</value>
+  </data>
+  <data name="Contact_BirthDateDataType" xml:space="preserve">
+    <value>Birth date must be a correct date</value>
+  </data>
+  <data name="Contact_BirthDateRequired" xml:space="preserve">
+    <value>Birth date is required</value>
+  </data>
+  <data name="Contact_CAndCppKnowledge" xml:space="preserve">
+    <value>C/C++ language level</value>
+  </data>
+  <data name="Contact_CAndCppKnowledgeRatingRequired" xml:space="preserve">
+    <value>C/C++ language level is required</value>
+  </data>
+  <data name="Contact_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Contact_EmailRequired" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
+  <data name="Contact_EmailValidation" xml:space="preserve">
+    <value>Email address is not a valid email</value>
+  </data>
+  <data name="Contact_FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="Contact_FirstNameDataType" xml:space="preserve">
+    <value>First name must be a plain text</value>
+  </data>
+  <data name="Contact_FirstNameRange" xml:space="preserve">
+    <value>First name's minimum length is 3, maximum length is 20</value>
+  </data>
+  <data name="Contact_FirstNameRequired" xml:space="preserve">
+    <value>First name is required</value>
+  </data>
+  <data name="Contact_Language" xml:space="preserve">
+    <value>English language level</value>
+  </data>
+  <data name="Contact_LanguageRatingRequired" xml:space="preserve">
+    <value>Language level is required</value>
+  </data>
+  <data name="Contact_LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="Contact_LastNameDataType" xml:space="preserve">
+    <value>Last name must be a plain text</value>
+  </data>
+  <data name="Contact_LastNameRange" xml:space="preserve">
+    <value>Last name's minimum length is 3, maximum length is 30</value>
+  </data>
+  <data name="Contact_LastNameRequired" xml:space="preserve">
+    <value>Last name is required</value>
+  </data>
+  <data name="Contact_SummaryInfo" xml:space="preserve">
+    <value>Summary information</value>
+  </data>
+  <data name="Contact_TelephoneNumber" xml:space="preserve">
+    <value>Telephone number</value>
+  </data>
+  <data name="Contact_TelephoneNumberDataType" xml:space="preserve">
+    <value>Telephone number must be vaild</value>
+  </data>
+  <data name="Contact_TelephoneNumberRequired" xml:space="preserve">
+    <value>Telephone number is required</value>
+  </data>
+  <data name="ContactPerson_CSharpLanguageLevel" xml:space="preserve">
+    <value>C# language level</value>
+  </data>
+  <data name="ContactPerson_CSharpLevelRequired" xml:space="preserve">
+    <value>C# language level is required</value>
+  </data>
+  <data name="ContactPerson_OodKnowledgeLevel" xml:space="preserve">
+    <value>OOD level</value>
+  </data>
+  <data name="ContactPerson_OodLevelRequired" xml:space="preserve">
+    <value>OOD level is required</value>
+  </data>
+  <data name="ContactPerson_OopKnowledgeLevel" xml:space="preserve">
+    <value>OOP level</value>
+  </data>
+  <data name="ContactPerson_OopKnowledgeRequired" xml:space="preserve">
+    <value>OOP level is required</value>
+  </data>
+  <data name="ContactPerson_RefactoringKnowledgeLevel" xml:space="preserve">
+    <value>Refactoring level</value>
+  </data>
+  <data name="ContactPerson_RefactoringKnowledgeRequired" xml:space="preserve">
+    <value>Refactoring level is required</value>
+  </data>
+  <data name="ContactUsController_ErrorSendingEmail" xml:space="preserve">
+    <value>Error while sending email</value>
+  </data>
+  <data name="ContactUsController_SuccessfullySent" xml:space="preserve">
+    <value>Contact information has successfully sent</value>
+  </data>
+  <data name="ContactUsTitle" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnglishSwitch" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ErrorSendingEmail" xml:space="preserve">
+    <value>Error while sending email</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExceededUploadedLimit" xml:space="preserve">
+    <value>Exceeded the limit on the number of uploaded files - {0}</value>
+  </data>
+  <data name="FileExists" xml:space="preserve">
+    <value>File '{0}' already exists</value>
+  </data>
+  <data name="FileNotExists" xml:space="preserve">
+    <value>File '{0}' is not exists</value>
+  </data>
+  <data name="FileSuccessfullyDeleted" xml:space="preserve">
+    <value>File '{0}' has been successfully deleted</value>
+  </data>
+  <data name="FileUploaded" xml:space="preserve">
+    <value>File has been uploaded successfully</value>
+  </data>
+  <data name="FirsNamePlaceholder" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="LanguageRating_Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="LanguageRating_Beginner" xml:space="preserve">
+    <value>Beginner</value>
+  </data>
+  <data name="LanguageRating_Intermediate" xml:space="preserve">
+    <value>Intermediate</value>
+  </data>
+  <data name="LanguageRating_PreIntermediate" xml:space="preserve">
+    <value>Pre intermediate</value>
+  </data>
+  <data name="LanguageRating_Proficiency" xml:space="preserve">
+    <value>Proficiency</value>
+  </data>
+  <data name="LanguageRating_UpperIntermediate" xml:space="preserve">
+    <value>Upper intermediate</value>
+  </data>
+  <data name="LastNamePlaceholder" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="MainTitle" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MaximumUploadSize" xml:space="preserve">
+    <value>Maximum upload size is {0} Mb</value>
+  </data>
+  <data name="OodDescription" xml:space="preserve">
+    <value>Object Oriented Design, SOLID, GRASP</value>
+  </data>
+  <data name="OopDescription" xml:space="preserve">
+    <value>Object Oriented Programming, Design patterns</value>
+  </data>
+  <data name="OurContactsTitle" xml:space="preserve">
+    <value>Our contacts</value>
+  </data>
+  <data name="Rating_Beginner" xml:space="preserve">
+    <value>Beginner</value>
+  </data>
+  <data name="Rating_Dummy" xml:space="preserve">
+    <value>Dummy</value>
+  </data>
+  <data name="Rating_Expert" xml:space="preserve">
+    <value>Expert</value>
+  </data>
+  <data name="Rating_High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Rating_Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="RefactoringDescription" xml:space="preserve">
+    <value>Receptions Of Refactoring</value>
+  </data>
+  <data name="ResumeTooltip" xml:space="preserve">
+    <value>Attach your resume and skills in pdf format (up to five files)</value>
+  </data>
+  <data name="RssViewDetails" xml:space="preserve">
+    <value>View details</value>
+  </data>
+  <data name="RussianSwitch" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="SendButtonText" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="TelephonePlaceholder" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="UploadingNotSupported" xml:space="preserve">
+    <value>File uploading is not supported</value>
+  </data>
+  <data name="WrongMimeType" xml:space="preserve">
+    <value>Wrong file type: {0}</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+    <data name="AsEmployersTitle" xml:space="preserve">
+    <value>We, as employers</value>
+  </data>
+    <data name="VacanciesTitle" xml:space="preserve">
+    <value>Vacancies</value>
+  </data>
+  <data name="PanelDesignerOverviewTitle" xml:space="preserve">
+    <value>Panel designer overview</value>
+  </data>
+    <data name="PanelPcOverviewTitle" xml:space="preserve">
+    <value>Panel PC Overview</value>
+  </data>
+    <data name="AutomotiveSoftwareOverviewTitle" xml:space="preserve">
+    <value>Automotive Software Overview</value>
+  </data>
+    <data name="EmbeddedSoftwareOverviewTitle" xml:space="preserve">
+    <value>Embedded software overview</value>
+  </data>
+    <data name="PanelDesignerLink" xml:space="preserve">
+    <value>Panel Designer</value>
+  </data>
+    <data name="PanelDesignerDescription" xml:space="preserve">
+    <value>Panel Designer - WPF based set of custom controls</value>
+  </data>
+    <data name="PanelPcLink" xml:space="preserve">
+    <value>Panel PC</value>
+  </data>
+    <data name="PanelPcDescription" xml:space="preserve">
+    <value>Panel PC - I don't know what it is</value>
+  </data>
+    <data name="AutomotiveSoftwareLink" xml:space="preserve">
+    <value>Automotive Software</value>
+  </data>
+    <data name="AutomotiveSoftwareDescription" xml:space="preserve">
+    <value>Automotive Software - I don't know what it is</value>
+  </data>
+    <data name="EmbeddedSoftwareLink" xml:space="preserve">
+    <value>Embedded software</value>
+  </data>
+    <data name="EmbeddedSoftwareDescription" xml:space="preserve">
+    <value>Embedded software - I don't know what it is</value>
+  </data>
+    <data name="EmailLegend" xml:space="preserve">
+    <value>Email</value>
+  </data>
+    <data name="TelephoneLegend" xml:space="preserve">
+    <value>Telephone number</value>
+  </data>
+    <data name="AddressLegend" xml:space="preserve">
+    <value>Address</value>
+  </data>
+    <data name="FullAddress" xml:space="preserve">
+    <value>Tula, Timiryazeva Street 99, Office 515</value>
+  </data>
+    <data name="OurPlacesLegend" xml:space="preserve">
+    <value>Our places</value>
+  </data>
+    <data name="TrendsAndSolutionsTitle" xml:space="preserve">
+    <value>Trends And Solutions</value>
+  </data>
+    <data name="AboutUsTitle" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="JobVacancyTitle" xml:space="preserve">
+    <value>Job vacancies</value>
+  </data>
+  <data name="CreateNewVacancy" xml:space="preserve">
+    <value>Create New Vacancy</value>
+  </data>
+  <data name="PositionTitle" xml:space="preserve">
+    <value>Position Title</value>
+  </data>
+  <data name="LocationCity" xml:space="preserve">
+    <value>Location City</value>
+  </data>  
+  <data name="EmploymentType_Full" xml:space="preserve">
+    <value>Full Employment</value>
+  </data>
+  <data name="EmploymentType_Part" xml:space="preserve">
+    <value>Part-time Employment</value>
+  </data>
+  <data name="EmploymentType_Flexible" xml:space="preserve">
+    <value>Flexible Working Hours</value>
+  </data>
+  <data name="EmploymentType_Remote" xml:space="preserve">
+    <value>Remote Work</value>
+  </data>
+  <data name="WorkExperience" xml:space="preserve">
+    <value>Work Experience</value>
+  </data>
+  <data name="EmploymentType" xml:space="preserve">
+    <value>Employment type</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="Responsibilities" xml:space="preserve">
+    <value>Responsibilities</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Requirements</value>
+  </data>
+  <data name="OptionalRequirements" xml:space="preserve">
+    <value>Optional Requirements</value>
+  </data>
+  <data name="WorkingConditions" xml:space="preserve">
+    <value>Working Conditions</value>
+  </data>
+  <data name="EditLinkTitle" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="DetailsLinkTitle" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DeleteLinkTitle" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="AddNewVacancy" xml:space="preserve">
+    <value>Add new vacancy</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="LessThanYear" xml:space="preserve">
+    <value>Less than a year</value>
+  </data>
+  <data name="MoreThanOneLessThanThree" xml:space="preserve">
+    <value>1-3 years</value>
+  </data>
+  <data name="MoreThanThreeLessThanSix" xml:space="preserve">
+    <value>3-6 years</value>
+  </data>
+  <data name="MoreThanSix" xml:space="preserve">
+    <value>More than 6 years</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="TitleMustBeText" xml:space="preserve">
+    <value>Title must be text</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>City is required</value>
+  </data>
+  <data name="CityMustBeText" xml:space="preserve">
+    <value>City must be text</value>
+  </data>  
+  <data name="MainInformation" xml:space="preserve">
+    <value>Main information</value>
+  </data>
+  <data name="MainResponsibilities" xml:space="preserve">
+    <value>Main Responsibilities</value>
+  </data>
+  <data name="AddResponsibility" xml:space="preserve">
+    <value>Add Responsibility</value>
+  </data>
+  <data name="Responsibility" xml:space="preserve">
+    <value>Responsibility</value>
+  </data>
+  <data name="MainRequirements" xml:space="preserve">
+    <value>Main Requirements</value>
+  </data>
+  <data name="Requirement" xml:space="preserve">
+    <value>Requirement</value>
+  </data>
+  <data name="AddRequirement" xml:space="preserve">
+    <value>Add Requirement</value>
+  </data>
+  <data name="WorkingConditionsTitle" xml:space="preserve">
+    <value>Working Conditions</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="AddWorkingCondition" xml:space="preserve">
+    <value>Add Working Condition</value>
+  </data>
+  <data name="RestRequirements" xml:space="preserve">
+    <value>Optional requirements</value>
+  </data>
+  <data name="AddRestRequirement" xml:space="preserve">
+    <value>Add Rest Requirement</value>
+  </data>
+  <data name="OtherNotes" xml:space="preserve">
+    <value>Other notes</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="AddNote" xml:space="preserve">
+    <value>Add a note</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+  <data name="RemoveResponsibility" xml:space="preserve">
+    <value>Remove job item</value>
+  </data>
+  <data name="RemoveRequirement" xml:space="preserve">
+    <value>Remove Requirement</value>
+  </data>
+  <data name="RemoveWorkingCondition" xml:space="preserve">
+    <value>Remove Working Condition</value>
+  </data>
+  <data name="RemoveRestRequirement" xml:space="preserve">
+    <value>Remove Rest Requirement</value>
+  </data>
+  <data name="RemoveNote" xml:space="preserve">
+    <value>Remove a note</value>
+  </data>
+  <data name="UpdateTitle" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="SalaryLevel" xml:space="preserve">
+    <value>Salary level</value>
+  </data>
+  <data name="SalaryLevelRequired" xml:space="preserve">
+    <value>Salary level is required</value>
+  </data>
+  <data name="DummyColl" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FailedToUpdate" xml:space="preserve">
+    <value>Failed To Update The News</value>
+  </data>
+  <data name="FailedToDeleteNews" xml:space="preserve">
+    <value>Failed To delete the news</value>
+  </data>
+  <data name="LoginForm_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginForm_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LogInButtonText" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="AddNews" xml:space="preserve">
+    <value>Add News</value>
+  </data>
+  <data name="UploadNewsPicture" xml:space="preserve">
+    <value>Upload News Picture</value>
+  </data>
+  <data name="DeleteNewsTitle" xml:space="preserve">
+    <value>Delete News</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+  <data name="NewsDetailsTitle" xml:space="preserve">
+    <value>News Details</value>
+  </data>
+  <data name="EditNewsTitle" xml:space="preserve">
+    <value>Edit News</value>
+  </data>
+  <data name="SaveNewsText" xml:space="preserve">
+    <value>Save News</value>
+  </data>
+  <data name="NewsIndexTitle" xml:space="preserve">
+    <value>News -&gt; Admin</value>
+  </data>
+  <data name="CreateNewFeedLinkText" xml:space="preserve">
+    <value>Create New Feed</value>
+  </data>
+  <data name="NewsImageHeader" xml:space="preserve">
+    <value>News image</value>
+  </data>
+  <data name="NoImageDummy" xml:space="preserve">
+    <value>No image</value>
+  </data>
+  <data name="NewsPictureTitle" xml:space="preserve">
+    <value>News picture</value>
+  </data>
+  <data name="RssFeed_NewsTitle" xml:space="preserve">
+    <value>News title</value>
+  </data>
+  <data name="RssFeed_TitleRequired" xml:space="preserve">
+    <value>Title news is required</value>
+  </data>
+  <data name="RssFeed_NewsDetails" xml:space="preserve">
+    <value>News details</value>
+  </data>
+  <data name="RssFeed_NewsRequired" xml:space="preserve">
+    <value>News details are required</value>
+  </data>
+  <data name="RssFeed_RelatedLink" xml:space="preserve">
+    <value>Related link</value>
+  </data>
+  <data name="RssFeed_NewsDate" xml:space="preserve">
+    <value>News date</value>
+  </data>
+  <data name="NotAnImage" xml:space="preserve">
+    <value>{0} is not an image</value>
+  </data>
+  <data name="RssFeed_TitleRange" xml:space="preserve">
+    <value>The title length must be from 5 to 64</value>
+  </data>
+  <data name="NewsSuccessfullyUpdated" xml:space="preserve">
+    <value>'{0}' is successfully updated</value>
+  </data>
+  <data name="NewsSuccessfullyCreated" xml:space="preserve">
+    <value>The News '{0}' has been successfully created</value>
+  </data>
+  <data name="NewsSuccessfullyDeleted" xml:space="preserve">
+    <value>The news '{0}' has successfully deleted</value>
+  </data>
+  <data name="EditVacancy" xml:space="preserve">
+    <value>Edit vacancy</value>
+  </data>
+</root>

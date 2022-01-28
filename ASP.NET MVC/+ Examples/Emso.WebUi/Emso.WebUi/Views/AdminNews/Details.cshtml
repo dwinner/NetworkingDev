@@ -1,0 +1,12 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+<div class="container">
+    <div>
+        @Html.DisplayForModel()
+    </div>
+    <p>        
+        @Html.BuildEditLink(Url.Action("Edit", new { id = Model.FeedId }))        
+        @Html.BuildBackLink(Url.Action("Index"))
+    </p>
+</div>

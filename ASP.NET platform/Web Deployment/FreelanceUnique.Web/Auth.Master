@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Auth.master.cs" Inherits="FreelanceUnique.Web.Auth" %>
+
+<%@ Import Namespace="System.Web.Optimization" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <%: Styles.Render("~/bundles/bootstrap") %>
+    <%: Styles.Render("~/bundles/mainstyles") %>
+    <%: Scripts.Render("~/bundles/validation") %>
+    <%: Scripts.Render("~/bundles/bootstrapjs") %>    
+    <asp:ContentPlaceHolder runat="server" ID="HeadContentPlaceHolder">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="authMasterForm" runat="server" class="form-horizontal">
+        <div class="navbar navbar-form">
+            <asp:PlaceHolder runat="server" ID="LoggedInPlaceholder">
+                <span><%: GetGreeting() %></span>
+                <%--<span>
+                    <asp:LinkButton ID="ChangePassLinkButton" PostBackUrl="~/Account/Change.aspx"
+                        runat="server" Text="Change password" />
+                </span>--%>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder runat="server" ID="AnonymPlaceHolder">
+                <span>
+                    <asp:LinkButton runat="server" ID="RegisterLinkButton"
+                        PostBackUrl="~/Account/Register.aspx" Text="Регистрация" />
+                </span>
+            </asp:PlaceHolder>
+            <asp:LinkButton runat="server" ID="AuthLinkButton" OnClick="AuthLinkButton_OnClick" />
+        </div>
+        <div class="panel">
+            <asp:ContentPlaceHolder ID="BodyContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

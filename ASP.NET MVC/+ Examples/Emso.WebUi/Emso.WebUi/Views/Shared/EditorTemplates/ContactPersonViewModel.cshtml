@@ -1,0 +1,27 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@using Emso.WebUi.Utils
+@model Emso.WebUi.ViewModels.ContactPersonViewModel
+
+@{    
+    var uploadLimit = Math.Round((double) ConfigurationHelper.MaxRequestLength/(1024*1024), 2);
+    var uploadSizeMessage = string.Format(Resources.MaximumUploadSize, uploadLimit);
+}
+
+@Html.BuildFormGroupItem(model => model.FirstName, Resources.FirsNamePlaceholder)
+@Html.BuildFormGroupItem(model => model.LastName, Resources.LastNamePlaceholder)
+@Html.BuildFormGroupItem(model => model.TelephoneNumber, Resources.TelephonePlaceholder)
+@Html.BuildFormGroupItem(model => model.Email, Resources.EmailPlaceholder)
+
+@Html.BuildEnumGroupItem(model => model.CAndCppKnowledge, string.Empty)
+@Html.BuildEnumGroupItem(model => model.CSharpKnowledge, string.Empty)
+@Html.BuildEnumGroupItem(model => model.OodKnowledge, string.Empty, tooltipMessage: Resources.OodDescription)
+@Html.BuildEnumGroupItem(model => model.OopKnowledge, string.Empty, tooltipMessage: Resources.OopDescription)
+@Html.BuildEnumGroupItem(model => model.RefactoringKnowledge, string.Empty, tooltipMessage: Resources.RefactoringDescription)
+@Html.BuildEnumGroupItem(model => model.Language, string.Empty)
+
+@Html.BuildFormGroupItem(model => model.BirthDate, string.Empty, "birthDate") <!-- Birth date TOREFACTOR: Localize the date -->
+@Html.BuildFormGroupItem(model => model.SummaryInfo, Resources.BriefInformationPlaceholder)
+
+@Html.BuildUploadFileItem(Resources.AttachYourResume, "resumeFile", "pdfUploadStatus", string.Format("{0} ({1})", Resources.ResumeTooltip, @uploadSizeMessage), "fa-file-pdf-o", "pdfUploadedFiles")
+@Html.BuildUploadFileItem(Resources.AttachCodeExamplesLabel, "codeExampleFile", "zipUploadStatus", string.Format("{0} ({1})", @Resources.AttachCodeExamples, @uploadSizeMessage), "fa-file-zip-o", "zipUploadedFiles")

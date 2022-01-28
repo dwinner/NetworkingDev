@@ -1,0 +1,28 @@
+﻿#RsvpForm label {
+    width: 120px;
+    display: inline-block;
+}
+
+#RsvpForm input {
+    margin: 2px;
+    margin-left: 4px;
+    width: 150px;
+}
+
+#RsvpForm select {
+    margin: 2px 0;
+    width: 154px;
+}
+
+button[type=submit] {
+    margin-top: 5px;
+}
+
+table, td, th {
+    border: thin solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: lemonchiffon;
+    text-align: left;
+    margin: 10px 0;
+}

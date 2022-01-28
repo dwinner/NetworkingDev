@@ -1,0 +1,33 @@
+﻿.pagination { font-size: 100%; }
+
+.pagination a {
+   border: solid 1px #AAE;
+   color: #15B;
+   text-decoration: none;
+}
+
+.pagination a, .pagination span {
+   -moz-min-width: 1em;
+   -ms-min-width: 1em;
+   -o-min-width: 1em;
+   -webkit-min-width: 1em;
+   display: block;
+   float: left;
+   margin-bottom: 5px;
+   margin-right: 5px;
+   min-width: 1em;
+   padding: 0.3em 0.5em;
+   text-align: center;
+}
+
+.pagination .current {
+   background: #26B;
+   border: solid 1px #AAE;
+   color: #fff;
+}
+
+.pagination .current.prev, .pagination .current.next {
+   background: #fff;
+   border-color: #999;
+   color: #999;
+}

@@ -1,0 +1,30 @@
+﻿@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+<li class="media">
+    <div class="media-left">
+        @if (!Model.HasImageData)
+        {
+            <img class="media-object img-responsive magnify" alt="@Resources.NoImageDummy"
+                 src="~/Content/img/NoImageAvailable.png"/>
+        }
+        else
+        {
+            <img class="media-object img-responsive magnify" alt="@Model.Title"
+                 src="@Url.Action("GetNewsImage", "AdminNews", new {pictureId = Model.FeedId})"/>
+        }
+    </div>
+    <div class="media-right">
+        <h3 class="media-heading">
+            <a target="_blank" href="@Model.RelatedLink">@Html.DisplayFor(modelItem => Model.Title)</a> (@Html.DisplayFor(model => model.NewsDate))
+            <span class="pull-right">                
+                @Html.BuildEditLink(Url.Action("Edit", new { id = Model.FeedId }))
+                @Html.BuildDetailsLink(Url.Action("Details", new { id = Model.FeedId }), true)
+                @Html.BuildDeleteLink(Url.Action("Delete", new { id = Model.FeedId }), true)                 
+            </span>
+        </h3>
+        
+        @Html.DisplayFor(modelItem => Model.Details)
+    </div>    
+</li>

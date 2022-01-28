@@ -1,0 +1,33 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.Properties
+@{
+    var viewDetails = Resources.RssViewDetails;
+}
+
+<div class="container">
+    <div class="emso-trend-wrapper">
+        <div class="row" id="rssRow"></div>
+        <div class="row text-center" id="newsLoading">
+            <img src="~/Content/img/loader64.gif" alt="loader"/>
+        </div>
+    </div>
+    <div class="row text-center ui-button-text" id="feedPagination"></div>
+</div>
+
+<script id="rssTmpl" type="text/x-handlebars-template">
+    {{#rssNews}}
+    <div class="col-xs-6 col-lg-4">
+        <h4><a target="_blank" href="{{relatedLink}}">{{title}}</a> ({{newsDate}})</h4>
+        <p>{{truncatedDetails}}...</p>
+        <div id="detailsContent{{feedId}}" style="display: none;">
+            ...{{restDetails}}
+            <img class="img-responsive" src="/newsfeed/newsImage/{{feedId}}" />
+        </div>
+        <p><a class="btn btn-default"
+              href="javascript:animatedcollapse.toggle('detailsContent{{feedId}}')"
+              role="button">@viewDetails »</a></p>
+    </div>
+    {{/rssNews}}
+</script>
+
+@Scripts.Render(BundleConfig.ScriptConstants.JqPagination)

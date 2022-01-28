@@ -1,0 +1,49 @@
+﻿<Window x:Class="ClientApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:restaurantServiceReference="clr-namespace:ClientApp.RestaurantServiceReference"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="Restaurant" Height="350" Width="525">
+   <Grid d:DataContext="{restaurantServiceReference:RestaurantEntities}">
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="*" />
+         <RowDefinition Height="5" />
+         <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <ComboBox x:Name="CategoriesComboBox" Grid.Row="0" ItemsSource="{Binding Path=Categories}" SelectedIndex="0"
+                SelectionChanged="OnCategorySelection" Grid.RowSpan="3">
+         <ComboBox.ItemTemplate>
+            <DataTemplate DataType="restaurantServiceReference:Category">
+               <TextBlock Text="{Binding Path=Name}" />
+            </DataTemplate>
+         </ComboBox.ItemTemplate>
+      </ComboBox>
+
+      <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+         <Button Content="Add Menu" Click="OnAddMenu" Margin="5" Padding="4" />
+         <Button Content="Show Entities" Click="OnShowEntities" Margin="5" Padding="5" />
+         <Button Content="Save" Click="OnSave" Margin="5" Padding="4" />
+         <Button Content="Exit" Click="OnExit" Margin="5" Padding="4" />
+      </StackPanel>
+
+      <DataGrid Grid.Row="2" ItemsSource="{Binding Path=Menus}" AutoGenerateColumns="False">
+         <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Path=Name}" />
+            <DataGridTextColumn Binding="{Binding Path=Description}" />
+            <DataGridTextColumn Binding="{Binding Path=Price}" />
+            <DataGridTextColumn Binding="{Binding Path=CategoryId}" />
+         </DataGrid.Columns>
+      </DataGrid>
+
+      <GridSplitter Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Background="LightBlue"
+                    ShowsPreview="True" Panel.ZIndex="1" Height="5" />
+
+      <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="4">
+         <TextBlock x:Name="TextStatus" />
+      </ScrollViewer>
+   </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿@model HelperMethods.Models.Person
+
+@{
+    ViewBag.Title = "Create person";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="dataElem">
+        <label>Persin Id:</label>
+        @Html.TextBoxFor(person => person.PersonId)
+    </div>
+    <div class="dataElem">
+        <label>First name:</label>
+        @Html.TextBoxFor(person => person.FirstName)
+    </div>
+    <div class="dataElem">
+        <label>Last name:</label>
+        @Html.TextBoxFor(person => person.LastName)
+    </div>
+    <div class="dataElem">
+        <label>Role:</label>
+        @Html.EnumDropDownListFor(person => person.Role)
+    </div>
+    <input type="submit" value="Submit" />
+}
+
+@*@using (Html.BeginRouteForm("FormRoute", new {}, FormMethod.Post, new {@class = "personClass", data_formType = "person"}))
+    {
+        // И т.д...
+    }*@

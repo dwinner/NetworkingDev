@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище RestaurantModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище RestaurantModelContainer">
+          <EntitySet Name="MenuCards" EntityType="Хранилище RestaurantModel.MenuCards" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menus" EntityType="Хранилище RestaurantModel.Menus" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Menus_ToCategories" Association="Хранилище RestaurantModel.FK_Menus_ToCategories">
+            <End Role="MenuCards" EntitySet="MenuCards" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MenuCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuCardId" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="10" />
+          <Property Name="Day" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Menus_ToCategories">
+          <End Role="MenuCards" Type="Хранилище RestaurantModel.MenuCards" Multiplicity="1" />
+          <End Role="Menus" Type="Хранилище RestaurantModel.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="MenuCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RestaurantEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="MenuCards" EntityType="RestaurantModel.MenuCards" />
+          <EntitySet Name="Menus" EntityType="RestaurantModel.Menus" />
+          <AssociationSet Name="FK_Menus_ToCategories" Association="RestaurantModel.FK_Menus_ToCategories">
+            <End Role="MenuCards" EntitySet="MenuCards" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MenuCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menus" Relationship="RestaurantModel.FK_Menus_ToCategories" FromRole="MenuCards" ToRole="Menus" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuCardId" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Day" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MenuCards" Relationship="RestaurantModel.FK_Menus_ToCategories" FromRole="Menus" ToRole="MenuCards" />
+        </EntityType>
+        <Association Name="FK_Menus_ToCategories">
+          <End Role="MenuCards" Type="RestaurantModel.MenuCards" Multiplicity="1" />
+          <End Role="Menus" Type="RestaurantModel.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="MenuCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RestaurantModelContainer" CdmEntityContainer="RestaurantEntities">
+          <EntitySetMapping Name="MenuCards">
+            <EntityTypeMapping TypeName="RestaurantModel.MenuCards">
+              <MappingFragment StoreEntitySet="MenuCards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="RestaurantModel.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MenuCardId" ColumnName="MenuCardId" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

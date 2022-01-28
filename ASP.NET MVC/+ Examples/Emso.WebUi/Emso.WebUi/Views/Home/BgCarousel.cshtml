@@ -1,0 +1,49 @@
+﻿<div style="width: 100%;">
+   <div id="fadeinout-slider" style="margin-bottom: 50px; margin-top: 10px; padding-top: 50px;">
+   </div>
+</div>
+
+<script id="sliderItemTmpl" type="text/x-handlebars-template">
+   {{#sliderCars}}
+   <div>
+      <img src="{{imagePath}}" alt="{{title}}" class="img-responsive" />
+      <div class="transparent-logo">
+         <h2>{{title}}</h2>
+      </div>
+   </div>
+   {{/sliderCars}}
+</script>
+
+<script type="text/javascript">
+   (function ($) {
+      $.ajax({
+         url: "/slider/items",
+         type: "GET",
+         dataType: "json",
+         success: function (slideItems) {
+            var target = $("#fadeinout-slider");
+            target.empty();
+            var slideItemsViewModel = { sliderCars: [] };
+            slideItems.forEach(function (slideItem) {
+               slideItemsViewModel.sliderCars.push(slideItem);
+            });
+
+            $("#sliderItemTmpl").template(slideItemsViewModel).appendTo(target);
+            $(target).slick({
+               dots: true,
+               infinite: true,
+               speed: 500,
+               fade: true,
+               cssEase: "linear",
+               autoplay: true,
+               autoplayspeed: 5000,
+               arrows: false,
+               centerMode: true               
+            });
+         },
+         error: function (e) {
+            console.log(e.message);
+         }
+      });
+   })(jQuery);
+</script>

@@ -1,0 +1,1 @@
+regsvcs SimpleServer.dll

@@ -1,0 +1,34 @@
+﻿@using Emso.WebUi.Properties
+@{
+    // TOREFACTOR: Совсем нелучшее решение для получения активных ссылок
+    string rawUrl = HttpContext.Current.Request.RawUrl;
+    string homeActive = rawUrl == "/" ? "active" : string.Empty;
+    string contactUsActive = rawUrl.EndsWith("/ContactUs/Create") ? "active" : string.Empty;
+    string threeActive = string.Empty;
+    string careerActive = rawUrl.EndsWith("/Career") ? "active" : string.Empty;
+    string ourContactsActive = rawUrl.EndsWith("/OurContacts") ? "active" : string.Empty;
+}
+
+<div class="container">
+    <ul id="gooeyMenu" class="nav nav-pills nav-justified">
+        <li class="@homeActive">
+            @Html.ActionLink(Resources.MainTitle, "Index", "Home")
+        </li>
+        <li class="@contactUsActive">
+            @Html.ActionLink(Resources.AboutUsTitle, "Index", "AboutUs")
+        </li>
+        <li class="@threeActive">
+            @Html.ActionLink(Resources.TrendsAndSolutionsTitle, "Index", "TrendsAndSolutions")
+        </li>
+        <li class="@careerActive">
+            @Html.ActionLink(Resources.CareerTitle, "Index", "Career")
+        </li>
+        <li class="@ourContactsActive">
+            @Html.ActionLink(Resources.OurContactsTitle, "Index", "OurContacts")
+        </li>
+    </ul>
+</div>
+<div class="container-fluid">
+    <div style="border: black 1px solid; margin-bottom: 10px;">
+    </div>
+</div>

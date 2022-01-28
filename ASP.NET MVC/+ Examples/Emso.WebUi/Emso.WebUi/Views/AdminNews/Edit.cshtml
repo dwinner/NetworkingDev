@@ -1,0 +1,32 @@
+﻿@using System.Web.Optimization
+@using Emso.WebUi.HtmlHelpers
+@using Emso.WebUi.Properties
+@model Emso.WebUi.ViewModels.RssFeedViewModel
+
+@{
+    ViewBag.Title = Resources.EditNewsTitle;
+    string saveText = Resources.SaveNewsText;    
+}
+
+@section ExtraScripts
+{
+    @Scripts.Render(BundleConfig.ScriptConstants.JqUnobtrusiveValidation)
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>    
+}
+
+<div class="container">
+    @using (Html.BeginForm("Edit", "AdminNews", FormMethod.Post, new {enctype = "multipart/form-data"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">            
+            @Html.HiddenFor(model => model.FeedId)
+            @Html.EditorForModel()
+            @Html.BuildSubmitItem(@saveText)            
+        </div>
+    }
+
+    <div>
+        @Html.BuildBackLink(Url.Action("Index"))       
+    </div>
+</div>

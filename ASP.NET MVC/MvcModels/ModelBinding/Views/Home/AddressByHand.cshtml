@@ -1,0 +1,36 @@
+﻿@using ModelBinding.Models
+@model IList<AddressSummary>
+
+@{    
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (!Model.Any())
+{
+    using (Html.BeginForm())
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            <fieldset>
+                <legend>Address @(i + 1)</legend>
+                <div>
+                    <label>City:</label>@Html.Editor(string.Format("[{0}].City", i))
+                </div>
+                <div>
+                    <label>Country:</label>@Html.Editor(string.Format("[{0}].Country", i))
+                </div>
+            </fieldset>
+        }
+        <button type="submit">Submit</button>
+    }
+}
+else
+{
+    foreach (var str in Model)
+    {
+        <p>@str.City, @str.Country</p>
+    }
+    @Html.ActionLink("Back", "Address")
+}

@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Hubs demo";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section scriptSection {
+    <script src="~/Scripts/jquery-1.6.4.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/simpleHub/hubs" type="text/javascript"></script>
+    <script>
+        $(function() {
+            var broadcaster = $.connection.FirstHub;
+
+            broadcaster.client.displayText = function(name, message) {
+                $("#messageList").append("<li>" + name + " said: " + message + "</li>");
+            };
+
+            var sender = $.connection.SecondHub;
+            sender.client.displayText = function(text) {
+                $("#messageList").append("<li>" + text + "</li>");
+            };
+
+            $.connection.hub.start().done(function() {
+                $("#broadcast").click(function () {
+                    broadcaster.server.join($("#groupName").val());
+                    broadcaster.state.GroupName = $("#groupName").val();
+                    broadcaster.server.broadcastMessage({
+                        Name: $("#name").val(),
+                        Message: $("#message").val()
+                    });
+                    broadcaster.server.leave($("#groupName").val());
+                });
+                $("#send").click(function() {
+                    sender.server.sendMessage($("#message").val());
+                });
+            });
+        });
+    </script>
+}
+
+<h2>Hubs demo</h2>
+<input type="text" id="groupName" placeholder="Group"/>
+<input type="text" id="name" placeholder="Your name" />
+<input type="text" id="message" placeholder="Your message" />
+<input type="button" id="broadcast" value="Broadcast"/>
+<input type="button" id="send" value="Send"/>
+
+<ul id="messageList"></ul>

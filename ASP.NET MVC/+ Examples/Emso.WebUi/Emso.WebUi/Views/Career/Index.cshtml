@@ -1,0 +1,57 @@
+﻿@using Emso.WebUi.Properties
+
+@{
+    ViewBag.Title = Resources.CareerTitle;
+}
+
+<script type="text/javascript">
+    $ (function () {
+        var careerLinks = "#careerMenu a";
+        var contentTarget = "#contentTarget";
+
+        $ (careerLinks).each (function (index, element) {
+            $ (this).bind ("click", function (e) {
+                e.preventDefault();
+                $ (contentTarget).html ("<img src='../../Content/img/ajaxload.gif' />");
+                $ (careerLinks).each (function (lIndex, lElement) {
+                    $ (lElement).parent().removeClass ("active");
+                });
+
+                $ (element).parent().addClass ("active");
+                $.get (element.href, function (htmlData) {
+                    $ (contentTarget).empty();
+                    $ (contentTarget).html (htmlData);
+                });
+            });
+        });
+
+        $.get ("@Url.Action("Default")", function (htmlData) {
+            $ (contentTarget).html (htmlData);
+        });
+    });
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" id="careerMenu">
+            <ul class="nav nav-pills nav-stacked vertical-lines">                
+                <li role="presentation">
+                    <a href="@Url.Action("AsEmployers")">@Resources.AsEmployersTitle</a>
+                </li>
+                <li role="presentation">
+                    <a href="@Url.Action("Index", "Vacancy")">@Resources.VacanciesTitle</a>
+                </li>
+                <li role="presentation">
+                    <a href="@Url.Action("Create", "ContactUs")">@Resources.ContactUsTitle</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10" id="contentTarget">
+        </div>
+    </div>
+</div>
+
+@section Feed
+{
+    <p></p>
+}

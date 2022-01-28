@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище FormulaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Circuits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RaceResults">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaceId" Type="int" Nullable="false" />
+          <Property Name="RacerId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Grid" Type="int" />
+          <Property Name="Points" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="Laps" Type="int" />
+          <Property Name="Retired" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Racers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="Starts" Type="int" />
+          <Property Name="Wins" Type="int" />
+          <Property Name="Points" Type="int" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="DateOfDeath" Type="date" />
+        </EntityType>
+        <EntityType Name="Races">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CircuitId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamsAndMotor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="FullTeamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Motor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="YearResults">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="RacerId" Type="int" Nullable="false" />
+          <Property Name="Place" Type="int" />
+          <Property Name="Points" Type="numeric" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="YearResultsTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="Place" Type="int" />
+          <Property Name="Points" Type="numeric" Precision="6" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Race_Circuit">
+          <End Role="Circuits" Type="Self.Circuits" Multiplicity="1" />
+          <End Role="Races" Type="Self.Races" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Races">
+              <PropertyRef Name="CircuitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RaceResults_Race">
+          <End Role="Races" Type="Self.Races" Multiplicity="1" />
+          <End Role="RaceResults" Type="Self.RaceResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaceResults">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RaceResults_Racers">
+          <End Role="Racers" Type="Self.Racers" Multiplicity="1" />
+          <End Role="RaceResults" Type="Self.RaceResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaceResults">
+              <PropertyRef Name="RacerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamsAndMotor_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="TeamsAndMotor" Type="Self.TeamsAndMotor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamsAndMotor">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YearResults_Racers">
+          <End Role="Racers" Type="Self.Racers" Multiplicity="1" />
+          <End Role="YearResults" Type="Self.YearResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YearResults">
+              <PropertyRef Name="RacerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YearResultsTeam_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="YearResultsTeam" Type="Self.YearResultsTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YearResultsTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetRacers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище FormulaModelContainer">
+          <EntitySet Name="Circuits" EntityType="Self.Circuits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaceResults" EntityType="Self.RaceResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Racers" EntityType="Self.Racers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Races" EntityType="Self.Races" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamsAndMotor" EntityType="Self.TeamsAndMotor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YearResults" EntityType="Self.YearResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YearResultsTeam" EntityType="Self.YearResultsTeam" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Race_Circuit" Association="Self.FK_Race_Circuit">
+            <End Role="Circuits" EntitySet="Circuits" />
+            <End Role="Races" EntitySet="Races" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RaceResults_Race" Association="Self.FK_RaceResults_Race">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="RaceResults" EntitySet="RaceResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RaceResults_Racers" Association="Self.FK_RaceResults_Racers">
+            <End Role="Racers" EntitySet="Racers" />
+            <End Role="RaceResults" EntitySet="RaceResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamsAndMotor_Teams" Association="Self.FK_TeamsAndMotor_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamsAndMotor" EntitySet="TeamsAndMotor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YearResults_Racers" Association="Self.FK_YearResults_Racers">
+            <End Role="Racers" EntitySet="Racers" />
+            <End Role="YearResults" EntitySet="YearResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YearResultsTeam_Teams" Association="Self.FK_YearResultsTeam_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="YearResultsTeam" EntitySet="YearResultsTeam" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FormulaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Circuit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Races" Relationship="Self.FK_Race_Circuit" FromRole="Circuits" ToRole="Races" />
+        </EntityType>
+        <EntityType Name="RaceResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaceId" Type="Int32" Nullable="false" />
+          <Property Name="RacerId" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Grid" Type="Int32" />
+          <Property Name="Points" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="Laps" Type="Int32" />
+          <Property Name="Retired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Race" Relationship="Self.FK_RaceResults_Race" FromRole="RaceResults" ToRole="Races" />
+          <NavigationProperty Name="Racer" Relationship="Self.FK_RaceResults_Racers" FromRole="RaceResults" ToRole="Racers" />
+        </EntityType>
+        <EntityType Name="Racer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Starts" Type="Int32" />
+          <Property Name="Wins" Type="Int32" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="DateOfDeath" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RaceResults" Relationship="Self.FK_RaceResults_Racers" FromRole="Racers" ToRole="RaceResults" />
+          <NavigationProperty Name="YearResults" Relationship="Self.FK_YearResults_Racers" FromRole="Racers" ToRole="YearResults" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CircuitId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Circuit" Relationship="Self.FK_Race_Circuit" FromRole="Races" ToRole="Circuits" />
+          <NavigationProperty Name="RaceResults" Relationship="Self.FK_RaceResults_Race" FromRole="Races" ToRole="RaceResults" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TeamsAndMotors" Relationship="Self.FK_TeamsAndMotor_Teams" FromRole="Teams" ToRole="TeamsAndMotor" />
+          <NavigationProperty Name="YearResultsTeams" Relationship="Self.FK_YearResultsTeam_Teams" FromRole="Teams" ToRole="YearResultsTeam" />
+        </EntityType>
+        <EntityType Name="TeamsAndMotor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="FullTeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_TeamsAndMotor_Teams" FromRole="TeamsAndMotor" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="YearResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="RacerId" Type="Int32" Nullable="false" />
+          <Property Name="Place" Type="Int32" />
+          <Property Name="Points" Type="Decimal" Precision="4" Scale="2" />
+          <NavigationProperty Name="Racer" Relationship="Self.FK_YearResults_Racers" FromRole="YearResults" ToRole="Racers" />
+        </EntityType>
+        <EntityType Name="YearResultsTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="Place" Type="Int32" />
+          <Property Name="Points" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_YearResultsTeam_Teams" FromRole="YearResultsTeam" ToRole="Teams" />
+        </EntityType>
+        <Association Name="FK_Race_Circuit">
+          <End Role="Circuits" Type="Self.Circuit" Multiplicity="1" />
+          <End Role="Races" Type="Self.Race" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Races">
+              <PropertyRef Name="CircuitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RaceResults_Race">
+          <End Role="Races" Type="Self.Race" Multiplicity="1" />
+          <End Role="RaceResults" Type="Self.RaceResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaceResults">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RaceResults_Racers">
+          <End Role="Racers" Type="Self.Racer" Multiplicity="1" />
+          <End Role="RaceResults" Type="Self.RaceResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaceResults">
+              <PropertyRef Name="RacerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YearResults_Racers">
+          <End Role="Racers" Type="Self.Racer" Multiplicity="1" />
+          <End Role="YearResults" Type="Self.YearResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YearResults">
+              <PropertyRef Name="RacerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamsAndMotor_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="TeamsAndMotor" Type="Self.TeamsAndMotor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeamsAndMotor">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YearResultsTeam_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="YearResultsTeam" Type="Self.YearResultsTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YearResultsTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FormulaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Circuits" EntityType="Self.Circuit" />
+          <EntitySet Name="RaceResults" EntityType="Self.RaceResult" />
+          <EntitySet Name="Racers" EntityType="Self.Racer" />
+          <EntitySet Name="Races" EntityType="Self.Race" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="TeamsAndMotors" EntityType="Self.TeamsAndMotor" />
+          <EntitySet Name="YearResults" EntityType="Self.YearResult" />
+          <EntitySet Name="YearResultsTeams" EntityType="Self.YearResultsTeam" />
+          <AssociationSet Name="FK_Race_Circuit" Association="Self.FK_Race_Circuit">
+            <End Role="Circuits" EntitySet="Circuits" />
+            <End Role="Races" EntitySet="Races" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RaceResults_Race" Association="Self.FK_RaceResults_Race">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="RaceResults" EntitySet="RaceResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RaceResults_Racers" Association="Self.FK_RaceResults_Racers">
+            <End Role="Racers" EntitySet="Racers" />
+            <End Role="RaceResults" EntitySet="RaceResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YearResults_Racers" Association="Self.FK_YearResults_Racers">
+            <End Role="Racers" EntitySet="Racers" />
+            <End Role="YearResults" EntitySet="YearResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamsAndMotor_Teams" Association="Self.FK_TeamsAndMotor_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamsAndMotor" EntitySet="TeamsAndMotors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YearResultsTeam_Teams" Association="Self.FK_YearResultsTeam_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="YearResultsTeam" EntitySet="YearResultsTeams" />
+          </AssociationSet>
+          <FunctionImport Name="GetRacers" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FormulaModelContainer" CdmEntityContainer="FormulaEntities">
+          <EntitySetMapping Name="Circuits">
+            <EntityTypeMapping TypeName="FormulaModel.Circuit">
+              <MappingFragment StoreEntitySet="Circuits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaceResults">
+            <EntityTypeMapping TypeName="FormulaModel.RaceResult">
+              <MappingFragment StoreEntitySet="RaceResults">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="RacerId" ColumnName="RacerId" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Grid" ColumnName="Grid" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Laps" ColumnName="Laps" />
+                <ScalarProperty Name="Retired" ColumnName="Retired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racers">
+            <EntityTypeMapping TypeName="FormulaModel.Racer">
+              <MappingFragment StoreEntitySet="Racers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Starts" ColumnName="Starts" />
+                <ScalarProperty Name="Wins" ColumnName="Wins" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfDeath" ColumnName="DateOfDeath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="FormulaModel.Race">
+              <MappingFragment StoreEntitySet="Races">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CircuitId" ColumnName="CircuitId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FormulaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="FormulaModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsAndMotors">
+            <EntityTypeMapping TypeName="FormulaModel.TeamsAndMotor">
+              <MappingFragment StoreEntitySet="TeamsAndMotor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="FullTeamName" ColumnName="FullTeamName" />
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YearResults">
+            <EntityTypeMapping TypeName="FormulaModel.YearResult">
+              <MappingFragment StoreEntitySet="YearResults">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="RacerId" ColumnName="RacerId" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YearResultsTeams">
+            <EntityTypeMapping TypeName="FormulaModel.YearResultsTeam">
+              <MappingFragment StoreEntitySet="YearResultsTeam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetRacers" FunctionName="Хранилище FormulaModel.GetRacers" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

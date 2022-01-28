@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta charset="utf-8"/>
+   <title>Group Brush</title>
+   <link href="styles/index.css" rel="stylesheet"/>
+   <script src="../scripts/jquery-2.2.0.js"></script>
+   <script src="scripts/index.js"></script>
+</head>
+<body>
+<div id="mainContent">
+   <div id="mainMessage">
+      <h1>Group Brush</h1>
+      <div id="loadingMessage">Loading...</div>
+   </div>
+   <div id="actionContent">
+      <div class="loggedOut" id="createAccountContent">
+         <div>
+            <span>Welcome to Group Brush</span><br/>
+            <span>This site is for friends to draw together. Please Sign-In or Create an account.</span>
+         </div>
+         <div id="createAccount">
+            <span class="sectionTitle">Create account</span><br/>
+            <span>User name:</span><input id="username" name="username" type="text"/><br/>
+            <span>Password:</span><input name="password" id="password" type="password"/><br/>
+            <span>Verify password:</span>
+            <span id="passwordNotEqual" class="error">Password's not match</span>
+            <input name="verifyPassword" id="verifyPassword" type="password"/>
+            <span id="createAccountError" class="error">Could not create account</span>
+            <button id="btnCreateAccount">Create Account</button>
+         </div>
+      </div>
+      <div class="loggedIn" id="canvasActionContent">
+         <div id="createCanvasContainer">
+            <span class="sectionTitle">Create shared canvas</span>
+            <span>Canvas name:</span><input name="canvasname" id="canvasname" type="text"/><br/>
+            <span>Canvas Description:</span><input name="canvasdescription" id="canvasdescription" type="text"/><br/>
+            <span id="createCanvasError" class="error">Could not create canvas</span>
+            <button id="btnCreateCanvas">Create Canvas</button>
+         </div>
+         <div id="joinCanvasContainer">
+            <span class="sectionTitle">Join shared canvas</span>
+            <span>Canvas name:</span><input name="joinCanvasname" id="joinCanvasname" type="text"/><br/>
+            <span id="joinCanvasError" class="error">Could not join canvas</span>
+            <button id="btnJoinCanvas">Join Canvas</button>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="userContent">
+   <div class="loggedOut">
+      <div id="loginWidget">
+         <div id="logIn">
+            <form id="loginForm">
+               <span id="signIn">Sign In</span><br/>
+               <span>User name:</span><input name="signInUsername" id="signInUsername" type="text"/>
+               <span>Password:</span><input name="signInPassword" id="signInPassword" type="password"/>
+            </form>
+            <span id="loginError" class="error">Could not login</span>
+            <button id="btnLogin">Login</button>
+         </div>
+      </div>
+   </div>
+   <div class="loggedIn">
+      <div id="logOut">
+         <button id="btnLogout">Logout</button>
+      </div>
+   </div>
+</div>
+</body>
+</html>
