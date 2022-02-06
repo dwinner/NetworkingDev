@@ -3,34 +3,31 @@ using System.Threading;
 
 namespace WebSampleApp.Services
 {
-    public class HealthSample : IDisposable
-    {
-        private Timer? _timer;
-        public void SetHealthy(bool healthy = true)
-        {
-            if (IsHealthy == healthy) return;
+   public class HealthSample : IDisposable
+   {
+      private bool _isReady;
+      private Timer? _timer;
 
-            _isReady = false;
-            IsHealthy = healthy;
+      public bool IsHealthy { get; private set; }
+      public bool IsReady => IsHealthy && _isReady;
 
-            if (IsHealthy)
-            {
-                if (_timer is not null)
-                {
-                    _timer.Dispose();
-                }
-                _timer = new(o =>
-                {
-                    _isReady = true;
-                }, null, TimeSpan.FromSeconds(10), Timeout.InfiniteTimeSpan);
-            }
-        }
+      public void Dispose() => _timer?.Dispose();
 
-        public void Dispose() => _timer?.Dispose();
+      public void SetHealthy(bool healthy = true)
+      {
+         if (IsHealthy == healthy)
+         {
+            return;
+         }
 
-        public bool IsHealthy { get; set; } = false;
+         _isReady = false;
+         IsHealthy = healthy;
 
-        private bool _isReady = false;
-        public bool IsReady => IsHealthy && _isReady;
-    }
+         if (IsHealthy)
+         {
+            _timer?.Dispose();
+            _timer = new Timer(_ => { _isReady = true; }, null, TimeSpan.FromSeconds(10), Timeout.InfiniteTimeSpan);
+         }
+      }
+   }
 }
