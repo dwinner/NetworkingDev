@@ -221,3 +221,9 @@ ModelManifest.xml
 
 # Ignore lib files to reduce GIT LFS
 *.lib
+
+#idea folders
+[oO]ut/
+
+#Java bin
+*.class
