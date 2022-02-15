@@ -21,9 +21,9 @@ Console.ReadLine();
 using var scope = host.Services.CreateScope();
 
 var client = scope.ServiceProvider.GetRequiredService<BooksApiClient>();
-await client.ReadChaptersAsync();
-await client.ReadChapterAsync();
-await client.ReadNotExistingChapterAsync();
-await client.AddChapterAsync();
-await client.UpdateChapterAsync();
-await client.RemoveChapterAsync();
+await client.ReadChaptersAsync().ConfigureAwait(false);
+await client.ReadChapterAsync().ConfigureAwait(false);
+await client.ReadNotExistingChapterAsync().ConfigureAwait(false);
+await client.AddChapterAsync().ConfigureAwait(false);
+await client.UpdateChapterAsync().ConfigureAwait(false);
+await client.RemoveChapterAsync().ConfigureAwait(false);
