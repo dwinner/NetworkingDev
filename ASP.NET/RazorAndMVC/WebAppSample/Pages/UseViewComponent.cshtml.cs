@@ -1,28 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
 
-namespace WebAppSample.Pages
+namespace WebAppSample.Pages;
+
+public class UseViewComponentModel : PageModel
 {
-    public class UseViewComponentModel : PageModel
-    {
-        public bool ShowEvents { get; set; } = false;
+   public bool ShowEvents { get; set; }
 
-        public IActionResult OnGet() => Page();
+   [BindProperty]
+   public DateSelectionViewModel DateSelection { get; set; } = new();
 
-        [BindProperty]
-        public DateSelectionViewModel DateSelection { get; set; } = new DateSelectionViewModel();
+   public IActionResult OnGet() => Page();
 
-        public IActionResult OnPost()
-        {
-            ShowEvents = true;
-            return Page();
-        }
-    }
+   public IActionResult OnPost()
+   {
+      ShowEvents = true;
+      return Page();
+   }
+}
 
-    public class DateSelectionViewModel
-    {
-        public DateTime From { get; set; } = DateTime.Today;
-        public DateTime To { get; set; } = DateTime.Today.AddDays(20);
-    }
+public class DateSelectionViewModel
+{
+   public DateTime From { get; set; } = DateTime.Today;
+
+   public DateTime To { get; set; } = DateTime.Today.AddDays(20);
 }

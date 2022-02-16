@@ -6,14 +6,14 @@ namespace BooksViews;
 
 public class IndexModel : PageModel
 {
-    private readonly BooksContext _context;
+   private readonly BooksContext _context;
 
-    public IndexModel(BooksContext context) => _context = context;
+   public IndexModel(BooksContext context) => _context = context;
 
-    public IList<Book>? Books { get;set; }
+   public IList<Book>? Books { get; set; }
 
-    public async Task OnGetAsync()
-    {
-        Books = await _context.Books.ToListAsync();
-    }
+   public async Task OnGetAsync()
+   {
+      Books = await _context.Books.ToListAsync().ConfigureAwait(false);
+   }
 }

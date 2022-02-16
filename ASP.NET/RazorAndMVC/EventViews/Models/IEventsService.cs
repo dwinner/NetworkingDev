@@ -2,5 +2,5 @@
 
 public interface IEventsService
 {
-    IEnumerable<Event> Events { get; }
+   IEnumerable<Event> Events { get; }
 }

@@ -8,26 +8,26 @@ namespace CustomTagHelpers;
 [HtmlTargetElement(Attributes = "markdownfile")]
 public class MarkdownTagHelper : TagHelper
 {
-    private readonly IWebHostEnvironment _env;
-    public MarkdownTagHelper(IWebHostEnvironment env) => _env = env;
+   private readonly IWebHostEnvironment _env;
+   public MarkdownTagHelper(IWebHostEnvironment env) => _env = env;
 
-    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-    {
-        string markdown;
-        if (MarkdownFile is not null)
-        {
-            string filename = Path.Combine(_env.WebRootPath, MarkdownFile);
-            markdown = File.ReadAllText(filename);
-        }
-        else
-        {
-            markdown = (await output.GetChildContentAsync()).GetContent();
-        }
+   [HtmlAttributeName("markdownfile")]
+   public string? MarkdownFile { get; set; }
 
-        string html = Markdown.ToHtml(markdown);
-        output.Content.SetHtmlContent(html);
-    }
+   public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+   {
+      string markdown;
+      if (MarkdownFile is not null)
+      {
+         var filename = Path.Combine(_env.WebRootPath, MarkdownFile);
+         markdown = await File.ReadAllTextAsync(filename).ConfigureAwait(false);
+      }
+      else
+      {
+         markdown = (await output.GetChildContentAsync().ConfigureAwait(false)).GetContent();
+      }
 
-    [HtmlAttributeName("markdownfile")]
-    public string? MarkdownFile { get; set; }
+      var html = Markdown.ToHtml(markdown);
+      output.Content.SetHtmlContent(html);
+   }
 }
