@@ -4,29 +4,26 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BookServiceClient
+public class AuthenticationMessageHandler : DelegatingHandler
 {
-    public class AuthenticationMessageHandler : DelegatingHandler
+    private readonly ClientAuthentication _clientAuthentication;
+    public AuthenticationMessageHandler(ClientAuthentication clientAuthentication)
     {
-        private readonly ClientAuthentication _clientAuthentication;
-        public AuthenticationMessageHandler(ClientAuthentication clientAuthentication)
-        {
-            _clientAuthentication = clientAuthentication;
-        }
+        _clientAuthentication = clientAuthentication;
+    }
 
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        string token = await _clientAuthentication.GetAccesstokenAsync();
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var response = await base.SendAsync(request, cancellationToken);
+        if (response.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
         {
-            string token = await _clientAuthentication.GetAccesstokenAsync();
+            token = await _clientAuthentication.GetAccesstokenAsync(refresh: true);
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await base.SendAsync(request, cancellationToken);
-            if (response.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
-            {
-                token = await _clientAuthentication.GetAccesstokenAsync(refresh: true);
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                response = await base.SendAsync(request, cancellationToken);
-            }
-            return response;
+            response = await base.SendAsync(request, cancellationToken);
         }
+        return response;
     }
 }
 

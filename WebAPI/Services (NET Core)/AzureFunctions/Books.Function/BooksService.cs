@@ -1,6 +1,4 @@
-using System;
 using System.Net;
-using System.Threading.Tasks;
 using Books.Data.Services;
 using Books.Shared;
 using Microsoft.Azure.Functions.Worker;
@@ -13,8 +11,9 @@ public class BooksService
 {
    private readonly IBookChapterService _bookChapterService;
 
-   public BooksService(IBookChapterService bookChapterService) => _bookChapterService =
-      bookChapterService ?? throw new ArgumentNullException(nameof(bookChapterService));
+   public BooksService(IBookChapterService bookChapterService) =>
+      _bookChapterService = bookChapterService
+                            ?? throw new ArgumentNullException(nameof(bookChapterService));
 
    [Function("AddChapter")]
    public async Task<HttpResponseData> AddChapterAsync(
@@ -35,6 +34,7 @@ public class BooksService
       var response = req.CreateResponse(HttpStatusCode.OK);
       await _bookChapterService.AddAsync(chapter).ConfigureAwait(false);
       await response.WriteAsJsonAsync(chapter).ConfigureAwait(false);
+
       return response;
    }
 
@@ -48,8 +48,9 @@ public class BooksService
       logger.LogInformation("Function GetChapters invoked.");
 
       var response = req.CreateResponse(HttpStatusCode.OK);
-      var chapters = _bookChapterService.GetAllAsync();
+      var chapters = await _bookChapterService.GetAllAsync().ConfigureAwait(false);
       await response.WriteAsJsonAsync(chapters).ConfigureAwait(false);
+
       return response;
    }
 }

@@ -1,69 +1,65 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Books.Shared;
+﻿using Books.Models;
+
 using Google.Protobuf.WellKnownTypes;
+
 using GRPCService;
+
 using Microsoft.Extensions.Logging;
 
-namespace GRPC.BooksClient;
-
-internal static class ChapterExtensions
+static class ChapterExtensions
 {
-   public static BookChapter ToBookChapter(this Chapter chapter) =>
-      new(
-         Guid.Parse(chapter.Id),
-         chapter.Number,
-         chapter.Title,
-         chapter.PageCount);
+    public static BookChapter ToBookChapter(this Chapter chapter) =>
+        new BookChapter(
+            Guid.Parse(chapter.Id),
+            chapter.Number,
+            chapter.Title,
+            chapter.PageCount);
 
-   public static Chapter ToGrpcChapter(this BookChapter chapter) =>
-      new()
-      {
-         Id = chapter.Id.ToString(),
-         Number = chapter.Number,
-         Title = chapter.Title,
-         PageCount = chapter.PageCount
-      };
+    public static Chapter ToGRPCChapter(this BookChapter chapter) =>
+        new Chapter
+        {
+            Id = chapter.Id.ToString(),
+            Number = chapter.Number,
+            Title = chapter.Title,
+            PageCount = chapter.PageCount
+        };
 }
 
 public class Runner
 {
-   private readonly GRPCBooks.GRPCBooksClient _booksClient;
-   private readonly ILogger _logger;
+    private readonly GRPCBooks.GRPCBooksClient _booksClient;
+    private readonly ILogger _logger;
+    public Runner(GRPCBooks.GRPCBooksClient booksClient, ILogger<Runner> logger)
+    {
+        _booksClient = booksClient;
+        _logger = logger;
+    }
 
-   public Runner(GRPCBooks.GRPCBooksClient booksClient, ILogger<Runner> logger)
-   {
-      _booksClient = booksClient;
-      _logger = logger;
-   }
+    public async Task RunAsync()
+    {
+        CancellationTokenSource cts = new(10000); // cancel after 10 seconds
 
-   public async Task RunAsync()
-   {
-      CancellationTokenSource cts = new(10000); // cancel after 10 seconds
+        try
+        {
+            BookChapter bookChapter = new(Guid.NewGuid(), 43, "A new GPRC chapter", 20);
+            AddBookChapterRequest request = new() 
+            { 
+                Chapter = bookChapter.ToGRPCChapter() 
+            };
+            var addBookResponse = await _booksClient.AddBookChapterAsync(request);
+            Console.WriteLine($"added a new book");
 
-      try
-      {
-         BookChapter bookChapter = new(Guid.NewGuid(), 43, "A new GPRC chapter", 20);
-         AddBookChapterRequest request = new()
-         {
-            Chapter = bookChapter.ToGrpcChapter()
-         };
-         var addBookResponse = await _booksClient.AddBookChapterAsync(request);
-         Console.WriteLine("added a new book");
-
-         var getBookResponse = await _booksClient.GetBookChaptersAsync(new Empty());
-         var bookChapters = getBookResponse.Chapters.Select(c => c.ToBookChapter()).ToArray();
-         foreach (var chapter in bookChapters)
-         {
-            Console.WriteLine($"{chapter.Number}: {chapter.Title}");
-         }
-      }
-      catch (Exception ex)
-      {
-         _logger.LogError(ex, ex.Message);
-         throw;
-      }
-   }
+            var getBookResponse = await _booksClient.GetBookChaptersAsync(new Empty());
+            var bookChapters = getBookResponse.Chapters.Select(c => c.ToBookChapter()).ToArray();
+            foreach (var chapter in bookChapters)
+            {
+                Console.WriteLine($"{chapter.Number}: {chapter.Title}");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            throw;
+        }
+    }
 }

@@ -1,41 +1,37 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
-using GRPCService;
-using Microsoft.Extensions.Logging;
+﻿using Google.Protobuf.WellKnownTypes;
 
-namespace GRPC.SensorClient;
+using Grpc.Core;
+
+using GRPCService;
+
+using Microsoft.Extensions.Logging;
 
 public class Runner
 {
-   private readonly ILogger _logger;
-   private readonly Sensor.SensorClient _sensorClient;
+    private readonly Sensor.SensorClient _sensorClient;
+    private readonly ILogger _logger;
+    public Runner(Sensor.SensorClient sensorClient, ILogger<Runner> logger)
+    {
+        _sensorClient = sensorClient;
+        _logger = logger;
+    }
 
-   public Runner(Sensor.SensorClient sensorClient, ILogger<Runner> logger)
-   {
-      _sensorClient = sensorClient;
-      _logger = logger;
-   }
+    public async Task RunAsync()
+    {
+        CancellationTokenSource cts = new(10000); // cancel after 10 seconds
 
-   public async Task RunAsync()
-   {
-      CancellationTokenSource cts = new(10000); // cancel after 10 seconds
+        try
+        {
+            using var stream = _sensorClient.GetSensorData(new Empty());
 
-      try
-      {
-         using var stream = _sensorClient.GetSensorData(new Empty());
-
-         await foreach (var data in stream.ResponseStream.ReadAllAsync(cts.Token).WithCancellation(cts.Token)
-                           .ConfigureAwait(false))
-         {
-            Console.WriteLine($"data {data.Val1} {data.Val2} {data.Timestamp.ToDateTime():T}");
-         }
-      }
-      catch (TaskCanceledException ex)
-      {
-         _logger.LogInformation(ex.Message);
-      }
-   }
+            await foreach (var data in stream.ResponseStream.ReadAllAsync().WithCancellation(cts.Token))
+            {
+                Console.WriteLine($"data {data.Val1} {data.Val2} {data.Timestamp.ToDateTime():T}");
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            _logger.LogInformation(ex.Message);
+        }
+    }
 }
