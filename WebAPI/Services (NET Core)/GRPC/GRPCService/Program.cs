@@ -1,8 +1,6 @@
-using Books.Data;
-using Books.Services;
-
+using Books.Data.Models;
+using Books.Data.Services;
 using GRPCService.Services;
-
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 builder.Services.AddDbContext<IBookChapterService, BooksContext>(options =>
 {
-    string connectionString = builder.Configuration.GetConnectionString("BooksConnection");
-    if (connectionString is null) throw new InvalidOperationException("Configure the connection string");
-    options.UseSqlServer(connectionString);
+   var connectionString = builder.Configuration.GetConnectionString("BooksConnection");
+   if (connectionString is null)
+   {
+      throw new InvalidOperationException("Configure the connection string");
+   }
+
+   options.UseSqlServer(connectionString);
 });
 
 var app = builder.Build();

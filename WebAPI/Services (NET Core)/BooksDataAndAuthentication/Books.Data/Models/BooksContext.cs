@@ -1,63 +1,63 @@
-﻿using Books.Models;
-using Books.Services;
-
+﻿using Books.Data.Services;
+using Books.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace Books.Data;
+namespace Books.Data.Models;
 
-public class BooksContext : DbContext, IBookChapterService
+public sealed class BooksContext : DbContext, IBookChapterService
 {
-    public BooksContext(DbContextOptions<BooksContext> options)
-        : base(options)
-    {
-        ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-    }
+   public BooksContext(DbContextOptions<BooksContext> options)
+      : base(options) =>
+      ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
-    public DbSet<BookChapter> Chapters => Set<BookChapter>();
+   public DbSet<BookChapter> Chapters => Set<BookChapter>();
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<BookChapter>().Property(b => b.Title).HasMaxLength(120);
-    }
+   public async Task AddAsync(BookChapter chapter)
+   {
+      await Chapters.AddAsync(chapter).ConfigureAwait(false);
+      await SaveChangesAsync().ConfigureAwait(false);
+   }
 
-    public async Task AddAsync(BookChapter chapter)
-    {
-        await Chapters.AddAsync(chapter);
-        await SaveChangesAsync();
-    }
+   public async Task AddRangeAsync(IEnumerable<BookChapter> chapters)
+   {
+      await Chapters.AddRangeAsync(chapters).ConfigureAwait(false);
+      await SaveChangesAsync().ConfigureAwait(false);
+   }
 
-    public async Task AddRangeAsync(IEnumerable<BookChapter> chapters)
-    {
-        await this.Chapters.AddRangeAsync(chapters);
-        await SaveChangesAsync();
-    }
+   public async Task<IEnumerable<BookChapter>> GetAllAsync()
+   {
+      var chapters = await Chapters.ToListAsync().ConfigureAwait(false);
+      return chapters;
+   }
 
-    public async Task<IEnumerable<BookChapter>> GetAllAsync()
-    {
-        var chapters = await Chapters.ToListAsync();
-        return chapters;
-    }
+   public async Task<BookChapter?> FindAsync(Guid id)
+   {
+      var chapter = await Chapters.FindAsync(id).ConfigureAwait(false);
+      return chapter;
+   }
 
-    public async Task<BookChapter?> FindAsync(Guid id)
-    {
-        var chapter = await Chapters.FindAsync(id);
-        return chapter;
-    }
+   public async Task<BookChapter?> RemoveAsync(Guid id)
+   {
+      var chapter = await Chapters.FindAsync(id).ConfigureAwait(false);
+      if (chapter is null)
+      {
+         return null;
+      }
 
-    public async Task<BookChapter?> RemoveAsync(Guid id)
-    {
-        var chapter = await Chapters.FindAsync(id);
-        if (chapter is null) return null;
+      Chapters.Remove(chapter);
+      await SaveChangesAsync().ConfigureAwait(false);
+      return chapter;
+   }
 
-        Chapters.Remove(chapter);
-        await SaveChangesAsync();
-        return chapter;
-    }
+   public async Task<BookChapter?> UpdateAsync(BookChapter chapter)
+   {
+      Chapters.Update(chapter);
+      await SaveChangesAsync().ConfigureAwait(false);
+      return chapter;
+   }
 
-    public async Task<BookChapter?> UpdateAsync(BookChapter chapter)
-    {
-        Chapters.Update(chapter);
-        await SaveChangesAsync();
-        return chapter;
-    }
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+   {
+      modelBuilder.Entity<BookChapter>().Property(b => b.Title).HasMaxLength(120);
+   }
 }

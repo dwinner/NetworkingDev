@@ -1,37 +1,35 @@
 ﻿using Google.Protobuf.WellKnownTypes;
-
 using Grpc.Core;
-
 using GRPCService;
-
 using Microsoft.Extensions.Logging;
 
 public class Runner
 {
-    private readonly Sensor.SensorClient _sensorClient;
-    private readonly ILogger _logger;
-    public Runner(Sensor.SensorClient sensorClient, ILogger<Runner> logger)
-    {
-        _sensorClient = sensorClient;
-        _logger = logger;
-    }
+   private readonly ILogger _logger;
+   private readonly Sensor.SensorClient _sensorClient;
 
-    public async Task RunAsync()
-    {
-        CancellationTokenSource cts = new(10000); // cancel after 10 seconds
+   public Runner(Sensor.SensorClient sensorClient, ILogger<Runner> logger)
+   {
+      _sensorClient = sensorClient;
+      _logger = logger;
+   }
 
-        try
-        {
-            using var stream = _sensorClient.GetSensorData(new Empty());
+   public async Task RunAsync()
+   {
+      CancellationTokenSource cts = new(10000); // cancel after 10 seconds
 
-            await foreach (var data in stream.ResponseStream.ReadAllAsync().WithCancellation(cts.Token))
-            {
-                Console.WriteLine($"data {data.Val1} {data.Val2} {data.Timestamp.ToDateTime():T}");
-            }
-        }
-        catch (TaskCanceledException ex)
-        {
-            _logger.LogInformation(ex.Message);
-        }
-    }
+      try
+      {
+         using var stream = _sensorClient.GetSensorData(new Empty());
+
+         await foreach (var data in stream.ResponseStream.ReadAllAsync(cts.Token).WithCancellation(cts.Token))
+         {
+            Console.WriteLine($"data {data.Val1} {data.Val2} {data.Timestamp.ToDateTime():T}");
+         }
+      }
+      catch (TaskCanceledException ex)
+      {
+         _logger.LogInformation(ex.Message);
+      }
+   }
 }
