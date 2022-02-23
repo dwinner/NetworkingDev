@@ -10,22 +10,22 @@
     [Parameter]
     public EventCallback<DateTime> OnTimerCallback { get; set; }
 
-    public void Start() => timer?.Start();
+    public void Start() => _timer?.Start();
 
-    public void Stop() => timer?.Stop();
+    public void Stop() => _timer?.Stop();
 
-    private Timer? timer;
+    private Timer? _timer;
     protected override void OnInitialized()
     {
-        timer = new()
+        _timer = new()
         {
             Interval = 1000 * DelaySeconds
         };
-        timer.Elapsed += async (sender, e) =>
+        _timer.Elapsed += async (sender, e) =>
         {
-            await OnTimerCallback.InvokeAsync(e.SignalTime);
+            await OnTimerCallback.InvokeAsync(e.SignalTime).ConfigureAwait(false);
         };
     }
 
-    public void Dispose() => timer?.Dispose();
+    public void Dispose() => _timer?.Dispose();
 }

@@ -3,17 +3,17 @@
 
 <label for="input1">text1</label>
 @*two-way bind to the value attribute and a change event to the onchange attribute*@
-<input id="input1" @bind="text1" />  
+<input id="input1" @bind="_text1" />  
 
 
-<div>@text1</div>
+<div>@_text1</div>
 
 <label for="input2">text2</label>
-<input id="input2" @bind-value="text2" @bind-value:event="oninput" />
+<input id="input2" @bind-value="_text2" @bind-value:event="oninput" />
 
-<div>@text2</div>
+<div>@_text2</div>
 
 @code {
-    private string text1 = string.Empty;
-    private string text2 = string.Empty;
+    private string _text1 = string.Empty;
+    private string _text2 = string.Empty;
 }

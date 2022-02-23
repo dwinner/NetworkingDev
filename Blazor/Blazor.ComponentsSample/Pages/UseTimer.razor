@@ -2,48 +2,51 @@
 
 <h3>UseTimer</h3>
 
-<div>@timeMessage</div>
+<div>@_timeMessage</div>
 
-<TimerEvent @ref="myTimer" DelaySeconds="3" OnTimerCallback="@ShowTimer" />
+<TimerEvent @ref="_myTimer" DelaySeconds="3" OnTimerCallback="@ShowTimer"/>
 
-<button @onclick="StartTimer" disabled="@disableStartTimerButton">Start</button>
+<button @onclick="StartTimer" disabled="@_disableStartTimerButton">Start</button>
 
-<button @onclick="StopTimer" disabled="@disableStopTimerButton">Stop</button>
+<button @onclick="StopTimer" disabled="@_disableStopTimerButton">Stop</button>
 
 <button @onclick="Clear">Clear</button>
 
-<div>@message</div>
+<div>@_message</div>
 
 @code {
-    private string timeMessage = string.Empty;
-    private bool disableStartTimerButton = false;
-    private bool disableStopTimerButton = true;
+    private string _timeMessage = string.Empty;
+    private bool _disableStartTimerButton;
+    private bool _disableStopTimerButton = true;
 
-    string message = string.Empty;
+    string _message = string.Empty;
+
     private void ShowTimer(DateTime time)
     {
-        message += ".";
-        timeMessage = time.ToLongTimeString();
+        _message += ".";
+        _timeMessage = time.ToLongTimeString();
     }
 
     private void DisableStartTimerButton(bool disable = true)
     {
-        disableStartTimerButton = disable;
-        disableStopTimerButton = !disable;
+        _disableStartTimerButton = disable;
+        _disableStopTimerButton = !disable;
     }
 
-    private void Clear() => message = string.Empty;
+    private void Clear() => _message = string.Empty;
 
-    private TimerEvent? myTimer;
+    private TimerEvent? _myTimer;
+
     private void StartTimer()
     {
-        myTimer?.Start();
+        _myTimer?.Start();
         DisableStartTimerButton();
     }
 
     private void StopTimer()
     {
-        myTimer?.Stop();
+        _myTimer?.Stop();
         DisableStartTimerButton(false);
     }
+
 }
