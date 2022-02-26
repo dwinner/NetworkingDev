@@ -1,33 +1,32 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using System;
-using WindowsAppChatClient.ViewModels;
+using WinAppChatClient.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace WinAppChatClient.Views
 {
-    public sealed partial class GroupChatUC : UserControl
-    {
-        public GroupChatUC()
-        {
-            InitializeComponent();
+   public sealed partial class GroupChatUC
+   {
+      private readonly IServiceScope? _scope;
 
-            if (Application.Current is App app)
-            {
-                _scope = app.Services.CreateScope();
-                ViewModel = _scope.ServiceProvider.GetRequiredService<GroupChatViewModel>();
-            }
-            else
-            {
-                throw new InvalidOperationException("Application.Current is not App");
-            }
-        }
+      public GroupChatUC()
+      {
+         InitializeComponent();
 
-        private readonly IServiceScope? _scope;
+         if (Application.Current is App app)
+         {
+            _scope = app.Services.CreateScope();
+            ViewModel = _scope.ServiceProvider.GetRequiredService<GroupChatViewModel>();
+         }
+         else
+         {
+            throw new InvalidOperationException("Application.Current is not App");
+         }
+      }
 
-        public GroupChatViewModel ViewModel { get; }
-    }
+      public GroupChatViewModel ViewModel { get; }
+   }
 }

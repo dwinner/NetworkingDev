@@ -1,97 +1,96 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WindowsAppChatClient.Services;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using WinAppChatClient.Services;
 
-namespace WindowsAppChatClient.ViewModels
+namespace WinAppChatClient.ViewModels
 {
-    public class ChatViewModel : ObservableObject
-    {
-        private readonly IDialogService _dialogService;
-        private readonly UrlService _urlService;
-        public ChatViewModel(IDialogService dialogService, UrlService urlService)
-        {
-            _dialogService = dialogService;
-            _urlService = urlService;
+   public class ChatViewModel : ObservableObject
+   {
+      private readonly IDialogService _dialogService;
+      private readonly UrlService _urlService;
 
-            ConnectCommand = new RelayCommand(OnConnect);
-            SendCommand = new RelayCommand(OnSendMessage);
-        }
+      private HubConnection? _hubConnection;
 
-        public string? Name { get; set; }
-        public string? Message { get; set; }
+      public ChatViewModel(IDialogService dialogService, UrlService urlService)
+      {
+         _dialogService = dialogService;
+         _urlService = urlService;
 
-        public ObservableCollection<string> Messages { get; } = new ObservableCollection<string>();
+         ConnectCommand = new RelayCommand(OnConnect);
+         SendCommand = new RelayCommand(OnSendMessage);
+      }
 
-        public RelayCommand SendCommand { get; }
+      public string? Name { get; set; }
+      public string? Message { get; set; }
 
-        public RelayCommand ConnectCommand { get; }
+      public ObservableCollection<string> Messages { get; } = new();
 
-        private HubConnection? _hubConnection;
+      public RelayCommand SendCommand { get; }
 
-        public async void OnConnect()
-        {
-            await CloseConnectionAsync();
-            _hubConnection = new HubConnectionBuilder()
-                .WithUrl(_urlService.ChatAddress)
-                .Build();
+      public RelayCommand ConnectCommand { get; }
 
-            _hubConnection.Closed += HubConnectionClosed;
+      public async void OnConnect()
+      {
+         await CloseConnectionAsync().ConfigureAwait(false);
+         _hubConnection = new HubConnectionBuilder()
+            .WithUrl(_urlService.ChatAddress)
+            .Build();
 
-            _hubConnection.On<string, string>("BroadcastMessage", OnMessageReceived);
+         _hubConnection.Closed += HubConnectionClosed;
+         _hubConnection.On<string, string>("BroadcastMessage", OnMessageReceived);
 
-            try
-            {
-                await _hubConnection.StartAsync();
-                await _dialogService.ShowMessageAsync("client connected");
-            }
-            catch (HttpRequestException ex)
-            {
-                await _dialogService.ShowMessageAsync(ex.Message);
-            }
-        }
+         try
+         {
+            await _hubConnection.StartAsync().ConfigureAwait(false);
+            await _dialogService.ShowMessageAsync("client connected").ConfigureAwait(true);
+         }
+         catch (HttpRequestException ex)
+         {
+            await _dialogService.ShowMessageAsync(ex.Message).ConfigureAwait(true);
+         }
+      }
 
-        private Task HubConnectionClosed(Exception arg) 
-            => _dialogService.ShowMessageAsync("Hub connection closed");
+      private Task HubConnectionClosed(Exception arg)
+         => _dialogService.ShowMessageAsync("Hub connection closed");
 
-        public async void OnSendMessage()
-        {
-            try
-            {
-                await _hubConnection.SendAsync("Send", Name, Message);
-            }
-            catch (Exception ex)
-            {
-                await _dialogService.ShowMessageAsync(ex.Message);
-            }
-        }
+      public async void OnSendMessage()
+      {
+         try
+         {
+            await _hubConnection.SendAsync("Send", Name, Message).ConfigureAwait(true);
+         }
+         catch (Exception ex)
+         {
+            await _dialogService.ShowMessageAsync(ex.Message).ConfigureAwait(true);
+         }
+      }
 
-        public async void OnMessageReceived(string name, string message)
-        {
-            try
-            {
-                Messages.Add($"{name}: {message}");
-                //_dispatcherQueue.DispatcherQueue.TryEnqueue(() =>
-                //{
-                //    Messages.Add($"{name}: {message}");
-                //});
-                //await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                //{
-                //    Messages.Add($"{name}: {message}");
-                //});
-            }
-            catch (Exception ex)
-            {
-                await _dialogService.ShowMessageAsync(ex.Message);
-            }
-        }
+      public async void OnMessageReceived(string name, string message)
+      {
+         try
+         {
+            Messages.Add($"{name}: {message}");
+            //_dispatcherQueue.DispatcherQueue.TryEnqueue(() =>
+            //{
+            //    Messages.Add($"{name}: {message}");
+            //});
+            //await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            //{
+            //    Messages.Add($"{name}: {message}");
+            //});
+         }
+         catch (Exception ex)
+         {
+            await _dialogService.ShowMessageAsync(ex.Message).ConfigureAwait(true);
+         }
+      }
 
-        private ValueTask CloseConnectionAsync()
-            => _hubConnection?.DisposeAsync() ?? ValueTask.CompletedTask;
-    }
+      private ValueTask CloseConnectionAsync()
+         => _hubConnection?.DisposeAsync() ?? ValueTask.CompletedTask;
+   }
 }

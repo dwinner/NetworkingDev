@@ -1,32 +1,32 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
 
-Console.WriteLine($"Wait for service - press return to start");
+Console.WriteLine("Wait for service - press return to start");
 Console.ReadLine();
 
 var connection = new HubConnectionBuilder()
-    .WithUrl("https://localhost:5001/stream")
-    .Build();
+   .WithUrl("https://localhost:5001/stream")
+   .Build();
 
-await connection.StartAsync();
+await connection.StartAsync().ConfigureAwait(false);
 
 CancellationTokenSource cts = new(10000);
 
 try
 {
-    await foreach (var data in connection.StreamAsync<SensorData>("GetSensorData").WithCancellation(cts.Token))
-    {
-        Console.WriteLine(data);
-    }
+   await foreach (var data in connection.StreamAsync<SensorData>("GetSensorData").WithCancellation(cts.Token))
+   {
+      Console.WriteLine(data);
+   }
 }
 catch (OperationCanceledException)
 {
-    Console.WriteLine("Canceled!");
+   Console.WriteLine("Cancelled!");
 }
 
-await connection.StopAsync();
+await connection.StopAsync().ConfigureAwait(false);
 
 Console.WriteLine("Completed");
 
