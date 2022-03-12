@@ -1,5 +1,6 @@
 /**
- * 
+ * Simple TCP-client
+ * Usage: tcp_client hostname port (i.e. tcp_client example.com 80)
  */
 
 #include "../network.h"
@@ -46,27 +47,28 @@ int main(int argc, char *argv[])
                address_buffer, sizeof(address_buffer),
                service_buffer, sizeof(service_buffer),
                NI_NUMERICHOST);
+
    printf("%s %s\n", address_buffer, service_buffer);
-
-
    printf("Creating socket...\n");
+
    SOCKET socket_peer;
    socket_peer = socket(peer_address->ai_family,
-                        peer_address->ai_socktype, peer_address->ai_protocol);
+                        peer_address->ai_socktype,
+                        peer_address->ai_protocol);
    if (!ISVALIDSOCKET(socket_peer))
    {
       fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
-      return 1;
+      return EXIT_FAILURE;
    }
-
 
    printf("Connecting...\n");
    if (connect(socket_peer,
                peer_address->ai_addr, peer_address->ai_addrlen))
    {
       fprintf(stderr, "connect() failed. (%d)\n", GETSOCKETERRNO());
-      return 1;
+      return EXIT_FAILURE;
    }
+
    freeaddrinfo(peer_address);
 
    printf("Connected.\n");
@@ -74,7 +76,6 @@ int main(int argc, char *argv[])
 
    while (1)
    {
-
       fd_set reads;
       FD_ZERO(&reads);
       FD_SET(socket_peer, &reads);
@@ -101,6 +102,7 @@ int main(int argc, char *argv[])
             printf("Connection closed by peer.\n");
             break;
          }
+
          printf("Received (%d bytes): %.*s",
                 bytes_received, bytes_received, read);
       }
@@ -109,10 +111,16 @@ int main(int argc, char *argv[])
       if (_kbhit())
       {
 #else
-         if(FD_ISSET(0, &reads)) {
+         // 0 - stdin io-descriptor in *nix
+         if(FD_ISSET(0, &reads))
+         {
 #endif
          char read[4096];
-         if (!fgets(read, 4096, stdin)) break;
+         if (!fgets(read, 4096, stdin))
+         {
+            break;
+         }
+
          printf("Sending: %s", read);
          int bytes_sent = send(socket_peer, read, strlen(read), 0);
          printf("Sent %d bytes.\n", bytes_sent);
@@ -129,4 +137,3 @@ int main(int argc, char *argv[])
    printf("Finished.\n");
    return 0;
 }
-
